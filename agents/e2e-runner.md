@@ -181,8 +181,11 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/e2e',
-  timeout: 30000,
-  retries: 2,
+  timeout: 30000, // 单个测试超时 30 秒
+  expect: {
+    timeout: 5000, // 断言超时 5 秒
+  },
+  retries: 2, // 失败重试 2 次
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
@@ -192,5 +195,28 @@ export default defineConfig({
     { name: 'chromium', use: { browserName: 'chromium' } },
     { name: 'firefox', use: { browserName: 'firefox' } },
   ],
+});
+```
+
+## 超时配置说明
+
+| 配置项 | 推荐值 | 说明 |
+|--------|--------|------|
+| `timeout` | 30000ms | 单个测试最大执行时间 |
+| `expect.timeout` | 5000ms | 断言等待最大时间 |
+| `retries` | 2 | 失败时自动重试次数 |
+
+### 超时处理原则
+
+- **单个测试超时**：30 秒内必须完成，否则视为失败
+- **断言超时**：5 秒内元素必须出现，否则报错
+- **导航超时**：页面跳转最多等待 30 秒
+- **网络超时**：API 请求最多等待 15 秒
+
+```typescript
+// 示例：自定义超时配置
+test('功能测试', async ({ page }) => {
+  await page.goto('/page', { timeout: 15000 }); // 页面导航 15 秒
+  await page.waitForSelector('.element', { timeout: 5000 }); // 等待元素 5 秒
 });
 ```
