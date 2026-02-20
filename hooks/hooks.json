@@ -14,6 +14,19 @@
         ]
       }
     ],
+    "ToolUseStart": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/tool-use-logger.sh",
+            "async": true,
+            "description": "Tool use logger - log tool usage"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "matcher": ".*",
