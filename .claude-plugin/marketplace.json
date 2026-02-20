@@ -1,18 +1,46 @@
 {
-  "schema_version": "1.0.0",
   "name": "ai-assistant",
-  "version": "1.0.0",
-  "description": "个人开发助手 - 基于你的工作流定制的 Claude Code 插件",
-  "author": {
+  "owner": {
     "name": "walker",
     "email": "2609209328@qq.com"
   },
-  "homepage": "https://github.com/walker-hzx/AI-Assistant",
-  "repository": "https://github.com/walker-hzx/AI-Assistant",
-  "license": "MIT",
-  "keywords": ["ai-assistant", "development", "workflow"],
-  "source": {
-    "type": "github",
-    "repo": "walker-hzx/AI-Assistant"
-  }
+  "metadata": {
+    "description": "个人开发助手 - 基于你的工作流定制的 Claude Code 插件"
+  },
+  "plugins": [
+    {
+      "name": "ai-assistant",
+      "source": "./",
+      "description": "个人开发助手 - 包含 agents, skills, hooks, commands 和 rules，基于你的工作流定制",
+      "author": {
+        "name": "walker"
+      },
+      "homepage": "https://github.com/walker-hzx/AI-Assistant",
+      "repository": "https://github.com/walker-hzx/AI-Assistant",
+      "license": "MIT",
+      "keywords": [
+        "ai-assistant",
+        "development",
+        "workflow",
+        "agents",
+        "skills",
+        "hooks",
+        "commands",
+        "tdd",
+        "code-review"
+      ],
+      "category": "workflow",
+      "tags": [
+        "ai-assistant",
+        "development",
+        "workflow",
+        "agents",
+        "skills",
+        "hooks",
+        "commands",
+        "tdd",
+        "code-review"
+      ]
+    }
+  ]
 }

@@ -1,0 +1,33 @@
+{
+  "name": "ai-assistant",
+  "version": "1.0.0",
+  "description": "个人开发助手 - 包含 agents, skills, hooks, commands 和 rules，基于你的工作流定制",
+  "author": {
+    "name": "walker",
+    "url": "https://github.com/walker-hzx"
+  },
+  "homepage": "https://github.com/walker-hzx/AI-Assistant",
+  "repository": "https://github.com/walker-hzx/AI-Assistant",
+  "license": "MIT",
+  "keywords": [
+    "ai-assistant",
+    "development",
+    "workflow",
+    "agents",
+    "skills",
+    "hooks",
+    "commands",
+    "tdd",
+    "code-review"
+  ],
+  "skills": ["./skills/"],
+  "agents": [
+    "./agents/planner.md",
+    "./agents/architect.md",
+    "./agents/tdd-guide.md",
+    "./agents/code-reviewer.md",
+    "./agents/security-reviewer.md",
+    "./agents/e2e-runner.md"
+  ],
+  "commands": ["./commands/"]
+}
