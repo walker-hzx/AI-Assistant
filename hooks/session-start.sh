@@ -53,4 +53,21 @@ echo "  /plan - 制定实施计划"
 echo "  /review - 代码审查"
 echo ""
 
+# 检查是否有未完成的需求文档
+requirements_dir="${PLUGIN_ROOT}/docs/requirements"
+if [ -d "$requirements_dir" ]; then
+    # 查找最近修改的需求文档（排除模板）
+    latest_requirement=$(find "$requirements_dir" -maxdepth 1 -name "*.md" ! -name "模板.md" -type f -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)
+
+    if [ -n "$latest_requirement" ] && [ -f "$latest_requirement" ]; then
+        # 检查是否包含"已完成"
+        if ! grep -q "已完成" "$latest_requirement"; then
+            filename=$(basename "$latest_requirement")
+            echo "📋 检测到未完成的需求讨论：${filename}"
+            echo "   可以说"/view-requirements"查看详情"
+            echo ""
+        fi
+    fi
+fi
+
 exit 0
