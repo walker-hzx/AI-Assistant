@@ -14,7 +14,7 @@
         ]
       }
     ],
-    "ToolUseStart": [
+    "PostToolUse": [
       {
         "matcher": ".*",
         "hooks": [
