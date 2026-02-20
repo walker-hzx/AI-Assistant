@@ -1,6 +1,8 @@
 ---
 name: tdd-guide
 description: "测试驱动开发专家 - 确保测试先行，遵循红-绿-重构流程，实现 80%+ 测试覆盖率。"
+model: sonnet
+allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
 ---
 
 # 测试驱动开发 (TDD) 指南

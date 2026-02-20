@@ -1,6 +1,7 @@
 ---
 name: brainstorming
 description: "在任何创意工作之前必须使用 - 创建功能、构建组件、添加功能或修改行为。在实施之前探索用户意图、需求和设计。"
+user-invocable: true
 ---
 
 # 头脑风暴：将想法转化为设计
