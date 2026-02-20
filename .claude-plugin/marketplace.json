@@ -1,36 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "owner": {
-    "name": "walker-hzx",
-    "type": "github"
+  "name": "ai-assistant",
+  "version": "1.0.0",
+  "description": "个人开发助手 - 基于你的工作流定制的 Claude Code 插件",
+  "author": {
+    "name": "walker",
+    "email": "2609209328@qq.com"
   },
-  "plugins": [
-    {
-      "name": "ai-assistant",
-      "version": "1.0.0",
-      "description": "个人开发助手 - 基于你的工作流定制的 Claude Code 插件",
-      "author": {
-        "name": "walker",
-        "email": "2609209328@qq.com"
-      },
-      "homepage": "https://github.com/walker-hzx/AI-Assistant",
-      "repository": "https://github.com/walker-hzx/AI-Assistant",
-      "license": "MIT",
-      "keywords": ["ai-assistant", "development", "workflow"],
-      "platforms": ["claude-code", "cursor", "opencode"],
-      "compatibility": {
-        "min_claude_code": "1.0"
-      },
-      "capabilities": {
-        "skills": true,
-        "agents": true,
-        "commands": true,
-        "hooks": true
-      },
-      "source": {
-        "type": "github",
-        "url": "https://github.com/walker-hzx/AI-Assistant"
-      }
-    }
-  ]
+  "homepage": "https://github.com/walker-hzx/AI-Assistant",
+  "repository": "https://github.com/walker-hzx/AI-Assistant",
+  "license": "MIT",
+  "keywords": ["ai-assistant", "development", "workflow"],
+  "source": {
+    "type": "github",
+    "repo": "walker-hzx/AI-Assistant"
+  }
 }
