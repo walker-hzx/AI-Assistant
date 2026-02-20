@@ -178,6 +178,17 @@ git commit -m "feat: add specific feature"
 - 引导用户在 worktree 中打开新会话
 - 新会话使用 executing-plans 技能
 
+## 关联需求文档
+
+创建实施计划后：
+
+1. 查找当前相关的需求文档（`docs/requirements/` 目录下与计划主题匹配的文档）
+2. 在需求文档末尾追加以下内容：
+   - 实施计划概要（2-3 句话）
+   - 计划文件链接：`docs/plans/YYYY-MM-DD-<feature-name>.md`
+3. 更新"讨论进度"为"已完成"
+4. 告知用户已将计划关联到需求文档
+
 ## 技术栈
 
 - **前端**: Vue 3 + TypeScript + Vite + Vitest
