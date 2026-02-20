@@ -109,6 +109,34 @@ model: opus
 | 验证 | verification-before-completion | ✅ |
 | 完成 | update-blueprint | ✅ |
 
+### 优化后的工作流
+
+```
+brainstorming → writing-plans (迭代细化) → executing-plans (可调整)
+                                                    ↓
+                              verification-before-completion (代码质量验证)
+                                                    ↓
+                              execution-validation (需求-实现对照) ← 新增
+                                                    ↓
+                                           update-blueprint
+```
+
+#### 核心改进
+
+| 环节 | 改进 | 说明 |
+|------|------|------|
+| writing-plans | 迭代式计划 | 从大到小，逐步细化 |
+| executing-plans | 里程碑评审 | 每个里程碑后检查和调整 |
+| verification-before-completion | 代码质量验证 | 原有功能 |
+| execution-validation | 需求-实现对照 | **新增**：对照原始需求验收 |
+
+#### execution-validation 职责
+
+- 读取原始需求（design doc 或 brainstorming 结果）
+- 逐项对照检查实现状态
+- 输出验收报告
+- 用户确认后才能标记为完成
+
 ## 需要补充的内容
 
 ### 根据 Claude Code 规范
