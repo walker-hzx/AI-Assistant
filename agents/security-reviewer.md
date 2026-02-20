@@ -1,6 +1,6 @@
 ---
 name: security-reviewer
-description: Security vulnerability detection and remediation specialist. Use PROACTIVELY after writing code that handles user input, authentication, API endpoints, or sensitive data. Flags secrets, SQL injection, XSS, and OWASP Top 10 vulnerabilities.
+description: 安全漏洞检测和修复专家。处理用户输入、身份验证、API 端点或敏感数据后主动使用。标记密钥泄露、SQL 注入、XSS 和 OWASP Top 10 漏洞。
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 model: sonnet
 ---

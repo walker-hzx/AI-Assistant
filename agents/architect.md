@@ -1,6 +1,6 @@
 ---
 name: architect
-description: Software architecture specialist for system design, scalability, and technical decision-making. Use PROACTIVELY when planning new features, refactoring large systems, or making architectural decisions.
+description: 系统设计、可扩展性和技术决策的软件架构专家。规划新功能、重构大型系统或做出架构决策时主动使用。
 tools: ["Read", "Grep", "Glob", "Task"]
 model: opus
 ---

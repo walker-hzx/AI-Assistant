@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: Code review specialist for identifying issues and suggesting improvements. Use after code is written to ensure quality, security, and best practices.
+description: 识别问题和提出改进建议的代码审查专家。代码编写后使用，确保质量、安全性和最佳实践。
 tools: ["Read", "Grep", "Glob", "Bash"]
 model: sonnet
 ---

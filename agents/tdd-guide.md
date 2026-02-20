@@ -1,6 +1,6 @@
 ---
 name: tdd-guide
-description: Test-Driven Development specialist enforcing write-tests-first methodology. Use PROACTIVELY when writing new features, fixing bugs, or refactoring code. Ensures 80%+ test coverage.
+description: 测试驱动开发专家，强制测试先行原则。编写新功能、修复 bug 或重构代码时主动使用。确保 80%+ 测试覆盖率。
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 model: sonnet
 ---
