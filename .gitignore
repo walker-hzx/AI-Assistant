@@ -1,0 +1,40 @@
+# MacOS
+.DS_Store
+
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+node_modules/
+
+# Logs
+*.log
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# langgraph checkpoints and runtime state
+.langgraph/
+data/*
+# IDEs
+.vscode/
+**/.idea/
+.env
+临时
+
+# Git worktrees
+.worktrees/

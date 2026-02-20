@@ -1,0 +1,44 @@
+# AI-Assistant 项目级配置
+
+> 项目级 Claude Code 配置
+
+## 项目信息
+
+- **项目类型**: Claude Code 插件
+- **用途**: 个人开发助手
+- **技术栈**: Vue 3 + Python FastAPI
+
+## 配置目录
+
+- `skills/` - 技能配置
+- `agents/` - 代理配置
+- `commands/` - 命令配置
+- `hooks/` - 钩子配置
+- `contexts/` - 上下文配置
+- `rules/` - 代码规范
+
+## 开发规范
+
+### 流程规范
+
+1. 需求讨论 → 2. 交互设计 → 3. 规划 → 4. 执行 → 5. 审查 → 6. 验证 → 7. 完成
+
+### 质量要求
+
+- 测试覆盖率: 80%+
+- 代码审查: 所有重要变更
+- 验证通过才能合并
+
+### 命名规范
+
+| 类型 | 规范 |
+|------|------|
+| Skill | kebab-case |
+| Agent | kebab-case |
+| Command | kebab-case |
+
+## 相关文档
+
+- 完整规范: `docs/claude-code/reference.md`
+- 项目蓝图: `docs/蓝图.md`
+- 开发计划: `docs/plans/`
