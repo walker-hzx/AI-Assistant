@@ -1,6 +1,6 @@
 ---
 name: backend-guide
-description: Use when developing backend code - provides Python + FastAPI code guidelines
+description: 后端开发指南 - 提供 Python + FastAPI 代码规范
 ---
 
 # 后端开发指南

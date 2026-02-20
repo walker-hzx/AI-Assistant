@@ -1,6 +1,6 @@
 ---
 name: update-blueprint
-description: Use when need to update project blueprint - keeps track of project current state
+description: 更新项目蓝图 - 记录项目当前状态
 ---
 
 # 项目蓝图更新助手

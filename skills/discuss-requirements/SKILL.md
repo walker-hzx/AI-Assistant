@@ -1,6 +1,6 @@
 ---
 name: discuss-requirements
-description: Use when user wants to discuss or clarify requirements - helps explore needs through structured questions
+description: 需求讨论 - 帮助通过结构化问题探索需求
 ---
 
 # 需求讨论助手

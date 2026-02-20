@@ -1,6 +1,6 @@
 ---
 name: frontend-guide
-description: Use when developing frontend code - provides Vue3 + TypeScript + Vite code guidelines
+description: 前端开发指南 - 提供 Vue3 + TypeScript + Vite 代码规范
 ---
 
 # 前端开发指南

@@ -1,6 +1,6 @@
 ---
 name: describe-interaction
-description: Use when describing UI/UX interactions - helps capture core interactions for MVP
+description: 描述 UI/UX 交互细节 - 帮助捕获 MVP 核心交互
 ---
 
 # 交互描述助手
