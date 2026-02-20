@@ -132,13 +132,19 @@ description: 当你有书面的实现计划要在单独的会话中执行，并�
 ## 工作流
 
 ```
-writing-plans → executing-plans → code-review → update-blueprint
-                    ↓
+writing-plans → executing-plans (里程碑评审 + 可调整)
+                           ↓
               批次 1 → 报告 → 反馈
-                    ↓
+                           ↓
               批次 2 → 报告 → 反馈
-                    ↓
+                           ↓
               批次 N → 完成
+                           ↓
+              verification-before-completion (代码质量)
+                           ↓
+              execution-validation (需求-实现对照)
+                           ↓
+              update-blueprint
 ```
 
 ## 技术栈
