@@ -75,7 +75,12 @@ model: opus
 | Skills | 14 | ✅ |
 | Agents | 6 | ✅ |
 | Commands | 5 | ✅ |
-| Hooks | 2 | ✅ |
+| Hooks | 4 | ✅ |
+
+### 新增功能
+
+- ToolUseStart Hook: 工具使用日志记录
+- PreToolUse Hook: 权限验证，阻止危险命令
 
 ### 用户开发流程
 
