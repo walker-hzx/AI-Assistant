@@ -1,9 +1,9 @@
 ---
-name: backend-guide
-description: 后端开发指南 - 提供 Python + FastAPI 代码规范
+name: python-fastapi-guide
+description: Python FastAPI 开发指南 - 提供 Python + FastAPI 代码规范
 ---
 
-# 后端开发指南
+# Python FastAPI 开发指南
 
 ## 技术栈
 
