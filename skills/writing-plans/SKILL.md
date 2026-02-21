@@ -213,6 +213,22 @@ function function(input) {
 运行：`npm test tests/path/test.ts`
 预期：PASS
 
+**步骤 4.5：快速验证（每个任务必须）**
+
+在运行测试前，先尝试运行或验证生成的代码，确保无明显错误：
+
+| 语言 | 验证方式 |
+|------|----------|
+| JavaScript/TypeScript | `node --check src/path/file.ts` 或直接运行 |
+| Python | `python -m py_compile src/path/file.py` |
+| Go | `go build src/path/file.go` |
+| Rust | `rustc --check src/path/file.rs` |
+| Java | `javac src/path/File.java` |
+
+**核心目标**：确保代码无语法错误、导入错误，再继续。
+
+如果验证失败（语法错误、导入错误），修复后再继续。
+
 **步骤 5：提交**
 
 ```bash
