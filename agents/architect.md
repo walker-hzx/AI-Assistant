@@ -11,8 +11,7 @@ model: opus
 
 ## 技术栈
 
-- **前端**: Vue 3 + Composition API + TypeScript + TSX + Vite + Pinia + Tailwind CSS
-- **后端**: Python + FastAPI + PostgreSQL + SQLAlchemy + Pydantic
+根据项目实际情况确定。如果不确定，先探索项目结构确认技术栈。
 
 ## 你的角色
 

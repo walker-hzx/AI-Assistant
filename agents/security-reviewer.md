@@ -11,8 +11,7 @@ model: sonnet
 
 ## 技术栈
 
-- **前端**: Vue 3 + TypeScript + Vite + Pinia
-- **后端**: Python + FastAPI + PostgreSQL + SQLAlchemy
+根据项目实际情况确定。如果不确定，先探索项目结构确认技术栈。
 
 ## 核心职责
 
