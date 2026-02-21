@@ -25,12 +25,15 @@ model: sonnet
 ## 分析命令
 
 ```bash
-# 前端
+# 前端（根据包管理器选择）
 npm audit --audit-level=high
+yarn audit
+pnpm audit
 
-# 后端
+# 后端（根据包管理器选择）
 pip-audit
-safety check
+poetry check
+npm audit --prefix=backend
 ```
 
 ## 审查工作流
@@ -43,35 +46,35 @@ safety check
 ### 2. OWASP Top 10 检查
 
 1. **注入** — SQL 查询参数化？用户输入验证？ORM 安全使用？
-2. **身份验证破损** — 密码哈希（bcrypt）？JWT 验证？会话安全？
+2. **身份验证破损** — 密码哈希？JWT 验证？会话安全？
 3. **敏感数据** — HTTPS 强制？密钥在环境变量？PII 加密？
 4. **XXE** — XML 解析器安全配置？
 5. **访问控制破损** — 每个路由都检查认证？CORS 正确配置？
 6. **配置错误** — 生产环境关闭调试？安全头设置？
-7. **XSS** — 输出转义？CSP 设置？Vue 自动转义？
+7. **XSS** — 输出转义？CSP 设置？框架自动转义？
 8. **不安全的反序列化** — 用户输入安全反序列化？
 9. **已知漏洞** — 依赖最新？
 10. **日志记录不足** — 安全事件记录？
 
 ### 3. 代码模式审查
 
-**前端 (Vue3/TypeScript):**
+**前端：**
 
 | 模式 | 严重程度 | 修复方案 |
 |------|----------|----------|
-| `innerHTML = userInput` | CRITICAL | 使用 `textContent` 或 DOMPurify |
-| 硬编码密钥 | CRITICAL | 使用 `import.meta.env` |
+| `innerHTML = userInput` | CRITICAL | 使用 `textContent` 或清理库 |
+| 硬编码密钥 | CRITICAL | 使用环境变量 |
 | 无 CSRF token | HIGH | 添加 CSRF 保护 |
 | LocalStorage 存储敏感数据 | MEDIUM | 使用 httpOnly cookies |
 
-**后端 (FastAPI/Python):**
+**后端：**
 
 | 模式 | 严重程度 | 修复方案 |
 |------|----------|----------|
-| 硬编码密钥 | CRITICAL | 使用 `os.getenv()` |
+| 硬编码密钥 | CRITICAL | 使用环境变量 |
 | 字符串拼接 SQL | CRITICAL | 参数化查询 |
 | `eval(user_input)` | CRITICAL | 永远不要使用 eval |
-| 明文密码 | CRITICAL | 使用 bcrypt |
+| 明文密码 | CRITICAL | 使用安全哈希 |
 | 路由无认证检查 | CRITICAL | 添加依赖 |
 | 无速率限制 | HIGH | 添加速率限制器 |
 | 日志记录密钥 | MEDIUM | 清理日志 |

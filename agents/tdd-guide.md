@@ -56,17 +56,19 @@ pytest
 
 ## 测试框架
 
-### 前端 (Vue3 + TypeScript)
-- **框架**: Vitest
-- **断言**: expect
-- **Mock**: vi.fn(), MSW
-- **组件**: @vue/test-utils
+根据项目实际情况确定。以下是常见选择：
 
-### 后端 (Python + FastAPI)
-- **框架**: pytest
+### 前端
+- **框架**: Vitest / Jest / Mocha
+- **断言**: expect / assert
+- **Mock**: 根据框架选择
+- **组件测试**: 根据框架选择
+
+### 后端
+- **框架**: pytest / unittest / Jest
 - **断言**: assert
-- **Mock**: pytest-mock
-- **HTTP**: pytest-httpx
+- **Mock**: 根据框架选择
+- **HTTP 测试**: pytest-httpx / supertest
 
 ## 逐步流程
 
