@@ -59,8 +59,8 @@ model: opus
 
 ### 2. 前端架构
 - 组件化设计
-- 使用 Pinia 进行状态管理
-- Composition API 复用逻辑
+- 状态管理方案（根据框架选择）
+- 逻辑复用模式
 - 数据访问仓库模式
 
 ### 3. 后端架构
@@ -86,17 +86,17 @@ model: opus
 ### 前端
 | 场景 | 模式 |
 |------|------|
-| 状态管理 | Pinia Store |
-| 数据获取 | Repository + useAsync |
+| 状态管理 | 状态管理库（Redux/Zustand/Pinia 等） |
+| 数据获取 | Repository + 异步 Hook |
 | 表单处理 | Form + Field 组件 |
-| 组件组合 | Composition API |
+| 组件组合 | Hooks / Render Props |
 
 ### 后端
 | 场景 | 模式 |
 |------|------|
 | 业务逻辑 | Service 层 |
 | 数据访问 | Repository 模式 |
-| 请求验证 | Pydantic 模型 |
+| 请求验证 | 数据验证库 |
 | 身份验证 | JWT + 依赖注入 |
 
 ## 决策框架
