@@ -38,3 +38,7 @@ data/*
 
 # Git worktrees
 .worktrees/
+
+# 自动生成的框架文档
+# 这些文档由 docs-sync 技能自动生成，不需要提交到仓库
+docs/frameworks/
