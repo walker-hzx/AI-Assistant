@@ -22,6 +22,7 @@ model: sonnet
 3. **不稳定测试管理** — 识别和隔离不稳定的测试
 4. **产物管理** — 捕获截图、视频、追踪
 5. **CI/CD 集成** — 确保测试在管道中可靠运行
+6. **性能优化** — 确保测试快速执行，及时发现问题
 
 ## Playwright 命令
 
@@ -165,6 +166,7 @@ test('登录', async ({ page }) => {
 
 ## 清单
 
+### 基础配置
 - [ ] 测试覆盖关键用户旅程
 - [ ] 测试使用稳定的定位器（data-testid）
 - [ ] 测试相互独立
@@ -173,7 +175,19 @@ test('登录', async ({ page }) => {
 - [ ] 测试持续通过
 - [ ] CI 管道已配置
 
+### 性能优化
+- [ ] 本地并行执行（workers 未设置为 1）
+- [ ] 缩短超时时间（actionTimeout ≤ 5000ms）
+- [ ] 页面错误监控（页面报错立即失败）
+
+### 报告查看
+- [ ] HTML 报告配置
+- [ ] 知道如何查看测试时长
+- [ ] 知道如何查看失败详情
+
 ## 配置
+
+### 推荐配置（性能优化 + 错误监控）
 
 ```typescript
 // playwright.config.ts
@@ -181,21 +195,164 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/e2e',
-  timeout: 30000, // 单个测试超时 30 秒
-  expect: {
-    timeout: 5000, // 断言超时 5 秒
-  },
-  retries: 2, // 失败重试 2 次
+  timeout: 30000,
+  expect: { timeout: 5000 },
+  // 性能：本地并行，CI 串行
+  workers: process.env.CI ? 1 : undefined,
+  fullyParallel: true,
+  retries: 2,
+  // 报告：HTML + 列表
+  reporter: [
+    ['html', { open: 'never' }],
+    ['list'],
+  ],
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    // 缩短超时，快速失败
+    actionTimeout: 5000,
+    navigationTimeout: 10000,
   },
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },
-    { name: 'firefox', use: { browserName: 'firefox' } },
   ],
 });
+```
+
+### 全局页面错误监控
+
+```typescript
+// tests/e2e/fixtures.ts
+import { test as base, expect } from '@playwright/test';
+
+export const test = base.extend({
+  page: async ({ page }, use) => {
+    const errors: Error[] = [];
+
+    // 页面 JS 错误
+    page.on('pageerror', error => {
+      errors.push(error);
+      console.error(`[页面错误] ${error.message}`);
+    });
+
+    // 控制台错误
+    page.on('console', msg => {
+      if (msg.type() === 'error') {
+        errors.push(new Error(msg.text()));
+        console.error(`[控制台错误] ${msg.text()}`);
+      }
+    });
+
+    await use(page);
+
+    // 有错误立即失败，不等超时
+    if (errors.length > 0) {
+      throw new Error(`页面错误: ${errors[0].message}`);
+    }
+  },
+});
+
+export { expect };
+```
+
+### 使用 fixture
+
+```typescript
+// tests/e2e/specs/auth.spec.ts
+import { test, expect } from '../fixtures';
+
+test('登录', async ({ page }) => {
+  // 自动监控页面错误
+  await page.goto('/login');
+  // ...
+});
+```
+
+## 性能优化指南
+
+### 减少测试时间
+
+| 优化项 | 配置 | 效果 |
+|--------|------|------|
+| **并行执行** | `workers: undefined` (默认) | 使用所有 CPU 核心 |
+| **单浏览器** | 只跑 chromium | 减少 2/3 时间 |
+| **缩短超时** | `actionTimeout: 5000` | 错误时快速失败 |
+| **页面错误监控** | fixture 监听 | 不等 30 秒超时 |
+
+### 只跑部分测试
+
+```bash
+# 只跑特定文件
+npx playwright test tests/auth.spec.ts
+
+# 只跑特定测试
+npx playwright test -g "登录"
+
+# 只跑上次失败的测试
+npx playwright test --last-failed
+
+# 根据 Git 变更只跑相关测试
+npx playwright test --only-changed
+```
+
+### 常见问题排查
+
+**测试太慢？**
+1. 检查是否串行：`workers: 1` → 删除或改为 `undefined`
+2. 检查是否多浏览器：只保留 chromium
+3. 检查是否有固定等待：`waitForTimeout` → 改为条件等待
+
+**页面报错还在等？**
+1. 添加页面错误监控 fixture
+2. 缩短 `actionTimeout` 到 5 秒
+3. 检查控制台错误
+
+## 查看测试报告
+
+### HTML 报告（推荐）
+
+```bash
+# 运行测试后生成报告
+npx playwright test
+
+# 查看 HTML 报告
+npx playwright show-report
+
+# 指定端口
+npx playwright show-report --port 9323
+```
+
+报告包含：
+- ✅ 每个测试的运行时间
+- ✅ 通过/失败/跳过状态
+- ✅ 失败时的截图、视频、trace
+- ✅ 页面网络请求记录
+
+### 实时查看进度
+
+```bash
+# 列表格式，实时显示
+npx playwright test --reporter=list
+
+# 带进度条
+npx playwright test --reporter=line
+
+# 简洁模式（只显示失败）
+npx playwright test --reporter=dot
+```
+
+### 调试模式
+
+```bash
+# 打开浏览器界面运行
+npx playwright test --headed
+
+# 逐步调试
+npx playwright test --debug
+
+# 追踪查看器（查看每一步的操作）
+npx playwright show-trace trace.zip
 ```
 
 ## 超时配置说明
