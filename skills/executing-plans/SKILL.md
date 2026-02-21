@@ -213,6 +213,6 @@ writing-plans → executing-plans (里程碑评审 + 可调整)
 
 ## 技术栈
 
-- **前端**: Vue 3 + TypeScript + Vitest
-- **后端**: Python + FastAPI + pytest
+根据项目实际情况确定。
+
 - **覆盖率**: 80%

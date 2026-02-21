@@ -258,8 +258,8 @@ git commit -m "feat: add specific feature"
 
 ## 技术栈
 
-- **前端**: Vue 3 + TypeScript + Vite + Vitest
-- **后端**: Python + FastAPI + pytest
+根据项目实际情况确定。
+
 - **测试覆盖率**: 80%
 
 ## 工作流集成

@@ -62,7 +62,7 @@ description: 更新项目蓝图 - 记录项目当前状态
 
 ## 1. 项目概述
 - 核心功能：
-- 技术栈：Vue3 + TypeScript + FastAPI + PostgreSQL
+- 技术栈：根据项目实际情况填写
 
 ## 2. 功能清单
 | 功能 | 描述 | 状态 |
