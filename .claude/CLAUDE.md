@@ -37,6 +37,12 @@
 | Agent | kebab-case |
 | Command | kebab-case |
 
+### 思考习惯
+
+1. **先查文档再分析** - 遇到需求时，先参考官方文档（docs/claude-code/），不要凭猜测
+2. **记住用户的建议** - 用户给出的调整建议，需要应用到后续类似场景
+3. **理解错误并调整** - 不是硬编码规则，而是理解后自然应用
+
 ## 相关文档
 
 - 完整规范: `docs/claude-code/reference.md`
