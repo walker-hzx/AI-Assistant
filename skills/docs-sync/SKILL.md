@@ -15,7 +15,22 @@ user-invocable: true
 1. 分析官网结构 - 访问网站，识别组件/API 文档位置
 2. 生成爬虫脚本 - 针对该网站结构生成 Python + Playwright 爬虫
 3. 执行数据爬取 - 获取组件列表、API、示例代码
-4. 生成标准文档 - 整理成 Markdown 格式，保存到 `docs/frameworks/`
+4. 生成标准文档 - 整理成结构化 Markdown，支持智能读取
+
+**文档结构（优化上下文）：**
+```
+docs/frameworks/{name}/
+├── index.md              # 总览：组件列表、安装、核心概念（3-5 KB）
+└── components/           # 详细组件文档（每个 5-10 KB）
+    ├── button.md
+    ├── dialog.md
+    └── ...
+```
+
+**智能读取策略：**
+- 需要特定组件时，只读取对应的组件文件（节省 90%+ 上下文）
+- 先读取 index.md 确认组件存在
+- 再读取具体组件文档获取详细 API
 
 **使用场景：**
 - 项目使用了新的组件库，需要快速建立参考文档
@@ -41,7 +56,18 @@ AI: 请输入框架名称和官网地址（格式：名称, URL）
 
 ## 文档标准格式
 
-生成的文档包含：
+### 目录结构（推荐）
+
+```
+docs/frameworks/{name}/
+├── index.md              # 总览（3-5 KB）
+└── components/           # 详细组件
+    ├── accordion.md      # 单个组件（5-10 KB）
+    ├── dialog.md
+    └── ...
+```
+
+### index.md 内容
 
 ```markdown
 # {框架名} 使用指南
@@ -49,42 +75,56 @@ AI: 请输入框架名称和官网地址（格式：名称, URL）
 ## 元信息
 - 官网：{url}
 - 包名：`{package}`
-- 语言：{lang}
-- 生成时间：{date}
 
 ## 安装
 ```bash
 npm install {package}
 ```
 
-## 组件列表
-- [组件1](#组件1)
-- [组件2](#组件2)
+## 组件目录
+- [Component1](./components/component1.md)
+- [Component2](./components/component2.md)
 ...
 
-## 组件详情
-
-### 组件1
-**描述**：{description}
-
-**基础用法**：
-```vue
-{code example}
+## 核心概念
+...
 ```
 
-**Props**：
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| ... | ... | ... | ... |
+### components/{component}.md 内容
 
-**Events**：
-| 事件 | 参数 | 说明 |
+```markdown
+# ComponentName
+
+## 描述
+...
+
+## 示例
+```vue
+...
+```
+
+## Props
+| 属性 | 类型 | 说明 |
 |------|------|------|
 | ... | ... | ... |
 
-## 最佳实践
-- 注意事项
-- 常见用法
+## Events
+...
+```
+
+### 为什么这样设计？
+
+**节省上下文：**
+- 原方案：150 KB 文件一次性读取
+- 新方案：读取 index (3 KB) + 目标组件 (5 KB) = 8 KB
+- **节省 94% 上下文空间**
+
+**智能读取流程：**
+```
+用户：生成一个 Dialog 组件
+AI：1. 读取 index.md 确认 Dialog 存在
+    2. 读取 components/dialog.md 获取详细 API
+    3. 生成代码（使用正确 API）
 ```
 
 ## 交互步骤
@@ -166,20 +206,35 @@ python3 scripts/fetch-docs/fetch-{framework}.py
 ...
 ```
 
-### 步骤 5：生成并展示文档
+### 步骤 5：生成并拆分文档
 
-保存文档到 `docs/frameworks/{framework}.md`
+**5.1 生成完整文档**
+```bash
+python3 scripts/fetch-docs/fetch-{framework}.py
+```
 
-向用户展示文档结构：
+**5.2 拆分为结构化目录**
+```bash
+python3 scripts/fetch-docs/split-{framework}.py
+```
+
+**5.3 展示结果**
 ```
 文档生成完成！
 
-文件位置：docs/frameworks/{framework}.md
-文档大小：{size} KB
-包含内容：
+目录结构：
+docs/frameworks/{framework}/
+├── index.md              ({index_size} KB) - 总览
+└── components/           ({n} 个组件)
+    ├── component1.md     ({avg_size} KB)
+    ├── component2.md
+    └── ...
+
+统计：
 - {n} 个组件
 - {m} 个代码示例
 - {k} 个 API 条目
+- 读取单个组件节省上下文: ~{saving}%
 
 是否需要：
 1. 查看生成的文档
@@ -193,23 +248,46 @@ python3 scripts/fetch-docs/fetch-{framework}.py
 ```
 文档已准备就绪！
 
-后续开发时，我会自动参考：
-docs/frameworks/{framework}.md
+文件位置：docs/frameworks/{framework}/
 
-生成组件代码时，会使用该框架的正确 API。
+使用方式：
+1. 查找组件：查看 index.md 的组件目录
+2. 详细文档：读取 components/{component}.md
+3. 智能读取：AI 会自动按需读取，节省上下文
+
+示例：
+- 需要 Dialog 组件 → 读取 components/dialog.md（5 KB）
+- 原方案：读取完整文档（150 KB）
+- 节省 94% 上下文
 ```
+
+**在其他 Skill 中使用：**
+当生成组件代码时，AI 会自动：
+1. 读取 index.md 确认组件存在
+2. 读取对应组件文件获取 API
+3. 生成符合该框架规范的代码
 
 ## 输出要求
 
 **文件位置：**
 - 爬虫脚本：`scripts/fetch-docs/fetch-{name}.py`
-- 生成文档：`docs/frameworks/{name}.md`
+- 分析脚本：`scripts/fetch-docs/analyze-{name}.py`
+- 拆分脚本：`scripts/fetch-docs/split-{name}.py`
+- 生成文档：`docs/frameworks/{name}/`
+  - `index.md` - 总览
+  - `components/*.md` - 详细组件文档
+
+**生成步骤：**
+1. 运行 `fetch-{name}.py` 生成完整文档
+2. 运行 `split-{name}.py` 拆分为结构化目录
+3. 使用拆分后的目录结构
 
 **质量标准：**
 - [ ] 文档包含框架基本信息（名称、版本、安装方式）
 - [ ] 包含主要组件的 API 说明
 - [ ] 包含可运行的代码示例
 - [ ] 格式统一，易于阅读
+- [ ] 文档已拆分为 index + components 结构
 
 ## 注意事项
 
