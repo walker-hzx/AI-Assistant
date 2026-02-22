@@ -157,6 +157,177 @@ test('登录', async ({ page }) => {
 });
 ```
 
+## 功能流程测试（完整 CRUD 流程）
+
+针对一个完整功能模块（如租户管理），编写连续流程测试，验证整个业务链路。
+
+### 与单功能测试的区别
+
+| 测试类型 | 示例 | 覆盖范围 |
+|---------|------|---------|
+| **单功能测试** | `test('创建租户')` | 只测新增功能 |
+| **功能流程测试** | `test('租户管理完整流程')` | 新增→查询→编辑→删除 |
+
+### 功能流程测试模板
+
+```typescript
+test('租户管理完整流程', async ({ page }) => {
+  // 用于存储测试过程中创建的数据 ID
+  const testData = {
+    tenantId: '',
+    tenantName: `测试租户-${Date.now()}`
+  };
+
+  try {
+    // ========== Step 1: 前置准备 ==========
+    await page.goto('/tenants');
+    await expect(page.locator('[data-testid="tenant-list"]')).toBeVisible();
+
+    // ========== Step 2: 新增租户 ==========
+    await page.click('[data-testid="add-tenant-btn"]');
+    await expect(page.locator('[data-testid="tenant-form"]')).toBeVisible();
+
+    // 填写表单
+    await page.fill('[data-testid="tenant-name-input"]', testData.tenantName);
+    await page.fill('[data-testid="tenant-code-input"]', `T${Date.now()}`);
+    await page.click('[data-testid="submit-btn"]');
+
+    // 验证成功提示
+    await expect(page.locator('text=创建成功')).toBeVisible();
+
+    // 获取创建的租户 ID（从 URL 或列表中）
+    const url = page.url();
+    testData.tenantId = url.match(/\/tenants\/(\w+)/)?.[1] || '';
+
+    // ========== Step 3: 验证列表显示 ==========
+    await page.goto('/tenants');
+    await expect(page.locator(`text=${testData.tenantName}`)).toBeVisible();
+
+    // ========== Step 4: 编辑租户 ==========
+    await page.click(`[data-testid="edit-tenant-${testData.tenantId}"]`);
+    await expect(page.locator('[data-testid="tenant-form"]')).toBeVisible();
+
+    const updatedName = `${testData.tenantName}-已更新`;
+    await page.fill('[data-testid="tenant-name-input"]', updatedName);
+    await page.click('[data-testid="submit-btn"]');
+
+    await expect(page.locator('text=更新成功')).toBeVisible();
+
+    // 验证列表已更新
+    await page.goto('/tenants');
+    await expect(page.locator(`text=${updatedName}`)).toBeVisible();
+
+    // ========== Step 5: 删除租户 ==========
+    await page.click(`[data-testid="delete-tenant-${testData.tenantId}"]`);
+    await expect(page.locator('[data-testid="confirm-dialog"]')).toBeVisible();
+
+    await page.click('[data-testid="confirm-delete-btn"]');
+    await expect(page.locator('text=删除成功')).toBeVisible();
+
+    // ========== Step 6: 验证已删除 ==========
+    await page.goto('/tenants');
+    await expect(page.locator(`text=${updatedName}`)).not.toBeVisible();
+
+  } finally {
+    // ========== 数据清理 ==========
+    // 如果测试中断，直接调用 API 清理测试数据
+    if (testData.tenantId) {
+      await cleanupTenantViaApi(testData.tenantId);
+    }
+  }
+});
+```
+
+### 状态传递机制
+
+在测试步骤间传递数据的方法：
+
+```typescript
+// 方法 1: 使用变量存储
+test('流程测试', async ({ page }) => {
+  let createdId = '';
+
+  // 创建
+  await page.click('[data-testid="create"]');
+  createdId = await page.locator('[data-testid="id"]').textContent() || '';
+
+  // 使用 ID 进行后续操作
+  await page.goto(`/items/${createdId}`);
+});
+
+// 方法 2: 从 URL 中提取
+test('流程测试', async ({ page }) => {
+  await page.click('[data-testid="create"]');
+
+  // 等待 URL 变化并提取 ID
+  await page.waitForURL(/\/items\/(\d+)/);
+  const id = page.url().match(/\/items\/(\d+)/)?.[1];
+});
+
+// 方法 3: 从列表中查找
+test('流程测试', async ({ page }) => {
+  const testName = `测试-${Date.now()}`;
+
+  // 创建
+  await createItem(page, testName);
+
+  // 在列表中查找并获取对应行的操作按钮
+  const row = page.locator('tr', { hasText: testName });
+  await row.locator('[data-testid="edit-btn"]').click();
+});
+```
+
+### 数据清理策略
+
+确保测试结束后清理数据，避免污染环境：
+
+```typescript
+// tests/e2e/utils/test-helpers.ts
+
+/**
+ * 通过 API 清理测试数据（比 UI 操作更快更可靠）
+ */
+export async function cleanupTenantViaApi(tenantId: string) {
+  try {
+    await fetch(`/api/tenants/${tenantId}`, { method: 'DELETE' });
+  } catch (e) {
+    console.log(`清理数据失败: ${tenantId}`, e);
+  }
+}
+
+/**
+ * 批量清理测试数据
+ */
+export async function cleanupTestData(data: { tenantId?: string; userId?: string }) {
+  if (data.tenantId) await cleanupTenantViaApi(data.tenantId);
+  if (data.userId) await cleanupUserViaApi(data.userId);
+}
+```
+
+### 测试结构建议
+
+```
+tests/
+├── e2e/
+│   ├── pages/              # 页面对象模型
+│   ├── specs/
+│   │   ├── auth.spec.ts    # 认证测试
+│   │   ├── tenant.spec.ts  # 租户管理（完整流程）
+│   │   └── user.spec.ts    # 用户管理（完整流程）
+│   ├── utils/
+│   │   ├── test-helpers.ts # 测试辅助函数
+│   │   └── cleanup.ts      # 数据清理
+│   └── fixtures.ts         # 全局 fixture
+```
+
+### 关键原则
+
+1. **一个 test() 走完完整流程** - 不要拆成多个 test
+2. **步骤间有明确断言** - 每步完成后验证状态
+3. **使用 try-finally 清理数据** - 避免测试中断导致脏数据
+4. **使用唯一标识** - 避免测试数据冲突（如 `测试-${Date.now()}`）
+5. **失败时截图** - 快速定位在哪一步失败
+
 ## 不稳定测试处理
 
 - 使用 `test.skip()` 处理已知问题
