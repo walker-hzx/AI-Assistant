@@ -444,7 +444,33 @@ git commit -m "feat: add specific feature"
 
 **注意**：计划创建**前**的需求检查（识别关联/冲突）已经在"开始创建计划前：检查需求文档"步骤中完成。
 
-## 文档更新计划
+## 进度追踪更新
+
+**创建实施计划后，同步更新进度文件**：
+
+1. **更新 `docs/plans/progress.md`**：
+```markdown
+| [任务名] | writing-plans | ✅ 已完成 | YYYY-MM-DD |
+| [任务名] | executing-plans | 🔄 进行中 | YYYY-MM-DD |
+```
+
+2. **添加执行阶段信息**：
+```markdown
+## 执行阶段
+
+### Phase 1: [名称]
+- 状态：🔄 进行中
+- 开始时间：YYYY-MM-DD HH:MM
+- 预计完成：XXX
+
+#### 任务列表
+- [ ] 任务 1
+- [ ] 任务 2
+```
+
+3. **确保与 brainstorming 阶段的进度衔接**：
+- 继承 brainstorming 创建的进度记录
+- 继续更新同一任务的进度
 
 计划执行完成后，需要更新以下文档：
 

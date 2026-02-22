@@ -70,4 +70,40 @@ if [ -d "$requirements_dir" ]; then
     fi
 fi
 
+# ============================================
+# Session 恢复功能：检查上次的规划进度
+# ============================================
+
+# 检查是否有最近的规划文件
+current_dir="${CLAUDE_PROJECT_DIR:-$(pwd)}"
+plans_dir="${current_dir}/docs/plans"
+
+if [ -d "$plans_dir" ]; then
+    # 查找最近修改的规划文件
+    latest_plan=$(find "$plans_dir" -maxdepth 1 -name "*.md" -type f -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)
+
+    if [ -n "$latest_plan" ] && [ -f "$latest_plan" ]; then
+        # 获取文件修改时间
+        file_time=$(stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$latest_plan" 2>/dev/null || stat -c "%y" "$latest_plan" 2>/dev/null | cut -d' ' -f1,2 | cut -d: -f1,2)
+        filename=$(basename "$latest_plan")
+
+        # 检查是否包含进行中的任务
+        if grep -qE "in_progress|进行中|未完成" "$latest_plan" 2>/dev/null; then
+            echo "📝 检测到上次的规划进度："
+            echo "   文件：${filename}"
+            echo "   时间：${file_time}"
+            echo "   建议：可以说"/plan"继续执行，或"/blueprint"查看当前状态"
+            echo ""
+
+            # 提取当前阶段信息
+            current_phase=$(grep -E "^##?\s*Phase|进行中|in_progress" "$latest_plan" 2>/dev/null | head -3 || true)
+            if [ -n "$current_phase" ]; then
+                echo "   当前阶段："
+                echo "$current_phase" | sed 's/^/      /'
+                echo ""
+            fi
+        fi
+    fi
+fi
+
 exit 0

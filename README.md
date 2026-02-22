@@ -14,9 +14,39 @@
 |-------|------|
 | discuss-requirements | 需求讨论助手 - 帮助明确需求 |
 | describe-interaction | 交互描述助手 - 描述核心交互 |
+| brainstorming | 头脑风暴 - 将想法转化为设计 |
+| writing-plans | 详细实施计划 - 创建分阶段实施计划 |
+| executing-plans | 执行计划 - 按计划执行任务 |
+| test-planner | 测试设计 - 设计测试场景 |
 | update-blueprint | 蓝图更新助手 - 更新项目蓝图 |
-| frontend-guide | 前端开发指南 - Vue3 + TypeScript 规范 |
-| backend-guide | 后端开发指南 - Python + FastAPI 规范 |
+| verification-before-completion | 完成前验证 - 确保工作真正完成 |
+| execution-validation | 需求对照验收 - 验证实现完整性 |
+| docs-sync | 框架文档同步 - 爬取官方文档 |
+
+### Agents
+
+| Agent | 说明 |
+|-------|------|
+| planner | 规划专家 - 创建详细实施计划 |
+| architect | 架构专家 - 系统设计决策 |
+| tdd-guide | TDD 专家 - 测试驱动开发 |
+| code-reviewer | 代码审查 - 质量与安全检查 |
+| security-reviewer | 安全审查 - 漏洞检测 |
+| e2e-runner | E2E 测试 - 端到端测试 |
+| debugger | 调试专家 - 定位和修复 bug |
+
+### Commands
+
+| Command | 说明 |
+|---------|------|
+| /discuss | 开始需求讨论 |
+| /interaction | 描述交互细节 |
+| /blueprint | 更新项目蓝图 |
+| /plan | 制定实施计划 |
+| /review | 代码审查 |
+| /view-requirements | 查看需求文档 |
+| /workflow-check | 检查流程是否正确 |
+| /config-retrospect | 复盘配置使用情况 |
 
 ## 安装
 
@@ -30,67 +60,82 @@ ln -s /path/to/AI-Assistant ~/.claude/plugins/ai-assistant
 cp -r AI-Assistant ~/.claude/plugins/
 ```
 
-## 使用方法
-
-### 需求讨论
-
-当有新功能需求时：
+## 工作流程
 
 ```
-/discuss-requirements
+需求 → 规划 → 执行 → 审查 → 验证 → 完成
+  ↓      ↓      ↓      ↓      ↓
+discuss  brainstorming  writing-plans  executing-plans  verification  update-blueprint
+         →writing-plans        →execution-validation   →blueprint
 ```
 
-### 交互描述
+### 完整流程
 
-需求明确后，描述交互：
+1. **需求阶段**
+   - `/discuss` - 需求讨论，明确要做什么
+   - `/interaction` - 描述核心交互
 
-```
-/describe-interaction
-```
+2. **规划阶段**
+   - `/brainstorming` - 头脑风暴，转化想法为设计
+   - `/plan` - 创建详细实施计划
 
-### 更新蓝图
+3. **执行阶段**
+   - 使用 TDD 方法开发
+   - 每个任务完成后更新进度
 
-每个关键节点更新项目蓝图：
+4. **审查阶段**
+   - `/review` - 代码审查
+   - 安全审查（如需要）
 
-```
-/update-blueprint
-```
+5. **验证阶段**
+   - 验证代码是否正常运行
+   - 验证实现是否满足需求
 
-### 前端开发
-
-开发前端时参考规范：
-
-```
-/frontend-guide
-```
-
-### 后端开发
-
-开发后端时参考规范：
-
-```
-/backend-guide
-```
+6. **完成阶段**
+   - `/blueprint` - 更新项目蓝图
+   - 提交代码
 
 ## 项目结构
 
 ```
 AI-Assistant/
 ├── .claude-plugin/        # 插件清单
-├── skills/                # Skills
+├── skills/                 # Skills
 │   ├── discuss-requirements/
-│   ├── describe-interaction/
-│   ├── update-blueprint/
-│   ├── frontend-guide/
-│   └── backend-guide/
-├── agents/                 # Agents（待添加）
-├── commands/              # Commands（待添加）
-├── hooks/                 # Hooks（待添加）
-├── rules/                 # Rules（待添加）
-└── docs/
-    ├── config-draft.md   # 配置规范草稿
-    └── 蓝图.md          # 项目蓝图
+│   ├── brainstorming/
+│   ├── writing-plans/
+│   ├── executing-plans/
+│   └── ...
+├── agents/                 # Agents
+│   ├── planner.md
+│   ├── code-reviewer.md
+│   └── ...
+├── commands/              # Commands
+│   ├── discuss.md
+│   ├── blueprint.md
+│   └── ...
+├── hooks/                 # Hooks
+│   ├── hooks.json
+│   ├── session-start.sh
+│   └── session-end.sh
+├── docs/                  # 文档
+│   ├── requirements/      # 需求文档
+│   ├── plans/             # 计划文档
+│   └── claude-code/       # Claude Code 官方文档
+└── tests/                 # 测试
+    └── e2e/
 ```
+
+## 进度追踪
+
+本插件支持**文件式进度追踪**：
+
+- **自动检测**：Session 开始时自动检查上次进度
+- **自动创建**：brainstorming/writing-plans 自动创建进度文件
+- **自动更新**：executing-plans 执行时自动更新任务状态
+- **Session 恢复**：结束 session 时提示未完成任务
+
+进度文件位置：`docs/plans/progress.md`
 
 ## 依赖插件
 
@@ -98,41 +143,17 @@ AI-Assistant/
 
 - [superpowers](https://github.com/superpoweredai/superpowers) - 工作流核心
 - [everything-claude-code](https://github.com/anthropics/everything-claude-code) - 语言 patterns
+- [planning-with-files](https://github.com/OthmanAdi/planning-with-files) - 文件式规划
 
-## 工作流程
+## 参考文档
 
-```
-1. 需求沟通
-   └── /discuss-requirements
-
-2. 交互描述
-   └── /describe-interaction
-
-3. 技术方案
-   └── 参考 /backend-guide 或 /frontend-guide
-
-4. 编码实现
-   └── 使用 TDD 方法
-
-5. 更新蓝图
-   └── /update-blueprint
-
-6. 代码审查
-   └── 使用 code-reviewer agent
-```
-
-## 文档
-
-- [配置规范草稿](./docs/config-draft.md) - 完整的工作流规范
-- [项目蓝图](./docs/蓝图.md) - 项目现状记录
+- [Claude Code 官方文档](./docs/claude-code/)
+- [配置规范草稿](./docs/config-draft.md)
+- [项目蓝图](./docs/蓝图.md)
 
 ## 更新日志
 
-### v1.0.0
-
-- 初始版本
-- 创建核心 Skills
-- 整理代码规范
+See [CHANGELOG.md](./CHANGELOG.md)
 
 ## License
 

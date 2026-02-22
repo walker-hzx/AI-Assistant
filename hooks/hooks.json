@@ -46,9 +46,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Session ended. Thanks for using AI Assistant!'",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-end.sh",
             "async": true,
-            "description": "Session end hook"
+            "description": "Session end hook - check task completion and suggest next steps"
           }
         ]
       }
