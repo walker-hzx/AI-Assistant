@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # AI Assistant 插件的 SessionEnd 钩子
-# 检查任务完成状态并建议下一步
+# 简洁地检查任务状态，避免过度打扰
 
 set -euo pipefail
 
@@ -11,46 +11,23 @@ PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 # 获取当前项目目录
 current_dir="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 
-echo ""
-echo "📊 检查任务完成状态..."
-
-# 检查是否有进行中的任务
+# 检查是否有进度文件
 plans_dir="${current_dir}/docs/plans"
 progress_file="${plans_dir}/progress.md"
 
+# 只在有进度文件且有未完成任务时才显示提示
 if [ -f "$progress_file" ]; then
     # 检查是否有 in_progress 状态的任务
-    if grep -qE "in_progress|🔄|进行中" "$progress_file" 2>/dev/null; then
-        echo "⚠️  检测到进行中的任务"
-
-        # 提取进行中的任务
-        in_progress_tasks=$(grep -E "in_progress|🔄|进行中" "$progress_file" 2>/dev/null | head -3 || true)
-        if [ -n "$in_progress_tasks" ]; then
-            echo "   未完成的任务："
-            echo "$in_progress_tasks" | sed 's/^/   - /'
-        fi
-
+    if grep -qE "in_progress|🔄" "$progress_file" 2>/dev/null; then
         echo ""
-        echo "💡 下次可以："
-        echo "   - 说'/plan'继续执行当前任务"
-        echo "   - 说'/blueprint'查看项目整体状态"
-    else
-        # 检查是否有待处理的任务
-        if grep -qE "pending|待处理|未开始" "$progress_file" 2>/dev/null; then
-            echo "✅ 当前任务已完成！"
-            echo ""
-            echo "💡 下次可以："
-            echo "   - 开始新任务：'/discuss' 或 '/brainstorming'"
-            echo "   - 更新蓝图：'/blueprint'"
-            echo "   - 代码审查：'/review'"
-        else
-            echo "✅ 会话结束，感谢使用 AI Assistant！"
-        fi
+        echo "📝 有进行中的任务，下次可用 /plan 继续"
+    elif grep -qE "pending|待处理" "$progress_file" 2>/dev/null; then
+        echo ""
+        echo "✅ 任务完成，下次可用 /discuss 开始新任务"
     fi
-else
-    echo "✅ 会话结束，感谢使用 AI Assistant！"
 fi
 
-echo ""
+# 简洁结束，不显示冗长提示
+# 避免过度打扰用户
 
 exit 0
