@@ -14,6 +14,10 @@ def split_document():
     """拆分文档"""
     print("🚀 开始拆分 Radix Vue 文档...")
 
+    # 创建输出目录
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    COMPONENTS_DIR.mkdir(parents=True, exist_ok=True)
+
     content = INPUT_FILE.read_text(encoding="utf-8")
 
     # 提取元信息和前言（## 核心概念 之前的内容）
