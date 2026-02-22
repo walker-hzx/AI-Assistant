@@ -1,6 +1,6 @@
 {
   "name": "ai-assistant",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "个人开发助手 - 包含 agents, skills, hooks, commands 和 rules，基于你的工作流定制",
   "author": {
     "name": "walker",
@@ -27,7 +27,8 @@
     "./agents/tdd-guide.md",
     "./agents/code-reviewer.md",
     "./agents/security-reviewer.md",
-    "./agents/e2e-runner.md"
+    "./agents/e2e-runner.md",
+    "./agents/debugger.md"
   ],
   "commands": ["./commands/"]
 }
