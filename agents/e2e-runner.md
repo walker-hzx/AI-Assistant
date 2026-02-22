@@ -1,6 +1,6 @@
 ---
 name: e2e-runner
-description: 使用 Playwright 的端到端测试专家。主动用于生成、维护和运行 E2E 测试。管理测试流程、处理不稳定测试、上传产物（截图、视频、追踪），确保关键用户流程正常工作。
+description: Playwright E2E 测试专家，主动用于生成、维护和运行端到端测试。管理测试流程、处理不稳定测试、确保关键用户流程正常工作。
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 model: sonnet
 ---

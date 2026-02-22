@@ -1,6 +1,6 @@
 ---
 name: tdd-guide
-description: 测试驱动开发专家，强制测试先行原则。编写新功能、修复 bug 或重构代码时主动使用。确保 80%+ 测试覆盖率。
+description: 测试驱动开发专家，主动用于编写新功能、修复 bug 或重构代码。强制测试先行，确保 80%+ 测试覆盖率。
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 model: sonnet
 ---

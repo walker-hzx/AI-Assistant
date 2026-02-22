@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: 识别问题和提出改进建议的代码审查专家。代码编写后使用，确保质量、安全性和最佳实践。
+description: 代码审查专家，主动用于代码编写后审查。识别问题，提出改进建议，确保质量、安全性和最佳实践。
 tools: ["Read", "Grep", "Glob", "Bash"]
 model: sonnet
 ---
