@@ -12,6 +12,54 @@ description: "协作复盘诊断 - 在项目或功能完成后，分析协作过
 **触发时机**：
 - 项目完成时
 - 大功能完成时
+- 你说"开始记录"时
+
+---
+
+## 【重要】持续记录机制
+
+### 触发方式
+
+当你说"开始记录"时，触发记录机制
+
+### 存放位置
+
+项目/.claude/learnings/session-notes.md
+
+例如：你的实践项目/agent-monorepo/.claude/learnings/session-notes.md
+
+### 记录格式
+
+```markdown
+# 对话记录
+
+## 会话 YYYY-MM-DD
+
+### 对话 1
+**你**: [问题/反馈]
+**我**: [回答]
+
+### 对话 2
+**你**: [问题/反馈]
+**我**: [回答]
+
+...
+```
+
+### 工作流程
+
+1. 你说"开始记录"
+2. 我创建 `.claude/learnings/session-notes.md`
+3. 每次对话后自动追加到文件
+4. 复盘时调用 session-diagnosis 分析
+
+### 复盘时
+
+调用 session-diagnosis：
+- 读取 session-notes.md
+- 一起分析历史记录
+- 给出改进建议
+- 大功能完成时
 - 用户主动调用时说"诊断一下"
 
 ## 诊断维度
