@@ -17,9 +17,9 @@ description: "搜索学习工具 - 遇到不确定的概念时，搜索并学习
 
 ## 使用方式
 
-### 1. 搜索概念
+### 1. 搜索并学习
 
-运行搜索脚本：
+运行搜索脚本，会自动获取内容：
 
 ```bash
 python skills/learn-concept/scripts/search.py "概念名称"
@@ -31,15 +31,20 @@ python skills/learn-concept/scripts/search.py "概念名称"
 |----|------|----------|
 | wikipedia | 维基百科 | 通用概念 |
 | mdn | MDN Web Docs | Web 技术 |
-| google | Google 搜索 | 其他情况 |
 
 ### 3. 工作流程
 
 1. 遇到不确定的概念时，先问用户："要不要我搜索学习一下？"
 2. 用户同意后，运行搜索脚本
-3. 获取搜索结果 URL
-4. 根据 URL 访问学习
+3. **用 Playwright 打开浏览器获取内容**（不是 WebFetch）
+4. 提取关键信息
 5. 汇总后告诉用户
+
+## 重要：不用 WebFetch
+
+- **不要用 WebFetch** - 会被网络限制
+- **用 Playwright** - 本地浏览器，可以翻墙
+- 脚本会自动用 Playwright 获取网页内容
 
 ## 搜索脚本
 
@@ -47,11 +52,12 @@ python skills/learn-concept/scripts/search.py "概念名称"
 # scripts/search.py
 from playwright.sync_api import sync_playwright
 
-# 支持优先搜索：wikipedia -> mdn -> google
+# 用 Playwright 打开浏览器，获取网页内容
+# 优先获取维基百科、MDN 内容
 ```
 
 ## 注意事项
 
 - 优先使用维基百科和 MDN
-- Google 搜索作为备选
-- 搜索结果只作为参考，要基于自己的理解汇总
+- 搜索结果直接获取内容，不需要额外请求
+- 获取内容后基于自己的理解汇总告诉用户
