@@ -12,16 +12,17 @@
 
 | Skill | 说明 |
 |-------|------|
-| discuss-requirements | 需求讨论助手 - 帮助明确需求 |
-| describe-interaction | 交互描述助手 - 描述核心交互 |
-| brainstorming | 头脑风暴 - 将想法转化为设计 |
+| brainstorming | 需求分析 - 将想法转化为需求 |
 | writing-plans | 详细实施计划 - 创建分阶段实施计划 |
 | executing-plans | 执行计划 - 按计划执行任务 |
+| verification | 验证 - 确认代码正确实现需求 |
+| code-review | 代码审查 - 确保代码质量 |
 | test-planner | 测试设计 - 设计测试场景 |
-| update-blueprint | 蓝图更新助手 - 更新项目蓝图 |
-| verification-before-completion | 完成前验证 - 确保工作真正完成 |
-| execution-validation | 需求对照验收 - 验证实现完整性 |
 | docs-sync | 框架文档同步 - 爬取官方文档 |
+| learn-concept | 学习概念 - 搜索学习不熟悉的技术 |
+| thinking-coach | 思维教练 - 反思思维方式 |
+| team-generator | 团队生成 - 动态生成 Agent Team |
+| debugging | 调试 - 系统化调试修复 bug |
 
 ### Agents
 
@@ -39,14 +40,12 @@
 
 | Command | 说明 |
 |---------|------|
-| /discuss | 开始需求讨论 |
-| /interaction | 描述交互细节 |
-| /blueprint | 更新项目蓝图 |
-| /plan | 制定实施计划 |
-| /review | 代码审查 |
-| /view-requirements | 查看需求文档 |
-| /workflow-check | 检查流程是否正确 |
-| /config-retrospect | 复盘配置使用情况 |
+| /brainstorming | 需求分析 - 将想法转化为需求 |
+| /writing-plans | 制定实施计划 |
+| /verification | 验证 - 确认代码正确实现需求 |
+| /code-review | 代码审查 |
+| /team-generator | 团队生成 - 创建多角色协作团队 |
+| /thinking | 思维反思 - 使用 thinking-coach 技能 |
 
 ## 安装
 
@@ -63,67 +62,54 @@ cp -r AI-Assistant ~/.claude/plugins/
 ## 工作流程
 
 ```
-需求 → 规划 → 执行 → 审查 → 验证 → 完成
+需求 → 规划 → 执行 → 验证 → 审查
   ↓      ↓      ↓      ↓      ↓
-discuss  brainstorming  writing-plans  executing-plans  verification  update-blueprint
-         →writing-plans        →execution-validation   →blueprint
+brainstorming → writing-plans → executing-plans → verification → code-review
 ```
 
 ### 完整流程
 
 1. **需求阶段**
-   - `/discuss` - 需求讨论，明确要做什么
-   - `/interaction` - 描述核心交互
+   - `/brainstorming` - 需求分析，明确要做什么
 
 2. **规划阶段**
-   - `/brainstorming` - 头脑风暴，转化想法为设计
-   - `/plan` - 创建详细实施计划
+   - `/writing-plans` - 创建详细实施计划
 
 3. **执行阶段**
    - 使用 TDD 方法开发
    - 每个任务完成后更新进度
 
-4. **审查阶段**
-   - `/review` - 代码审查
-   - 安全审查（如需要）
+4. **验证阶段**
+   - `/verification` - 验证代码是否正常运行、实现是否满足需求
 
-5. **验证阶段**
-   - 验证代码是否正常运行
-   - 验证实现是否满足需求
-
-6. **完成阶段**
-   - `/blueprint` - 更新项目蓝图
-   - 提交代码
+5. **审查阶段**
+   - `/code-review` - 代码审查，确保代码质量
+   - 完成后更新 `docs/蓝图.md`
 
 ## 项目结构
 
 ```
 AI-Assistant/
-├── .claude-plugin/        # 插件清单
 ├── skills/                 # Skills
-│   ├── discuss-requirements/
 │   ├── brainstorming/
 │   ├── writing-plans/
 │   ├── executing-plans/
+│   ├── verification/
+│   ├── code-review/
+│   ├── team-generator/
 │   └── ...
-├── agents/                 # Agents
-│   ├── planner.md
-│   ├── code-reviewer.md
+├── teams/                  # Agent Teams 配置
+│   ├── requirements-incubation/
+│   ├── debugging/
 │   └── ...
 ├── commands/              # Commands
-│   ├── discuss.md
-│   ├── blueprint.md
-│   └── ...
-├── hooks/                 # Hooks
-│   ├── hooks.json
-│   ├── session-start.sh
-│   └── session-end.sh
 ├── docs/                  # 文档
 │   ├── requirements/      # 需求文档
-│   ├── plans/             # 计划文档
-│   └── claude-code/       # Claude Code 官方文档
-└── tests/                 # 测试
-    └── e2e/
+│   ├── plans/            # 计划文档
+│   ├── verification/     # 验收报告
+│   ├── completed/         # 完成总结
+│   └── claude-code/      # Claude Code 文档
+└── scripts/               # 辅助脚本
 ```
 
 ## 进度追踪

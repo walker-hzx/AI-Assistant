@@ -1,6 +1,6 @@
-# Skills 官方文档
+# Slash Commands 官方文档
 
-> 来源: https://docs.anthropic.com/en/docs/claude-code/skills
+> 来源: https://docs.anthropic.com/en/docs/claude-code/slash-commands
 
 > 爬取时间: 自动生成
 

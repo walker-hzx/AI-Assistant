@@ -81,6 +81,21 @@ const updatedUser = { ...user, name: 'new name' }
 - 参数化查询
 - 验证所有用户输入
 
+### 8. 能力调用原则
+
+**当自身知识不足时，主动调用补充能力**：
+
+| 场景 | 应该做什么 |
+|------|-----------|
+| 不确定框架/库的具体用法 | 使用 `docs-sync` 查文档 |
+| 用户给出重要调整建议 | 使用 `learn-concept` 记录 |
+| 遇到复杂技术问题 | 调用相关 Skill 获取帮助 |
+
+**注意**：
+- 不要凭记忆猜测
+- 不确定时主动查证
+- 有用的能力要用起来
+
 ## 目录结构
 
 ### 前端
@@ -119,11 +134,10 @@ src/
 
 ## 可用命令
 
-- `/discuss` - 开始需求讨论
-- `/interaction` - 描述交互细节
-- `/blueprint` - 更新项目蓝图
-- `/plan` - 制定实施计划
-- `/review` - 代码审查
+- `/discuss` - 开始需求讨论 (brainstorming)
+- `/plan` - 制定实施计划 (writing-plans)
+- `/review` - 代码审查 (code-review)
+- `/thinking` - 思维反思 (thinking-coach)
 
 ## 质量标准
 

@@ -1,7 +1,7 @@
 ---
 name: test-planner
 description: 测试设计专家。在编写 E2E 测试前使用，分析需求、梳理页面功能、设计测试场景和测试用例。
-disable-model-invocation: false
+user-invocable: true
 ---
 
 # 测试设计专家
