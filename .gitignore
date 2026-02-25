@@ -49,3 +49,11 @@ docs/frameworks/
 # Claude Code 官方文档（爬取内容）
 # 可通过爬虫脚本重新生成
 docs/claude-code-extracted/
+
+# 运行时输出目录
+# 由 Skills 动态生成
+docs/completed/
+docs/verification/
+
+# 临时分析文档
+docs/plans/2026-02-24-*.md
