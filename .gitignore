@@ -45,3 +45,7 @@ test-projects/
 # 自动生成的框架文档
 # 这些文档由 docs-sync 技能自动生成，不需要提交到仓库
 docs/frameworks/
+
+# Claude Code 官方文档（爬取内容）
+# 可通过爬虫脚本重新生成
+docs/claude-code-extracted/
