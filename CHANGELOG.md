@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.3] - 2026-02-25
+
+### Enhanced
+
+#### 阶段门控确认提示
+- brainstorming：结束增加"需要您确认"提示
+- writing-plans：结束增加"需要您确认"提示
+- executing-plans：结束增加"需要您确认"提示
+- verification：结束增加"需要您确认"提示
+- code-review：结束增加"需要您确认"提示
+
+**简化触发时机**：每个阶段结束时，明确告知用户"需要确认什么"和"下一步是什么"
+
 ## [1.7.2] - 2026-02-25
 
 ### Enhanced
