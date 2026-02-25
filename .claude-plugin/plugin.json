@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "1.6.6",
-  "description": "个人开发助手 - 包含 agents, skills, hooks, commands 和 rules，基于你的工作流定制",
+  "version": "1.7.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks 和 rules，基于你的工作流定制",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
@@ -13,22 +13,13 @@
     "ai-assistant",
     "development",
     "workflow",
-    "agents",
     "skills",
+    "teams",
     "hooks",
     "commands",
     "tdd",
     "code-review"
   ],
   "skills": ["./skills/"],
-  "agents": [
-    "./agents/planner.md",
-    "./agents/architect.md",
-    "./agents/tdd-guide.md",
-    "./agents/code-reviewer.md",
-    "./agents/security-reviewer.md",
-    "./agents/e2e-runner.md",
-    "./agents/debugger.md"
-  ],
   "commands": ["./commands/"]
 }
