@@ -1,6 +1,6 @@
 {
   "name": "ai-assistant",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "个人开发助手 - 包含 skills, commands, teams, hooks 和 rules，基于你的工作流定制",
   "author": {
     "name": "walker",
