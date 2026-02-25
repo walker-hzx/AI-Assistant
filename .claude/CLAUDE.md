@@ -21,12 +21,21 @@
 
 ### 流程规范
 
-| 阶段 | Skill | 职责 | 核心产出 |
-|------|-------|------|---------|
-| 需求 | brainstorming | 想清楚做什么 | 需求自检确认 |
-| 计划 | writing-plans | 规划怎么做 | 详细任务列表 |
-| 执行 | executing-plans | 具体实现 | 可运行代码 |
-| 验证 | verification + execution-validation | 确认做对了 | 验收报告 |
+| 阶段 | Skill | 职责 | 输入文档 | 输出文档 |
+|------|-------|------|----------|----------|
+| 需求 | brainstorming | 想清楚做什么 | - | `docs/requirements/YYYY-MM-DD-<feature>.md` |
+| 计划 | writing-plans | 规划怎么做 | `docs/requirements/` | `docs/plans/YYYY-MM-DD-<feature>.md` |
+| 执行 | executing-plans | 具体实现 | `docs/plans/` | `docs/plans/YYYY-MM-DD-*-execution-log.md` |
+| 验证 | verification | 确认做对了 | `docs/plans/` | `docs/verification/YYYY-MM-DD-<feature>-report.md` |
+| 审查 | code-review | 确保代码质量 | `docs/verification/` | `docs/completed/YYYY-MM-DD-<feature>.md` |
+
+### 文档传递链
+
+```
+brainstorming → writing-plans → executing-plans → verification → code-review
+      ↓               ↓              ↓               ↓            ↓
+  requirements   plans         plans-log      verification   completed
+```
 
 ### 各阶段职责划分
 
@@ -83,6 +92,7 @@
 17. **证据化验收** - 每项需求实现必须提供代码位置作为证据，前端功能必须提供截图
 18. **需求状态检查** - 制定计划前必须读取 `docs/requirements/README.md`，只基于当前确认需求，忽略已作废需求
 19. **需求作废标记** - 当讨论新需求时，如果老需求不再需要，必须标记为"已作废"，不能当作"功能缺失"
+20. **蓝图更新** - 完成功能后更新 `docs/蓝图.md`，记录当前项目状态
 
 ### 沟通约定
 
