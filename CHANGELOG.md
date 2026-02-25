@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.1] - 2026-02-25
+
+### Added
+- 新增 `code-analysis` 技能 - 代码分析专家
+  - 代码问题分析（逻辑、边界、异常、资源管理）
+  - 结构设计分析（模块划分、数据流、接口设计）
+  - 代码质量分析（可读性、可维护性、性能、安全）
+  - 前后端接口分析（API完整性、字段匹配、授权校验）
+  - 问题诊断框架（方向不明确时的排查思路）
+  - 决策支持框架（方案对比、技术选型）
+
+### Enhanced
+- 明确 code-analysis 与 debugging 技能的边界
+  - debugging：已知 bug 定位修复
+  - code-analysis：未知问题系统分析
+
 ## [1.7.0] - 2026-02-25
 
 ### 重大更新
