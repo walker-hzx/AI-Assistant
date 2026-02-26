@@ -19,30 +19,32 @@ description: "任务派发 - 按照方案调度角色执行、监控进度、收
 
 ## 派发机制
 
-### 调用 Skill 的方式
+### 【重要】必须使用 Skill
+
+**必须使用 Skill 工具调用，不能使用 Task**。
+
+原因：
+- Task 调用 subagent 会创建独立上下文，执行完后**不会自动回到 coordinator**
+- Skill 在同一个上下文运行，coordinator 可以控制**整个流程**
 
 ```
 使用 Skill 工具调用：
-- 技能名称
-- 参数（如需要）
+- Skill: ai-assistant:brainstorming
+- Skill: ai-assistant:writing-plans
 
 示例：
 /brainstorming
 /executing-plans
-/debugging
 ```
 
-### 调用 Agent 的方式
+### 不允许使用 Task
 
+❌ **禁止使用 Task 工具调用其他 Agent**：
 ```
-使用 Task 工具调用：
-- subagent_type
-- 描述
-- prompt
+Task(subagent_type="ai-assistant:planner", prompt="...")  # 禁止
+```
 
-示例：
-Task(subagent_type="ai-assistant:planner", prompt="...")
-```
+因为 Task 会创建独立子上下文，无法控制整个流程。
 
 ---
 
@@ -62,9 +64,24 @@ Task(subagent_type="ai-assistant:planner", prompt="...")
 ### 步骤 2：执行监控
 
 **每个阶段执行中**：
-- 等待阶段完成
+- 调用 Skill 等待其完成
+- Skill 完成后，coordinator **必须继续执行后续步骤**
 - 记录执行状态
 - 遇到问题及时处理
+
+**【重要】Skill 执行完后必须继续**：
+```
+Skill 执行完成
+    ↓
+【管家】正在收集结果...
+    ↓
+【管家】正在生成文档...
+    ↓
+继续下一个里程碑或结束
+```
+
+❌ **错误做法**：Skill 执行完就结束，不生成文档
+✅ **正确做法**：Skill 执行完后，继续收集结果、生成文档
 
 **问题处理**：
 ```
