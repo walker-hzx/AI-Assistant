@@ -3,7 +3,6 @@ name: coordinator
 description: "智能调度（管家）- 判断需要什么角色，制定执行方案，调度任务执行，监控进度，收集结果，记录日志。使用时机：任何任务开始时需要调度多个角色协作、管理任务进度"
 model: inherit
 skills:
-- coordinator
 - coordinator-intent
 - coordinator-planning
 - coordinator-dispatch
