@@ -20,6 +20,7 @@ tools:
   - Task(project-researcher)
   - Task(thinking-coach)
   - Task(web-researcher)
+  - Task(e2e-tester)
   - Read
   - Write
   - Edit

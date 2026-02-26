@@ -329,14 +329,17 @@ user-invocable: true
 
 | 技能 | 场景 | 区别 |
 |------|------|------|
-| **thinking-coach** | 不清楚问题是什么、方向在哪 | 帮你厘清问题给方向 |
+| **thinking-coach** | 不清楚问题是什么、方向在哪 | 帮你厘清问题，给思维方向 |
+| **strategist** | 有多个方案不知道选哪个 | 帮你深度分析，给决策建议 |
+| **requirements-analyst** | 需求大致清楚，要变具体实现 | 帮你把想法变具体需求 |
 | **brainstorming** | 需求大致清楚，要变具体设计 | 帮你把需求说清楚 |
 | **writing-plans** | 需求明确，要变成执行计划 | 帮你规划怎么做 |
 
 **简单判断**：
-- 不知道"做什么" → brainstorming
-- 不知道"怎么想" → thinking-coach
-- 不知道"怎么做" → writing-plans
+- 不知道"问题是什么" → thinking-coach（思维层面）
+- 不知道"选哪个方案" → strategist（决策层面）
+- 需求"要变具体" → requirements-analyst（需求层面）
+- 不知道"怎么做" → writing-plans（执行层面）
 
 ---
 
