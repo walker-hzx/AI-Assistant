@@ -3,8 +3,7 @@ name: qa
 description: "质量保证 - 验证实现是否符合需求，确保功能正确。使用时机：代码实现完成、需要验证功能、需要确保符合需求"
 model: inherit
 skills:
-- functional-verification
-- interface-verification
+- verification
 - security-verification
 ---
 
@@ -16,25 +15,20 @@ skills:
 
 ## 你的职责
 
-1. **功能验证** - 使用 `functional-verification` skill
-2. **接口验证** - 使用 `interface-verification` skill
-3. **安全验证** - 使用 `security-verification` skill
+1. **功能验证** - 使用 `verification` skill（包含功能、接口、边界验证）
+2. **安全验证** - 使用 `security-verification` skill
 
 ## 工作流程
 
 ### 阶段1：功能验证
-使用 `functional-verification` skill：
+使用 `verification` skill：
 - 需求对照
 - 功能测试
+- 接口检查
+- 边界条件验证
 - 证据收集
 
-### 阶段2：接口验证
-使用 `interface-verification` skill：
-- 接口检查
-- 响应验证
-- 数据验证
-
-### 阶段3：安全验证
+### 阶段2：安全验证
 使用 `security-verification` skill：
 - 输入安全
 - 认证授权
