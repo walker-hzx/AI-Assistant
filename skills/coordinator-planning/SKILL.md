@@ -48,12 +48,41 @@ description: "方案制定 - 选择角色组合、安排执行顺序、制定里
 
 ### 按需专业角色
 
-| 场景 | 调用的专家 |
-|------|-----------|
-| 技术选型/架构设计 | architect |
-| 数据库设计/优化 | database-expert |
-| 性能问题 | performance-expert |
-| 代码重构 | refactoring-expert |
+| 场景 | 触发条件 | 调用的专家 |
+|------|---------|-----------|
+| 技术选型/架构设计 | 新系统、技术架构重大变更 | architect |
+| 数据库设计/优化 | schema 变更、慢查询、数据迁移 | database-expert |
+| 性能问题 | 有性能指标要求、需要性能优化 | performance-expert |
+| 代码重构 | >5个文件、跨模块重构 | refactoring-expert |
+| 安全审查 | 用户输入、认证、支付、敏感数据 | security-reviewer |
+| 测试设计 | 复杂业务流程、需要 E2E 测试 | test-designer |
+| 代码分析 | 前后端接口分析、问题诊断 | code-analyst |
+| 项目调研 | 中途接手新项目、需要了解现状 | project-researcher |
+
+**触发判断流程**：
+```
+收到任务
+    ↓
+检查是否涉及数据库 schema？ → 是 → 调用 database-expert
+    ↓
+检查是否有性能要求？ → 是 → 调用 performance-expert
+    ↓
+检查是否涉及安全敏感操作？ → 是 → 调用 security-reviewer
+    ↓
+检查是否大规模重构？ → 是 → 调用 refactoring-expert
+    ↓
+继续常规流程
+```
+
+**注意**：专业角色不是替代常驻角色，而是增强：
+```
+主流程：需求 → 计划 → 执行 → 验证
+            ↓           ↓           ↓
+         [architect]  [database-expert]  [performance-expert]
+         [技术选型]   [schema设计]       [性能优化]
+            ↓           ↓           ↓
+继续计划 → 继续执行 → 继续验证
+```
 
 ---
 

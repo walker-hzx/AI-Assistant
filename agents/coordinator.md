@@ -30,7 +30,6 @@ skills:
 - coordinator-planning
 - coordinator-dispatch
 - coordinator-optimization
-- strategist
 ---
 
 # 智能调度（管家）
