@@ -34,6 +34,7 @@
     "./agents/debugger.md",
     "./agents/code-analyst.md",
     "./agents/security-reviewer.md",
-    "./agents/test-designer.md"
+    "./agents/test-designer.md",
+    "./agents/strategist.md"
   ]
 }
