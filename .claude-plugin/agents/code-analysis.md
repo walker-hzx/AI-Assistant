@@ -1,12 +1,7 @@
 ---
-name: code-analyst
+name: code-analysis
 description: "代码分析师 - 系统分析代码问题，提供决策支持。使用时机：代码有问题要分析、需要系统分析代码结构、需要决策支持（方案对比、技术选型）、需要前后端接口分析"
 model: inherit
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
 skills:
 - code-analysis
 ---

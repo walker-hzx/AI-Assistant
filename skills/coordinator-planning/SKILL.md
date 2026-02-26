@@ -56,7 +56,7 @@ description: "方案制定 - 选择角色组合、安排执行顺序、制定里
 | 代码重构 | >5个文件、跨模块重构 | refactoring-expert |
 | 安全审查 | 用户输入、认证、支付、敏感数据 | security-reviewer |
 | 测试设计 | 复杂业务流程、需要 E2E 测试 | test-designer |
-| 代码分析 | 前后端接口分析、问题诊断 | code-analyst |
+| 代码分析 | 前后端接口分析、问题诊断 | code-analysis |
 | 项目调研 | 中途接手新项目、需要了解现状 | project-researcher |
 | 网页研究 | 需要从网页获取信息、分析文档 | web-researcher |
 | E2E 测试 | 需要验证用户完整流程、浏览器测试 | e2e-tester |
@@ -181,7 +181,7 @@ description: "方案制定 - 选择角色组合、安排执行顺序、制定里
 
 处理方式：
 → 使用本技能（coordinator-planning）进行研究
-→ 必要时调度 code-analyst 协助分析
+→ 必要时调度 code-analysis 协助分析
 → 输出完整的方案文档
 ```
 

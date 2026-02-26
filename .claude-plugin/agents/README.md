@@ -19,7 +19,7 @@
 | coordinator | 智能调度，判断用什么角色 | coordinator |
 | thinking-coach | 思维方式指导 | thinking-coach |
 | debugger | Bug 定位修复 | debugging |
-| code-analyst | 代码问题分析 | code-analysis |
+| code-analysis | 代码问题分析 | code-analysis |
 | security-reviewer | 安全问题审查 | security-review |
 | test-designer | 测试用例设计 | test-planner |
 
@@ -62,7 +62,7 @@ Use the executor to implement the code
 ├── coordinator.md          # 调度员（管家）
 ├── thinking-coach.md       # 思维教练
 ├── debugger.md             # 调试专家
-├── code-analyst.md         # 代码分析师
+├── code-analysis.md         # 代码分析师
 ├── security-reviewer.md    # 安全审查
 └── test-designer.md        # 测试设计
 ```
@@ -112,6 +112,6 @@ skills:                        # 预加载的 skills
 |------|---------|-----------|
 | 思维困惑 | thinking-coach | thinking-coach |
 | 代码 bug | debugger | debugging |
-| 代码分析 | code-analyst | code-analysis |
+| 代码分析 | code-analysis | code-analysis |
 | 安全问题 | security-reviewer | security-review |
 | 测试设计 | test-designer | test-planner |

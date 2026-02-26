@@ -16,7 +16,7 @@ tools:
   - Task(security-reviewer)
   - Task(strategist)
   - Task(test-designer)
-  - Task(code-analyst)
+  - Task(code-analysis)
   - Task(project-researcher)
   - Task(thinking-coach)
   - Task(web-researcher)

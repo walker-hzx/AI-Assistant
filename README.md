@@ -64,7 +64,7 @@
 | refactoring-expert | 重构专家 - 代码重构 |
 | security-reviewer | 安全审查 - 漏洞检测 |
 | test-designer | 测试设计 - 设计测试用例 |
-| code-analyst | 代码分析师 - 系统分析代码 |
+| code-analysis | 代码分析师 - 系统分析代码 |
 | project-researcher | 项目调研 - 中途接手项目 |
 | web-researcher | 网页研究 - 爬取网页分析 |
 | e2e-tester | E2E 测试 - 执行端到端测试 |

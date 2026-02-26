@@ -32,7 +32,7 @@
     "./agents/coordinator.md",
     "./agents/thinking-coach.md",
     "./agents/debugger.md",
-    "./agents/code-analyst.md",
+    "./agents/code-analysis.md",
     "./agents/security-reviewer.md",
     "./agents/test-designer.md",
     "./agents/strategist.md",
