@@ -1,17 +1,19 @@
 ---
 name: review
-description: 代码审查 - 在代码编写完成后使用
-disable-model-invocation: true
+description: 代码审查 - 智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 代码审查
 
-使用 code-review skill 进行代码审查。
+使用 `/review` 进行代码审查，coordinator 会智能调度。
 
 ## 使用方式
 
 ```
 /review
+/review src/auth/login.ts
 ```
 
 ## 审查内容
@@ -22,9 +24,9 @@ disable-model-invocation: true
 - 代码质量
 - 测试覆盖
 
-## 输出
+## 说明
 
-生成审查报告，包括：
-- CRITICAL/HIGH/MEDIUM/LOW 问题列表
-- 改进建议
-- 做得好的地方
+此命令会调用 coordinator，coordinator 会：
+- 分析代码
+- 决定是否需要 code-reviewer
+- 调度合适的角色执行

@@ -1,16 +1,19 @@
 ---
 name: debugging
-description: 调试专家 - 使用科学方法定位和修复 bug
+description: 调试专家 - 智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 调试专家
 
-使用此命令进行系统化的错误定位和修复。
+使用 `/debugging` 进行系统化的错误定位和修复，coordinator 会智能调度。
 
 ## 使用方式
 
 ```
 /debugging
+/debugging 登录报错
 ```
 
 ## 调试方法
@@ -22,15 +25,9 @@ description: 调试专家 - 使用科学方法定位和修复 bug
 5. **修复问题** - 最小改动原则
 6. **确认修复** - 重新测试确保问题解决
 
-## 常见场景
+## 说明
 
-- 运行时错误
-- 测试失败
-- 意外行为
-- 性能问题
-
-## 注意事项
-
-- 不猜测，基于证据分析
-- 最小改动原则
-- 修复后验证问题不再出现
+此命令会调用 coordinator，coordinator 会：
+- 分析问题
+- 决定是否需要 debugger
+- 调度合适的角色修复

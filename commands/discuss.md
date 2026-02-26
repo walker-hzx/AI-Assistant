@@ -1,17 +1,13 @@
 ---
 name: discuss
-description: 开始需求讨论 - 帮助明确需求
+description: 开始需求讨论 - 帮助明确需求，智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 需求讨论
 
-使用此命令开始新功能的需求讨论。
-
-## 使用方式
-
-```
-/discuss
-```
+使用 `/discuss` 开始需求讨论，coordinator 会根据需求智能调度。
 
 ## 功能
 
@@ -20,8 +16,16 @@ description: 开始需求讨论 - 帮助明确需求
 3. 识别边界（异常情况、边界条件）
 4. 记录需求
 
-## 注意事项
+## 使用方式
 
-- 需求阶段不讨论交互细节
-- MVP 优先，不过度设计
-- 每个理解都和用户确认
+```
+/discuss
+/discuss 帮我加个用户登录功能
+```
+
+## 说明
+
+此命令会调用 coordinator，coordinator 会分析需求并决定调用哪个角色：
+- 需求不清晰 → 调用 requirements-analyst
+- 需要计划 → 调用 planner
+- 需要实现 → 调用 executor

@@ -1,16 +1,19 @@
 ---
 name: security-review
-description: 安全审查专家 - 识别和修复安全漏洞
+description: 安全审查专家 - 智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 安全审查
 
-使用此命令进行代码安全审查。
+使用 `/security-review` 进行代码安全审查，coordinator 会智能调度。
 
 ## 使用方式
 
 ```
 /security-review
+/security-review src/api/auth
 ```
 
 ## 功能
@@ -20,19 +23,9 @@ description: 安全审查专家 - 识别和修复安全漏洞
 3. **输入验证** - 检查用户输入是否经过适当清理
 4. **依赖安全** - 检查有漏洞的依赖包
 
-## 适用场景
+## 说明
 
-- 新 API 端点开发后
-- 认证代码变更
-- 用户输入处理代码
-- 依赖更新后
-- 重大发布前
-
-## 检查清单
-
-- [ ] 无硬编码密钥
-- [ ] SQL 查询参数化
-- [ ] 用户输入已验证
-- [ ] 密码使用安全哈希
-- [ ] 受保护路由有认证中间件
-- [ ] 依赖最新
+此命令会调用 coordinator，coordinator 会：
+- 分析代码
+- 决定是否需要 security-reviewer
+- 调度合适的角色执行

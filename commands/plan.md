@@ -1,17 +1,19 @@
 ---
 name: plan
-description: 制定详细实施计划 - 在需求明确后使用
-disable-model-invocation: true
+description: 制定详细实施计划 - 智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 制定计划
 
-使用 planner agent 制定详细实施计划。
+使用 `/plan` 制定详细实施计划，coordinator 会智能调度。
 
 ## 使用方式
 
 ```
-/plan [功能名称]
+/plan
+/plan 用户登录功能
 ```
 
 ## 前置条件
@@ -20,11 +22,9 @@ disable-model-invocation: true
 - 需求已明确
 - 已完成 brainstorming（如需要）
 
-## 输出
+## 说明
 
-生成详细实施计划，包括：
-- 分阶段实施步骤
-- 文件路径
-- 依赖关系
-- 风险评估
-- 测试策略
+此命令会调用 coordinator，coordinator 会分析情况并决定：
+- 需求是否明确
+- 需要哪些角色
+- 执行顺序是什么

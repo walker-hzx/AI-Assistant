@@ -1,16 +1,19 @@
 ---
 name: learn-concept
-description: 搜索学习工具 - 遇到不确定的概念时搜索并学习
+description: 搜索学习工具 - 智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 学习概念
 
-遇到不确定的概念时，搜索并学习。
+使用 `/learn-concept` 搜索并学习不确定的概念，coordinator 会智能调度。
 
 ## 使用方式
 
 ```
 /learn-concept
+/learn-concept 什么是 CQRS
 ```
 
 ## 功能
@@ -20,16 +23,9 @@ description: 搜索学习工具 - 遇到不确定的概念时搜索并学习
 3. **实际应用** - 给出代码示例和应用场景
 4. **对比分析** - 与相似概念进行对比
 
-## 使用场景
+## 说明
 
-- 对话中遇到不懂的概念
-- 需要了解新概念/新技术
-- 不确定某个术语的含义
-- 学习某个技术选型的优劣
-
-## 输出
-
-- 概念定义和解释
-- 核心要点总结
-- 代码示例
-- 相关资源链接
+此命令会调用 coordinator，coordinator 会：
+- 分析要学习的概念
+- 决定是否需要 web-researcher 查资料
+- 调度合适的角色协助

@@ -1,16 +1,19 @@
 ---
 name: test-planner
-description: 测试设计专家 - 设计 E2E 测试场景和用例
+description: 测试设计专家 - 智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 测试设计
 
-使用此命令设计 E2E 测试场景和测试用例。
+使用 `/test-planner` 设计 E2E 测试场景和测试用例，coordinator 会智能调度。
 
 ## 使用方式
 
 ```
 /test-planner
+/test-planner 用户登录流程
 ```
 
 ## 功能
@@ -20,14 +23,9 @@ description: 测试设计专家 - 设计 E2E 测试场景和用例
 3. **测试场景设计** - 设计覆盖核心路径的测试场景
 4. **测试用例编写** - 编写具体的测试用例
 
-## 适用场景
+## 说明
 
-- 开始为某个功能编写 E2E 测试前
-- 需要梳理复杂业务逻辑时
-- 设计测试策略和覆盖范围时
-
-## 输出
-
-- 测试场景列表
-- 测试用例设计
-- Playwright 测试代码模板
+此命令会调用 coordinator，coordinator 会：
+- 分析测试需求
+- 决定是否需要 test-designer
+- 调度合适的角色设计测试

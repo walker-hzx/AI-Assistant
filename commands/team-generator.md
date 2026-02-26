@@ -1,16 +1,19 @@
 ---
 name: team-generator
-description: 生成团队配置 - 创建 Claude Agent Team 配置
+description: 生成团队配置 - 智能调度执行
+context: fork
+agent: coordinator
 ---
 
 # 团队生成器
 
-使用此命令创建 Claude Agent Team 配置文件。
+使用 `/team-generator` 创建 Claude Agent Team 配置，coordinator 会智能调度。
 
 ## 使用方式
 
 ```
 /team-generator
+/team-generator 并行研究多个技术方案
 ```
 
 ## 功能
@@ -20,15 +23,9 @@ description: 生成团队配置 - 创建 Claude Agent Team 配置
 3. **定义任务** - 分配任务给各成员
 4. **输出结果** - 生成可用的团队配置
 
-## 适用场景
+## 说明
 
-- 并行探索（多角度同时研究）
-- 新模块开发（队友各自独立部分）
-- 竞争假设调试（并行测试不同理论）
-- 跨层协调（前端+后端+测试）
-
-## 注意事项
-
-- Agent Team 适合复杂协作
-- 顺序任务不适合用 Team
-- 同一文件编辑不适合用 Team
+此命令会调用 coordinator，coordinator 会：
+- 分析需求
+- 决定需要哪些角色
+- 调度合适的角色生成配置
