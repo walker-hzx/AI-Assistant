@@ -252,6 +252,8 @@ user-invocable: true
 
 ### 步骤 5：执行与追踪
 
+**必须创建执行日志**：`docs/plans/YYYY-MM-DD-<task>-execution-log.md`
+
 每个阶段执行后：
 - 更新文档状态
 - 记录遇到的问题
