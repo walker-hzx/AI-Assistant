@@ -2,6 +2,8 @@
 name: thinking-coach
 description: "思维教练 - 帮你厘清思路，像高手一样给你洞见和方向。使用时机：不清楚问题是什么、方向不明、思维方式有偏差、需要更高维度的视角、想被点拨出盲点"
 model: inherit
+tools:
+  - Read
 skills:
 - thinking-coach
 ---

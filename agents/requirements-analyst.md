@@ -2,6 +2,11 @@
 name: requirements-analyst
 description: "需求分析师 - 理解用户真正想要什么，将模糊的想法转化为清晰的需求。使用时机：用户有想法但不清楚具体要什么、需求描述模糊、需要从多角度分析需求"
 model: inherit
+tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
 skills:
 - requirement-understanding
 - requirement-analysis

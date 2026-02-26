@@ -2,6 +2,13 @@
 name: executor
 description: "执行者 - 按计划实现代码，具体完成功能开发。使用时机：有明确的实施计划要执行、需要具体实现代码、需要处理边界条件和异常"
 model: inherit
+tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 skills:
 - code-implementation
 - tdd

@@ -2,6 +2,11 @@
 name: security-reviewer
 description: "安全审查 - 识别和修复安全漏洞。使用时机：有安全问题需要审查、需要识别安全漏洞、需要安全评估"
 model: inherit
+tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 skills:
 - security-review
 ---

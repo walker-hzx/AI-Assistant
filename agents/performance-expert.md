@@ -2,6 +2,13 @@
 name: performance-expert
 description: "性能专家 - 负责性能分析、优化方案、性能测试。使用时机：系统性能问题、需要性能优化、性能测试规划、性能瓶颈分析"
 model: sonnet
+tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 skills:
 - code-implementation
 ---

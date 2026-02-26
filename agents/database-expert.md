@@ -2,6 +2,12 @@
 name: database-expert
 description: "数据库专家 - 负责数据库设计、查询优化、数据迁移。使用时机：需要设计数据库 schema、复杂查询优化、数据迁移方案、数据库性能问题"
 model: sonnet
+tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
 skills:
 - code-implementation
 ---

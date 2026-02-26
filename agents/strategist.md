@@ -2,6 +2,10 @@
 name: strategist
 description: "策略分析师 - 深度分析问题本质，评估方案，识别风险，提供决策支持。使用时机：复杂问题需要深度分析、多个方案需要权衡、关键决策需要全局视角"
 model: sonnet
+tools:
+  - Read
+  - Glob
+  - Grep
 skills:
 - thinking-coach
 ---

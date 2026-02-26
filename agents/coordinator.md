@@ -2,6 +2,29 @@
 name: coordinator
 description: "智能调度（管家）- 判断需要什么角色，制定执行方案，调度任务执行，监控进度，收集结果，记录日志。使用时机：任何任务开始时需要调度多个角色协作、管理任务进度"
 model: inherit
+tools:
+  - Task(requirements-analyst)
+  - Task(planner)
+  - Task(executor)
+  - Task(qa)
+  - Task(code-reviewer)
+  - Task(debugger)
+  - Task(architect)
+  - Task(database-expert)
+  - Task(performance-expert)
+  - Task(refactoring-expert)
+  - Task(security-reviewer)
+  - Task(strategist)
+  - Task(test-designer)
+  - Task(code-analyst)
+  - Task(project-researcher)
+  - Task(thinking-coach)
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 skills:
 - coordinator-intent
 - coordinator-planning

@@ -2,6 +2,11 @@
 name: project-researcher
 description: "项目调研员 - 中途接手项目时，系统调研项目现状，评估代码质量，识别规范和封装，给出批判性评估。使用时机：中途接手新项目、需要了解现有代码结构和技术规范"
 model: inherit
+tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 skills:
   - project-researcher
 ---

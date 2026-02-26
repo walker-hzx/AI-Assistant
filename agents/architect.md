@@ -2,6 +2,10 @@
 name: architect
 description: "架构师 - 负责技术选型、系统架构设计、技术决策。使用时机：需要技术选型、设计系统架构、评估技术方案、需要高层次的系统设计"
 model: sonnet
+tools:
+  - Read
+  - Glob
+  - Grep
 skills:
 - thinking-coach
 ---

@@ -2,6 +2,12 @@
 name: qa
 description: "质量保证 - 验证实现是否符合需求，确保功能正确。使用时机：代码实现完成、需要验证功能、需要确保符合需求"
 model: inherit
+tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
 skills:
 - verification
 - security-verification

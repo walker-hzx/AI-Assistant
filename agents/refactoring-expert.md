@@ -2,6 +2,13 @@
 name: refactoring-expert
 description: "重构专家 - 负责代码重构、技术债务清理、代码质量提升。使用时机：代码需要重构、技术债务积累、代码质量下降、需要改善代码结构"
 model: sonnet
+tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 skills:
 - code-implementation
 ---

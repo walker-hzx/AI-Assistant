@@ -2,6 +2,11 @@
 name: planner
 description: "计划制定者 - 把需求变成可执行的实施计划。使用时机：需求已经明确、需要拆分为可执行的小任务、需要确定里程碑和验证方式"
 model: inherit
+tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
 skills:
 - task-splitting
 - dependency-analysis

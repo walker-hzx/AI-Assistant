@@ -2,6 +2,11 @@
 name: test-designer
 description: "测试设计 - 设计测试用例，确保测试覆盖。使用时机：需要设计测试用例、需要分析测试覆盖、需要 E2E 测试场景"
 model: inherit
+tools:
+  - Read
+  - Glob
+  - Grep
+  - Write
 skills:
 - test-planner
 ---

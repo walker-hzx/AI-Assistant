@@ -2,6 +2,11 @@
 name: code-reviewer
 description: "代码审查 - 确保代码质量，符合最佳实践。使用时机：需要确保代码质量、需要检查安全问题、需要审查代码规范"
 model: inherit
+tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 skills:
 - code-review
 ---

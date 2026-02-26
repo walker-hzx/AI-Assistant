@@ -2,6 +2,13 @@
 name: debugger
 description: "调试专家 - 使用科学方法定位和修复 bug。使用时机：代码出现错误、功能行为不符合预期、测试失败"
 model: inherit
+tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 skills:
 - debugging
 ---
