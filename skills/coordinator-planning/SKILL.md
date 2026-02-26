@@ -58,6 +58,7 @@ description: "方案制定 - 选择角色组合、安排执行顺序、制定里
 | 测试设计 | 复杂业务流程、需要 E2E 测试 | test-designer |
 | 代码分析 | 前后端接口分析、问题诊断 | code-analyst |
 | 项目调研 | 中途接手新项目、需要了解现状 | project-researcher |
+| 网页研究 | 需要从网页获取信息、分析文档 | web-researcher |
 
 **触发判断流程**：
 ```

@@ -19,6 +19,7 @@ tools:
   - Task(code-analyst)
   - Task(project-researcher)
   - Task(thinking-coach)
+  - Task(web-researcher)
   - Read
   - Write
   - Edit
