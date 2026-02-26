@@ -166,6 +166,7 @@ AI-Assistant/
 │   ├── web/               # 网页爬取脚本
 │   └── fetch-docs/        # 文档爬取脚本
 └── contexts/               # 上下文配置
+```
 
 ## 进度追踪
 
