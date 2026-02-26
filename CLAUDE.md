@@ -14,15 +14,15 @@ AI-Assistant 是一个 Claude Code 插件项目，用于辅助全栈开发。
 ## 开发流程
 
 ```
-需求阶段: discuss → interaction → blueprint
+需求阶段: /assistant → coordinator-intent
     ↓
-规划阶段: brainstorming → writing-plans → planner
+规划阶段: coordinator-planning
     ↓
-执行阶段: executing-plans → tdd-guide
+执行阶段: coordinator-dispatch → executor
     ↓
-审查阶段: requesting-code-review → code-review → receiving-code-review
+验证阶段: qa / e2e-tester
     ↓
-验证阶段: verification-before-completion
+审查阶段: code-review
     ↓
 完成阶段: update-blueprint
 ```
@@ -87,9 +87,10 @@ const updatedUser = { ...user, name: 'new name' }
 
 | 场景 | 应该做什么 |
 |------|-----------|
-| 不确定框架/库的具体用法 | 使用 `docs-sync` 查文档 |
+| 不确定框架/库的具体用法 | 使用 `web-researcher` 查文档 |
 | 用户给出重要调整建议 | 使用 `learn-concept` 记录 |
 | 遇到复杂技术问题 | 调用相关 Skill 获取帮助 |
+| 需要从网页获取信息 | 使用 `web-researcher` |
 
 **注意**：
 - 不要凭记忆猜测
@@ -134,6 +135,7 @@ src/
 
 ## 可用命令
 
+- `/assistant` - 智能助手入口 (coordinator)
 - `/discuss` - 开始需求讨论 (brainstorming)
 - `/plan` - 制定实施计划 (writing-plans)
 - `/review` - 代码审查 (code-review)
