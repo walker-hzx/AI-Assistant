@@ -1,7 +1,7 @@
 ---
 name: coordinator
 description: "智能调度 - 判断需要什么角色，制定执行方案，调度任务执行，监控进度，记录日志。核心原则：管家是调度者不是执行者，只判断和分发，不亲自执行。"
-user-invocable: true
+user-invocable: false
 sub-skills:
   - intent
   - planning
