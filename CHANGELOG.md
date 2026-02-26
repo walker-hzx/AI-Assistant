@@ -2,7 +2,80 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.7.4] - 2026-02-25
+## [1.8.0] - 2026-02-26
+
+### Added
+
+#### 角色体系架构（Subagents）
+
+**新增 `.claude-plugin/agents/` 目录**，定义 11 个 Subagents：
+
+**核心角色（线性流程）**：
+- requirements-analyst → brainstorming
+- planner → writing-plans
+- executor → executing-plans
+- qa → verification
+- code-reviewer → code-review
+
+**辅助角色（按需调用）**：
+- coordinator → coordinator
+- thinking-coach → thinking-coach
+- debugger → debugging
+- code-analyst → code-analysis
+- security-reviewer → security-review
+- test-designer → test-planner
+
+**实现方式**：
+- 每个角色是 Claude Code Subagent（Markdown + YAML frontmatter）
+- 使用 `skills` 字段预加载对应 Skill 到 Subagent 上下文
+- 管家（Coordinator）调度角色执行任务
+
+**文件结构**：
+- `.claude-plugin/agents/` - 11 个角色 Subagent 文件
+- `.claude-plugin/plugin.json` - 新增 `agents` 字段
+
+**技术实现**：
+- Subagent 文件格式：YAML frontmatter + Markdown 系统 prompt
+- 预加载 skills：`skills: [brainstorming]` 等
+- 继承模型：`model: inherit`
+
+## [1.7.6] - 2026-02-25
+
+### Enhanced
+
+#### thinking-coach 全面重构
+
+**核心定位**：
+- 像高手一样给你洞见和方向
+- 直接给判断，而不是只给选项
+- 每次1-3条建议，让你有机会调整
+
+**使用场景**：
+- 问题模糊、方向不明、需求有误
+- 思维偏差、视角局限、想被点拨
+- 口语整理（帮你整理语音输入）
+
+**核心能力**：
+1. 问题厘清 - 帮你把模糊的问题描述清楚
+2. 思路纠正 - 指出思维偏在哪，给出正确方向
+3. 洞察指出 - 指出你没想到的盲点
+4. 主动分析 - 你不清楚的，主动深度分析给方案
+5. 口语整理 - 语音输入时帮你整理成清晰文字
+
+**优化内容**：
+- 删除过多的框架和模板
+- 强调"高手风格"：直接给方向，而不是问用户选哪个
+- 限制建议数量：每次最多3条
+- 精简行数：657行 → ~330行
+
+### Enhanced
+
+#### writing-plans 优化（精简+减少重复）
+
+- 删除与 verification 重复的"里程碑验收标准"章节（验收是 verification 的职责）
+- 删除重复的"详细检查需求文档流程"章节
+- 精简"功能完整性检查"（从 ~25 行 → ~18 行）
+- 总行数从 381 行精简到 331 行
 
 ### Enhanced
 
