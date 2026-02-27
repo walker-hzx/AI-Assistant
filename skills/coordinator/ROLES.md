@@ -43,6 +43,7 @@
 |------|------|-----------|---------|
 | e2e-tester | E2E 测试 - 端到端测试 | `ai-assistant:e2e-tester` | 需要 E2E 测试 |
 | test-planner | 测试设计 - 设计测试用例 | `ai-assistant:test-planner` | 需要设计测试用例 |
+| unit-tester | 单元测试 - 编写单元测试 | `ai-assistant:unit-tester` | 需要单元测试 |
 
 ### 审查类
 
@@ -72,7 +73,7 @@
 | 需求分析 | thinking-coach, requirement-analysis, requirement-validation, web-researcher, project-researcher |
 | 任务规划 | milestone-planning, task-splitting, dependency-analysis, strategist |
 | 代码执行 | code-implementation, web-researcher |
-| 测试验证 | test-planner, e2e-tester |
+| 测试验证 | test-planner, e2e-tester, unit-tester |
 | 安全审查 | security-review |
 | 问题调试 | debugging, browser-debugger, code-analysis |
 | 复杂决策 | strategist, team-generator |

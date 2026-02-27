@@ -1,6 +1,6 @@
 ---
 name: e2e-testing
-description: "E2E 测试执行 - 执行端到端测试，确保用户流程正常工作。使用 Playwright/Cypress 执行浏览器测试"
+description: "E2E 测试执行 - 执行端到端测试，确保用户流程正常工作。使用 Playwright/Cypress，包含 UI 断言指南和前端验证技巧"
 model: sonnet
 ---
 
@@ -13,6 +13,7 @@ model: sonnet
 1. **测试执行** - 运行 E2E 测试用例
 2. **测试报告** - 生成测试结果报告
 3. **问题定位** - 测试失败时定位问题
+4. **UI 验证** - 前端交互的断言技巧
 
 ## 使用场景
 
@@ -202,3 +203,104 @@ A:
 - [ ] 分析结果
 - [ ] 生成报告
 - [ ] 记录问题
+
+---
+
+## UI 断言指南
+
+### 常见 UI 断言
+
+| 场景 | Playwright | Cypress |
+|------|------------|---------|
+| 元素可见 | toBeVisible() | should('be.visible') |
+| 元素存在 | toBeAttached() | should('exist') |
+| 元素隐藏 | toBeHidden() | should('not.be.visible') |
+| 文本包含 | toContainText() | should('contain', 'text') |
+| 文本精确 | toHaveText() | should('have.text', 'text') |
+| 输入框值 | toHaveValue() | should('have.value', 'text') |
+| 元素数量 | toHaveCount(n) | should('have.length', n) |
+| 类名包含 | toHaveClass() | should('have.class', 'name') |
+| URL 匹配 | toHaveURL() | should('have.url', 'url') |
+| 页面标题 | toHaveTitle() | should('have.title', 'title') |
+
+### 等待策略
+
+```typescript
+// Playwright
+// 1. 等待元素可见
+await expect(page.locator('.loading')).not.toBeVisible();
+
+// 2. 等待网络空闲
+await page.waitForLoadState('networkidle');
+
+// 3. 等待 API 响应
+await page.waitForResponse(response => response.status() === 200);
+
+// 4. 等待特定时间（慎用）
+await page.waitForTimeout(1000);
+```
+
+```javascript
+// Cypress
+// 1. 等待元素可见
+cy.get('.loading').should('not.be.visible');
+
+// 2. 等待网络请求
+cy.wait('@apiRequest');
+
+// 3. 等待 DOM 稳定
+cy.get('button').should('be.enabled');
+```
+
+### 交互断言
+
+```typescript
+// 点击后验证
+await page.click('#submit');
+await expect(page.locator('.success')).toBeVisible();
+
+// 表单提交验证
+await page.fill('#name', 'test');
+await expect(page.locator('#name')).toHaveValue('test');
+
+// 弹窗验证
+await page.click('#open-modal');
+await expect(page.locator('.modal')).toBeVisible();
+
+// 表格行验证
+await expect(page.locator('table tr')).toHaveCount(5);
+```
+
+### 截图对比（视觉回归）
+
+```typescript
+// Playwright
+await expect(page).toHaveScreenshot('expected.png');
+
+// 带 mask 的截图（忽略动态内容）
+await expect(page).toHaveScreenshot('expected.png', {
+  mask: [page.locator('.timestamp')],
+});
+```
+
+### 前端验证技巧
+
+| 场景 | 验证方式 |
+|------|---------|
+| 页面加载完成 | `waitForLoadState('networkidle')` |
+| 动画结束 | `waitForTimeout` + 元素可见 |
+| 异步数据渲染 | `waitForSelector` + 文本存在 |
+| 弹窗动画 | `waitFor` + 可见性 |
+| 列表排序 | 获取文本数组比对 |
+| 表单校验 | 触发 blur 后检查错误提示 |
+| 状态变更 | 检查 class/属性变化 |
+
+### 常见问题处理
+
+| 问题 | 解决方案 |
+|------|---------|
+| 元素点击无效 | 等待动画结束 + 强制点击 |
+| 断言超时 | 增加 waitFor 或调整 timeout |
+| 随机失败 | 添加重试机制 + 等待稳定 |
+| 动态 ID | 使用 text/CSS 选择器替代 |
+| 跨域 iframe | 切换到 iframe 上下文 |
