@@ -8,6 +8,26 @@
 - **用途**: 个人开发助手
 - **技术栈**: Vue 3 + Python FastAPI
 
+## 架构演进说明
+
+### 阶段 1：Skill 模式（旧）
+- 以 Skill 为核心设计工作流
+- 流程：brainstorming → writing-plans → executing-plans → verification → code-review
+- 每个阶段是一个 Skill
+
+### 阶段 2：Coordinator + Agent 模式（新）
+- 以 Coordinator 为调度中心
+- 调度"角色"（Agent）执行任务
+- 支持文档驱动的闭环执行
+
+### 现状
+当前处于过渡阶段，存在 Skill 和 Agent 并存的情况：
+- `skills/` - 封装的工作流技能
+- `agents/` - 底层 Agent 定义
+- `skills/coordinator/` - 主导调度
+
+**这是正常现象**，新架构会逐步统一。
+
 ## 配置目录
 
 - `skills/` - 技能配置
