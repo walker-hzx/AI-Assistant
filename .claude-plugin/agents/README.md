@@ -40,14 +40,28 @@ Coordinator 分析：
 按顺序调度角色执行
 ```
 
-### 2. 直接调用
+### 2. 管家调度
 
-可以直接调用某个角色：
+所有任务都应通过 Coordinator 调度，由 Coordinator 判断需要哪些角色。
 
 ```
+用户：帮我做一个用户登录功能
+    ↓
+Coordinator 分析任务类型
+    ↓
+Coordinator 调度合适的角色执行
+```
+
+### 3. 直接调用（仅用于测试）
+
+仅在明确知道需要哪个角色时使用，复杂任务仍应通过 Coordinator。
+
+```
+# 不推荐 - 复杂任务
 Use the requirements-analyst to clarify what the user wants
-Use the planner to create an implementation plan
-Use the executor to implement the code
+
+# 推荐 - 通过 Coordinator
+./assistant 一句话需求
 ```
 
 ## 文件结构
@@ -106,12 +120,27 @@ skills:                        # 预加载的 skills
 
 ## 辅助调用
 
-在任何阶段，如果遇到以下情况，可以调用辅助角色：
+> **重要**：所有角色都不能直接调用其他角色，只能向 Coordinator 报告，由 Coordinator 决定是否调度。
 
-| 情况 | 调用角色 | 使用 Skill |
-|------|---------|-----------|
-| 思维困惑 | thinking-coach | thinking-coach |
-| 代码 bug | debugger | debugging |
-| 代码分析 | code-analysis | code-analysis |
-| 安全问题 | security-reviewer | security-review |
-| 测试设计 | test-designer | test-planner |
+**遇到以下情况时，应向 Coordinator 报告**：
+
+| 情况 | 报告内容 |
+|------|---------|
+| 思维困惑 | 发现需要 thinking-coach 协助分析思维方式 |
+| 代码 bug | 发现需要 debugger 协助定位修复 |
+| 代码分析 | 发现需要 code-analysis 协助系统分析 |
+| 安全问题 | 发现需要 security-reviewer 协助安全审查 |
+| 测试设计 | 发现需要 test-designer 协助测试用例设计 |
+
+**报告格式**：
+```
+【需要 [角色名] 协助】
+
+【原因】：
+[描述为什么需要该角色]
+
+【问题描述】：
+[具体问题]
+
+【等待 Coordinator 决策】
+```
