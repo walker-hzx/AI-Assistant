@@ -172,12 +172,6 @@ user-invocable: true
 Skill: ai-assistant:coordinator
 ```
 
-### 通过命令调用
-
-```
-/assistant <需求描述>
-```
-
 ---
 
 ## 子技能说明

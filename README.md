@@ -73,7 +73,6 @@
 
 | Command | 说明 |
 |---------|------|
-| /assistant | 智能助手 - 一句话需求，智能调度 |
 | /brainstorming | 需求分析 - 将想法转化为需求 |
 | /writing-plans | 制定实施计划 |
 | /verification | 验证 - 确认代码正确实现需求 |
@@ -104,8 +103,7 @@ coordinator → planner → executor → qa → code-reviewer
 ### 完整流程
 
 1. **需求阶段**
-   - `/assistant` - 一句话需求，智能调度
-   - 或 `/brainstorming` - 需求分析，明确要做什么
+   - `/brainstorming` - 需求分析，明确要做什么
 
 2. **规划阶段**
    - coordinator-planning - 制定执行方案

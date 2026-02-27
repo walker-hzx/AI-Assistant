@@ -14,7 +14,7 @@ AI-Assistant 是一个 Claude Code 插件项目，用于辅助全栈开发。
 ## 开发流程
 
 ```
-需求阶段: /assistant → coordinator-intent
+需求阶段: coordinator → coordinator-intent
     ↓
 规划阶段: coordinator-planning
     ↓
@@ -135,7 +135,6 @@ src/
 
 ## 可用命令
 
-- `/assistant` - 智能助手入口 (coordinator)
 - `/discuss` - 开始需求讨论 (brainstorming)
 - `/plan` - 制定实施计划 (writing-plans)
 - `/review` - 代码审查 (code-review)
