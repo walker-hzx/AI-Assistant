@@ -1,13 +1,13 @@
 ---
 name: assistant
-description: "智能调度：coordinator - 一句话需求，coordinator 智能调度执行"
+description: "智能助手入口 - 一句话需求，智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 智能助手
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/assistant [需求]` 让管家帮你处理任务。
 
@@ -19,8 +19,10 @@ agent: coordinator
 
 ## 说明
 
-此命令会调用 coordinator，coordinator 会：
-- 分析需求
+此命令会调用 coordinator skill，coordinator 会：
+- 创建调度记录
+- 分析需求意图
 - 制定执行方案
-- 调度合适的角色执行
+- 调度合适的角色执行（需求分析 → 计划 → 执行 → 验证 → 审查）
 - 监控进度并收集结果
+- 每个阶段生成对应文档
