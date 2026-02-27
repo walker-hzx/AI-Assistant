@@ -82,20 +82,22 @@
 
 ## 调用规则
 
-### 必须使用 Skill 工具
+### 必须使用 Task 工具
+
+根据 Claude Code 文档，调用 Subagent 使用 Task 工具：
 
 ```
-Skill: ai-assistant:<角色名>
+Task(<角色名>, prompt="<任务描述>")
 ```
 
 ### 调用格式
 
 ```
 【调度角色】
-Skill: ai-assistant:<角色名>
+Task(<角色名>, prompt="""<任务描述>""")
 
 【等待完成】
-- 等待 Skill 执行完成
+- 等待 Task 执行完成
 - 收集输出
 - 检查执行结果
 ```
