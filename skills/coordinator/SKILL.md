@@ -128,6 +128,44 @@ user-invocable: true
    → 失败 → 报错停止
 ```
 
+**【强制】计划文档格式**：
+
+每个任务必须包含以下字段：
+
+```markdown
+### 任务 N：[任务名称]
+
+**执行者：** executor （必填，从 ROLES.md 中选择）
+
+**输入：** docs/plans/xxx-plan.md （从哪里读取信息）
+
+**输出：** docs/execution/xxx-execution-N.md （结果写到哪里）
+
+**验收标准：**
+- [ ] 标准1：功能正常运行
+- [ ] 标准2：单元测试通过
+
+**回滚步骤（可选）：**
+1. `git checkout src/xxx.ts`
+```
+
+**【重要】Task 调用说明**：
+
+> **由于 Task(subagent, prompt="") 可能不被支持，请使用以下方式**
+
+1. **计划文档中声明执行者**（必填）：
+   ```markdown
+   **执行者：** executor
+   ```
+
+2. **调用时使用**：
+   - `Task(executor)` - 只用名称
+   - 或自然语言 "使用 executor subagent"
+
+3. **任务细节通过文档传递**：
+   - Subagent 从 docs/plans/ 读取计划详情
+   - Subagent 从 docs/intent/ 读取需求
+
 **文档位置**：`docs/plans/<task>-plan.md`
 
 ### 步骤 4：执行任务（循环）
@@ -155,15 +193,32 @@ user-invocable: true
 
 > **根据任务上下文，从 ROLES.md 中的 Subagent 选择合适的角色执行**
 
+**调用方式**（二选一）：
+
+```
+方式一：使用 Task 工具 + Agent 名称
+Task(executor)
+
+方式二：使用自然语言描述
+使用 executor subagent
+```
+
+**计划文档中必须明确声明**：
+
+```markdown
+### 任务 N：[任务名称]
+
+**执行者：** executor （必填）
+```
+
 **选择流程**：
 
 ```
 1. 分析当前任务需要什么能力
 2. 对照 ROLES.md 中的角色能力
 3. 选择最匹配的角色
-4. 【重要】使用 Task 工具调用角色：
-   Task(<角色名>, prompt="<任务描述>")
-   （例如：Task(executor, prompt="实现用户登录功能"）
+4. 在计划文档中声明执行者
+5. 使用 Task 工具调用
 ```
 
 **按场景选择 Subagent**：
@@ -179,10 +234,10 @@ user-invocable: true
 | 需要编写代码 | executor | executor | 按计划编写代码 |
 | 需要单元测试 | qa | qa | 编写单元测试 |
 | 需要 E2E 测试 | e2e-tester | e2e-tester | 端到端测试 |
-| 需要设计测试用例 | test-designer | test-designer | 分析需求深度，挖掘复杂场景，设计测试用例 |
-| 需要安全审查 | security-review | security-reviewer | 检查安全漏洞 |
-| 需要代码审查 | code-review | code-reviewer | 验证代码质量 |
-| 需要调试 bug | debugging | debugger | 定位和修复 bug |
+| 需要设计测试用例 | test-designer | test-designer | 设计测试用例 |
+| 需要安全审查 | security-reviewer | security-reviewer | 检查安全漏洞 |
+| 需要代码审查 | code-reviewer | code-reviewer | 验证代码质量 |
+| 需要调试 bug | debugger | debugger | 定位和修复 bug |
 | 前端需要调试 | browser-debugger | browser-debugger | 捕获前端错误 |
 | 需要并行任务 | team-generator | - | 创建多角色协作团队 |
 
@@ -248,6 +303,7 @@ user-invocable: true
 | 检查点 0 | 调度记录已创建 | 报错停止 |
 | 检查点 1 | 需求分析文档存在 | 报错停止 |
 | 检查点 2 | 计划文档存在 | 报错停止 |
+| 检查点 2.1 | 每个任务都有执行者声明 | 报错停止 |
 | 检查点 3 | 执行日志存在 | 报错停止 |
 | 检查点 4 | 验证报告存在且通过 | 重新验证（≤3次） |
 | 检查点 5 | 审查报告存在且通过 | 重新审查 |
@@ -265,6 +321,10 @@ user-invocable: true
 - docs/reviews/<task>-review.md
 
 如果缺失 → 报错并停止流程
+
+【检查执行者声明】
+读取计划文档，检查每个任务是否有 "**执行者：** xxx" 字段
+如果缺失 → 报错停止，要求补充执行者信息
 ```
 
 ---
@@ -278,6 +338,7 @@ user-invocable: true
 - 跳过审查阶段
 - 验证/审查失败后不修复就继续
 - **【重要】管家自己执行任务（禁止，必须调度 Subagent）**
+- **【重要】使用错误的 Subagent 名称（必须使用白名单中的名称）**
 
 ✅ **正确做法**：
 - 必须先创建调度记录
@@ -285,6 +346,27 @@ user-invocable: true
 - 验证/审查必须通过才能继续
 - 失败后修复或通知用户
 - 所有任务必须调度 Subagent 执行，管家不亲自写代码
+
+---
+
+## 【强制】Subagent 名称白名单
+
+> **必须严格使用以下名称，禁止使用其他名称**
+
+```
+thinking-coach, strategist, code-analysis, project-researcher, web-researcher,
+requirement-analysis, executor, qa, e2e-tester, test-designer,
+security-reviewer, code-reviewer, debugger, browser-debugger, team-generator
+```
+
+**禁止使用的名称**：
+- code-implementation ❌
+- executing-plans ❌
+- implementation ❌
+- 执行 ❌
+- debugging ❌（正确名称是 debugger）
+- code-review ❌（正确名称是 code-reviewer）
+- security-review ❌（正确名称是 security-reviewer）
 
 ---
 
@@ -299,6 +381,37 @@ user-invocable: true
 | 新功能开发 | 需求分析 → 制定计划 → 执行代码 → 功能验证 → 代码审查 |
 | Bug 修复 | 需求分析 → 制定计划 → 调试修复 → 功能验证 → 代码审查 |
 | 需求不清晰 | 需求分析（多次） → 制定计划 → 执行 |
+
+---
+
+## 【强制】信息约定
+
+> **基于 Claude Code 特性**：Subagent 能收到系统提示（角色定义）+ 基本环境信息，但收不到主会话完整上下文。
+>
+> **由于 Task(executor, prompt="") 可能不被支持，信息传递主要通过文档**
+
+| Subagent | 文档读取 | 文档写入 | 说明 |
+|----------|---------|---------|------|
+| requirement-analysis | docs/intent/ | docs/plans/ | 分析结果写入文档 |
+| executor | docs/plans/, docs/intent/ | docs/execution/ | 从计划读取详细步骤 |
+| debugger | docs/execution/, docs/intent/ | docs/execution/ | 读取执行日志定位问题 |
+| qa | docs/plans/, docs/execution/ | docs/verification/ | 读取计划和执行结果 |
+| code-reviewer | docs/verification/ | docs/reviews/ | 从验证报告开始审查 |
+| security-reviewer | docs/execution/ | docs/reviews/ | 读取代码进行审查 |
+| test-designer | docs/intent/, docs/plans/ | docs/plans/ | 分析需求输出测试用例 |
+| e2e-tester | docs/plans/, docs/verification/ | docs/verification/ | 读取测试计划执行 |
+| thinking-coach | docs/intent/ | docs/intent/ | 写入思考引导结果 |
+| strategist | docs/plans/ | docs/plans/ | 写入策略分析 |
+| code-analysis | 指定目录 | docs/plans/ | 写入分析报告 |
+| project-researcher | 全局 | docs/plans/ | 可直接读取项目 |
+| web-researcher | 全局 | docs/plans/ | 写入研究成果 |
+| browser-debugger | docs/execution/ | docs/execution/ | 读取错误日志 |
+| team-generator | docs/plans/ | docs/plans/ | 写入团队配置 |
+
+**管家调度原则**：
+1. 计划文档中声明执行者：`**执行者：** executor`
+2. 调用时使用 `Task(executor)` 或自然语言
+3. 任务细节通过文档传递（Subagent 从 docs/plans/ 读取）
 
 ---
 
@@ -322,6 +435,54 @@ docs/
 ```
 
 > 详细规范见 ./OUTPUT.md
+
+---
+
+## 【强制】操作限制
+
+> **基于 Claude Code 当前工作目录进行限制**
+
+### 1. 获取当前项目目录
+
+- 从 Claude Code 环境获取当前工作目录（PWD）
+- 该目录即为当前项目的根目录
+
+### 2. 操作限制规则
+
+```
+文件读取：允许在任意目录读取
+- Read 工具：无限制
+
+文件写入/修改/删除：只能在当前项目目录下
+- Write 工具：必须在 PWD 之下
+- Edit 工具：必须在 PWD 之下
+- Bash rm/mv 等：必须在 PWD 之下
+```
+
+### 3. 操作判断
+
+```
+判断操作是否在当前项目下：
+1. 获取当前工作目录：PWD
+2. 如果是读取操作（Read） → 允许
+3. 如果是写入/修改/删除操作：
+   - 检查文件路径是否在 PWD 之下
+   - 在 PWD 之下 → 允许
+   - 不在 PWD 之下 → 需要用户确认
+```
+
+### 4. 例外情况
+
+```
+需要用户确认的场景：
+- 用户明确要求修改/删除外部文件
+- 用户要求在外部目录执行写入类命令
+
+确认方式：
+1. 管家先询问用户："是否允许修改外部文件？"
+2. 用户同意后 → 执行操作
+3. 用户不同意 → 不执行并说明原因
+```
 
 ---
 
@@ -355,7 +516,7 @@ Task: <任务描述>
 【管家】制定计划 → 生成 docs/plans/...plan.md
     ↓
 【管家】执行轮次 1：调度「executor」角色
-    → Task(executor, prompt="实现用户登录功能")
+    → Task(executor)
     ↓
 【管家】检查执行结果 → 完成
     ↓
