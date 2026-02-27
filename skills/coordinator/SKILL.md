@@ -179,7 +179,7 @@ user-invocable: true
 | 需要编写代码 | executor | executor | 按计划编写代码 |
 | 需要单元测试 | qa | qa | 编写单元测试 |
 | 需要 E2E 测试 | e2e-tester | e2e-tester | 端到端测试 |
-| 需要设计测试用例 | test-designer | test-designer | 设计测试用例 |
+| 需要设计测试用例 | test-designer | test-designer | 分析需求深度，挖掘复杂场景，设计测试用例 |
 | 需要安全审查 | security-review | security-reviewer | 检查安全漏洞 |
 | 需要代码审查 | code-review | code-reviewer | 验证代码质量 |
 | 需要调试 bug | debugging | debugger | 定位和修复 bug |
