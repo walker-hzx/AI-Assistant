@@ -16,12 +16,19 @@
 
 | 角色 | 职责 | Skill |
 |------|------|-------|
-| coordinator | 智能调度，判断用什么角色 | coordinator |
 | thinking-coach | 思维方式指导 | thinking-coach |
 | debugger | Bug 定位修复 | debugging |
 | code-analysis | 代码问题分析 | code-analysis |
 | security-reviewer | 安全问题审查 | security-review |
 | test-designer | 测试用例设计 | test-planner |
+
+## 管家说明
+
+> **Coordinator 现在是 Skill，不是 Agent**
+>
+> 管家通过 Skill 调用：`skill: coordinator`
+> - 完整流程：意图分析 → 方案规划 → 执行调度 → 结果收集
+> - 所有命令都使用 `skill: coordinator` 调用
 
 ## 使用方式
 
@@ -73,13 +80,14 @@ Use the requirements-analyst to clarify what the user wants
 ├── executor.md             # 执行者
 ├── qa.md                   # 质量保证
 ├── code-reviewer.md        # 代码审查
-├── coordinator.md          # 调度员（管家）
 ├── thinking-coach.md       # 思维教练
 ├── debugger.md             # 调试专家
 ├── code-analysis.md         # 代码分析师
 ├── security-reviewer.md    # 安全审查
 └── test-designer.md        # 测试设计
 ```
+
+> 注意：Coordinator 是 Skill（skills/coordinator），不是 Agent
 
 ## Subagent 配置说明
 

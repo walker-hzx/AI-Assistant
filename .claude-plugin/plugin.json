@@ -29,7 +29,6 @@
     "./agents/executor.md",
     "./agents/qa.md",
     "./agents/code-reviewer.md",
-    "./agents/coordinator.md",
     "./agents/thinking-coach.md",
     "./agents/debugger.md",
     "./agents/code-analysis.md",
