@@ -123,16 +123,58 @@ user-invocable: true
 
 【执行轮次 N】
 1. 从计划文档中获取当前轮次的任务
-2. 调度相应角色执行
-3. 等待角色完成
-4. 读取角色输出文档
-5. 检查执行结果
+2. 【重要】根据任务上下文选择合适的 Subagent
+3. 调度 Subagent 执行
+4. 等待 Subagent 完成
+5. 读取 Subagent 输出文档
+6. 检查执行结果
 
 判断结果：
 → 任务完成 → 更新调度记录 → 继续下一轮
 → 需调整 → 更新计划 → 继续当前轮次
 → 失败 → 标记失败 → 通知用户
 ```
+
+### 步骤 4.1：选择 Subagent
+
+> **根据任务上下文，从 17 个 Subagent 中选择合适的角色执行**
+
+**选择流程**：
+
+```
+1. 分析当前任务需要什么能力
+2. 对照 ROLES.md 中的角色能力
+3. 选择最匹配的角色
+4. 调度执行
+```
+
+**按场景选择 Subagent**：
+
+| 场景 | 调用的 Subagent | 说明 |
+|------|----------------|------|
+| 需求不清晰 | thinking-coach | 厘清思路，给出方向 |
+| 多个方案需要评估 | strategist | 深度分析，评估方案 |
+| 需要分析代码问题 | code-analysis | 系统分析代码问题 |
+| 需要了解项目现状 | project-researcher | 调研项目现状 |
+| 需要查资料/文档 | web-researcher | 爬取和研究网页 |
+| 需求需要详细分析 | requirement-analysis | 多角度分析需求完整性 |
+| 需求需要验证 | requirement-validation | 确认需求完整可执行 |
+| 需要划分里程碑 | milestone-planning | 定义阶段性检查点 |
+| 任务需要拆分 | task-splitting | 拆分为 2-5 分钟小任务 |
+| 需要分析依赖 | dependency-analysis | 识别并行/串行关系 |
+| 需要编写代码 | code-implementation | 按计划编写代码 |
+| 需要 E2E 测试 | e2e-tester | 端到端测试 |
+| 需要设计测试用例 | test-planner | 设计测试用例 |
+| 需要安全审查 | security-review | 检查安全漏洞 |
+| 需要调试 bug | debugging | 定位和修复 bug |
+| 前端需要调试 | browser-debugger | 捕获前端错误 |
+| 需要并行任务 | team-generator | 创建多角色协作团队 |
+
+**选择原则**：
+- 按场景选择，不是一次性全部调用
+- 每次只选择当前任务需要的角色
+- 同一角色可多次调用
+- 详细角色能力见 ./ROLES.md
 
 **执行日志**：`docs/execution/<task>-execution-N.md`
 

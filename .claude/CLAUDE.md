@@ -30,15 +30,9 @@
 
 ### 关于 ROLES.md
 
-`skills/coordinator/ROLES.md` 中的角色定义存在历史遗留问题：
-- 部分角色是从旧版 Skill 直接迁移过来的
-- 有些角色定义了但实际未实现（如 strategist）
-- 有些角色是方法论而非独立角色（如 tdd）
+`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 17 个 Subagent 角色。
 
-**分析原则**：
-- 只分析 ROLES.md 中定义的"角色"
-- 旧版 Skill 不在分析范围内
-- 未实现的角色（strategist）暂时忽略
+**分析范围**：只分析 ROLES.md 中的 Subagent 角色。
 
 ## 配置目录
 
