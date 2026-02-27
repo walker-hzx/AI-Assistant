@@ -1,11 +1,13 @@
 ---
 name: plan
-description: 制定详细实施计划 - 智能调度执行
+description: "【必须通过管家】制定详细实施计划 - coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 制定计划
+
+**【重要】此命令必须通过 coordinator（管家）调度执行**
 
 使用 `/plan` 制定详细实施计划，coordinator 会智能调度。
 

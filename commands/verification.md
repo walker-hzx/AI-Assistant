@@ -1,11 +1,13 @@
 ---
 name: verification
-description: 验证功能 - 智能调度执行
+description: "【必须通过管家】验证功能 - coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 功能验证
+
+**【重要】此命令必须通过 coordinator（管家）调度执行**
 
 使用 `/verification` 验证功能是否正确实现，coordinator 会智能调度。
 

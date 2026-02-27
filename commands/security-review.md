@@ -1,11 +1,13 @@
 ---
 name: security-review
-description: 安全审查专家 - 智能调度执行
+description: "【必须通过管家】安全审查专家 - coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 安全审查
+
+**【重要】此命令必须通过 coordinator（管家）调度执行**
 
 使用 `/security-review` 进行代码安全审查，coordinator 会智能调度。
 

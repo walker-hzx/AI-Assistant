@@ -1,10 +1,12 @@
 ---
 name: assistant
-description: "智能助手入口 - 一句话需求，智能调度执行"
+description: "【必须通过管家】智能助手入口 - 一句话需求，必须通过 coordinator 调度执行"
 user-invocable: true
 ---
 
 # 智能助手
+
+**【重要】此技能必须通过 coordinator（管家）调度执行**
 
 **一句话需求，智能调度执行**
 

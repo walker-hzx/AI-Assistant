@@ -1,11 +1,13 @@
 ---
 name: executing-plans
-description: 执行实施计划 - 智能调度执行
+description: "【必须通过管家】执行实施计划 - coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 执行计划
+
+**【重要】此命令必须通过 coordinator（管家）调度执行**
 
 使用 `/executing-plans` 根据计划执行开发任务，coordinator 会智能调度。
 

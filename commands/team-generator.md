@@ -1,11 +1,13 @@
 ---
 name: team-generator
-description: 生成团队配置 - 智能调度执行
+description: "【必须通过管家】生成团队配置 - coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 团队生成器
+
+**【重要】此命令必须通过 coordinator（管家）调度执行**
 
 使用 `/team-generator` 创建 Claude Agent Team 配置，coordinator 会智能调度。
 
