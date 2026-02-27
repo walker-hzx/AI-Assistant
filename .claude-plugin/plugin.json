@@ -39,6 +39,10 @@
     "./agents/architect.md",
     "./agents/database-expert.md",
     "./agents/performance-expert.md",
-    "./agents/refactoring-expert.md"
+    "./agents/refactoring-expert.md",
+    "./agents/web-researcher.md",
+    "./agents/e2e-tester.md",
+    "./agents/browser-debugger.md",
+    "./agents/project-researcher.md"
   ]
 }

@@ -21,6 +21,7 @@ tools:
   - Task(thinking-coach)
   - Task(web-researcher)
   - Task(e2e-tester)
+  - Task(browser-debugger)
   - Read
   - Write
   - Edit
