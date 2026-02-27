@@ -51,18 +51,18 @@ user-invocable: true
 
 | 情况 | 文档 |
 |------|------|
-| 简单需求 | `docs/requirements/YYYY-MM-DD-<feature>.md`（1-5行） |
-| 中等复杂度 | `docs/requirements/YYYY-MM-DD-<feature>.md`（10-20行） |
-| 复杂需求 | `docs/requirements/YYYY-MM-DD-<feature>.md`（核心要点） |
+| 简单需求 | `docs/intent/YYYY-MM-DD-<feature>.md`（1-5行） |
+| 中等复杂度 | `docs/intent/YYYY-MM-DD-<feature>.md`（10-20行） |
+| 复杂需求 | `docs/intent/YYYY-MM-DD-<feature>.md`（核心要点） |
 
 ### 文档位置与命名
 
 ```
-docs/requirements/
+docs/intent/
 └── YYYY-MM-DD-<feature>.md
 ```
 
-**示例**：`docs/requirements/2026-02-25-user-auth.md`
+**示例**：`docs/intent/2026-02-25-user-auth.md`
 
 ### 文档内容模板
 

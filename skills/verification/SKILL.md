@@ -29,7 +29,7 @@ user-invocable: true
 | 文档 | 位置 | 用途 |
 |------|------|------|
 | 计划文档 | `docs/plans/YYYY-MM-DD-<feature>.md` | 获取任务列表和验收标准 |
-| 执行日志 | `docs/plans/YYYY-MM-DD-<feature>-execution-log.md` | 了解执行进度和遇到的问题 |
+| 执行日志 | `docs/execution/YYYY-MM-DD-<feature>-execution-N.md` | 了解执行进度和遇到的问题 |
 
 ### 输出文档
 
@@ -37,7 +37,7 @@ user-invocable: true
 
 | 文档 | 位置 | 用途 |
 |------|------|------|
-| 验收报告 | `docs/verification/YYYY-MM-DD-<feature>-report.md` | 记录验收结果、测试证据 |
+| 验收报告 | `docs/verification/YYYY-MM-DD-<feature>-verification.md` | 记录验收结果、测试证据 |
 
 ### 文档内容模板
 

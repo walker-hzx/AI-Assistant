@@ -23,16 +23,16 @@ user-invocable: true
 
 | 文档 | 位置 | 用途 |
 |------|------|------|
-| 验收报告 | `docs/verification/YYYY-MM-DD-<feature>-report.md` | 获取验收结果和测试证据 |
+| 验收报告 | `docs/verification/YYYY-MM-DD-<feature>-verification.md` | 获取验收结果和测试证据 |
 | 计划文档 | `docs/plans/YYYY-MM-DD-<feature>.md` | 了解原始任务列表 |
 
 ### 输出文档
 
-**必须产出**：完成总结
+**必须产出**：审查报告
 
 | 文档 | 位置 | 用途 |
 |------|------|------|
-| 完成总结 | `docs/completed/YYYY-MM-DD-<feature>.md` | 记录最终状态、审查结果、学到的经验 |
+| 审查报告 | `docs/reviews/YYYY-MM-DD-<feature>-review.md` | 记录审查结果、问题、学到的经验 |
 
 ### 文档内容模板
 
@@ -73,13 +73,13 @@ user-invocable: true
 
 - 需求文档：`docs/requirements/YYYY-MM-DD-<feature>.md`
 - 计划文档：`docs/plans/YYYY-MM-DD-<feature>.md`
-- 验收报告：`docs/verification/YYYY-MM-DD-<feature>-report.md`
+- 验收报告：`docs/verification/YYYY-MM-DD-<feature>-verification.md`
 ```
 
 ### 文档衔接
 
 - **读取**：先读取 `docs/verification/` 下的验收报告
-- **产出**：完成总结保存到 `docs/completed/`
+- **产出**：审查报告保存到 `docs/reviews/`
 - **结束**：整个开发流程完成
 
 ## 【阶段门控】确认提示

@@ -53,6 +53,12 @@ user-invocable: true
 
 ---
 
+## 输出位置
+
+**保存路径**：`docs/plans/<task>-plan.md`
+
+---
+
 ## 输出格式
 
 ```markdown

@@ -79,6 +79,12 @@ user-invocable: true
 
 ---
 
+## 输出位置
+
+**保存路径**：`docs/intent/<task>-intent.md`
+
+---
+
 ## 输出格式
 
 ```markdown
