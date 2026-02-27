@@ -8,96 +8,82 @@
 - **用途**: 个人开发助手
 - **技术栈**: Vue 3 + Python FastAPI
 
-## 架构演进说明
+## 架构说明
 
-### 阶段 1：Skill 模式（旧）
-- 以 Skill 为核心设计工作流
-- 流程：brainstorming → writing-plans → executing-plans → verification → code-review
-- 每个阶段是一个 Skill
+### Coordinator + Subagent 模式
 
-### 阶段 2：Coordinator + Agent 模式（新）
-- 以 Coordinator 为调度中心
-- 调度"角色"（Agent）执行任务
-- 支持文档驱动的闭环执行
+- **Coordinator（管家/星星）**：调度中心，负责管理流程
+- **Subagent**：具体执行者，负责完成任务
+- **Task 工具**：调用 Subagent 的方式
 
-### 现状
-当前处于过渡阶段，存在 Skill 和 Agent 并存的情况：
-- `skills/` - 封装的工作流技能
-- `agents/` - 底层 Agent 定义
-- `skills/coordinator/` - 主导调度
+### 核心流程
 
-**这是正常现象**，新架构会逐步统一。
+```
+用户 → Coordinator → 调度 Subagent → 完成任务
+                  ↓
+            需求分析 → 制定计划 → 执行任务 → 功能验证 → 代码审查
+```
 
-### 关于 ROLES.md
+### ROLES.md
 
-`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 17 个 Subagent 角色。
+`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 15 个 Subagent 角色。
 
-**分析范围**：只分析 ROLES.md 中的 Subagent 角色。
+---
 
 ## 配置目录
 
 - `skills/` - 技能配置
-- `agents/` - 代理配置
+- `agents/` - Agent 定义
 - `commands/` - 命令配置
 - `hooks/` - 钩子配置
 - `contexts/` - 上下文配置
 - `rules/` - 代码规范
 
+---
+
 ## 开发规范
 
-### 流程规范
+### 管家流程
 
-| 阶段 | Skill | 职责 | 输入文档 | 输出文档 |
-|------|-------|------|----------|----------|
-| 需求 | brainstorming | 想清楚做什么 | - | `docs/requirements/YYYY-MM-DD-<feature>.md` |
-| 计划 | writing-plans | 规划怎么做 | `docs/requirements/` | `docs/plans/YYYY-MM-DD-<feature>.md` |
-| 执行 | executing-plans | 具体实现 | `docs/plans/` | `docs/plans/YYYY-MM-DD-*-execution-log.md` |
-| 验证 | verification | 确认做对了 | `docs/plans/` | `docs/verification/YYYY-MM-DD-<feature>-report.md` |
-| 审查 | code-review | 确保代码质量 | `docs/verification/` | `docs/completed/YYYY-MM-DD-<feature>.md` |
+| 阶段 | 职责 | 输出文档 |
+|------|------|---------|
+| 需求分析 | 理解需求，明确做什么 | `docs/intent/<task>-intent.md` |
+| 制定计划 | 拆分任务，安排顺序 | `docs/plans/<task>-plan.md` |
+| 执行任务 | 调度 Subagent 完成 | `docs/execution/<task>-execution-N.md` |
+| 功能验证 | 验证功能正确性 | `docs/verification/<task>-verification.md` |
+| 代码审查 | 审查代码质量 | `docs/reviews/<task>-review.md` |
 
-### 文档传递链
+### 管家原则
 
-```
-brainstorming → writing-plans → executing-plans → verification → code-review
-      ↓               ↓              ↓               ↓            ↓
-  requirements   plans         plans-log      verification   completed
-```
+1. **不亲自执行** - 所有任务调度 Subagent 执行
+2. **文档驱动** - 所有操作以文档为载体
+3. **闭环执行** - 每轮执行后检查结果
 
-### 各阶段职责划分
+---
 
-**需求阶段（brainstorming）**：确定"做什么"
-- 目标：解决什么问题
-- 范围：什么做、什么不做
-- 风险：识别技术/依赖风险
-- 验收：明确成功标准
+## Subagent 列表
 
-**计划阶段（writing-plans）**：确定"怎么做"
-- 任务拆分：每个任务 2-5 分钟
-- 依赖关系：可并行/串行
-- 验证方式：每个任务怎么验证
-- 里程碑：阶段划分
+| 类别 | Subagent |
+|------|---------|
+| 分析类 | thinking-coach, strategist, code-analysis, project-researcher, web-researcher |
+| 需求类 | requirement-analysis |
+| 实现类 | executor |
+| 验证类 | e2e-tester, test-designer, qa |
+| 审查类 | security-reviewer, code-reviewer |
+| 调试类 | debugger, browser-debugger |
+| 辅助类 | team-generator |
 
-**执行阶段（executing-plans）**：具体实现
-- 边界条件实现：具体代码处理
-- 异常处理实现：具体错误捕获
-- 对照检查：完成后对照计划
-- 接口验证：无报错
+---
 
-### 质量要求
+## 质量要求
 
 - 测试覆盖率: 80%+
 - 代码审查: 所有重要变更
 - 验证通过才能合并
 
-### 命名规范
+---
 
-| 类型 | 规范 |
-|------|------|
-| Skill | kebab-case |
-| Agent | kebab-case |
-| Command | kebab-case |
-
-### 思考习惯
+## 思考习惯
 
 1. **查文档作为参考** - 遇到需求时，如果有相关文档可以参考，先查文档再分析，不要凭猜测
 2. **记住用户的建议** - 用户给出的调整建议，需要应用到后续类似场景
@@ -120,7 +106,9 @@ brainstorming → writing-plans → executing-plans → verification → code-re
 19. **需求作废标记** - 当讨论新需求时，如果老需求不再需要，必须标记为"已作废"，不能当作"功能缺失"
 20. **蓝图更新** - 完成功能后更新 `docs/蓝图.md`，记录当前项目状态
 
-### 沟通约定
+---
+
+## 沟通约定
 
 | 描述 | 指代 |
 |------|------|
@@ -128,6 +116,8 @@ brainstorming → writing-plans → executing-plans → verification → code-re
 | 开发时的配置 | .claude/ 目录 |
 
 > 约定原因：避免将插件配置和项目配置搞混
+
+---
 
 ## 相关文档
 
