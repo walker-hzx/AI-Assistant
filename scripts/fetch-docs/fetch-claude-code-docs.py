@@ -8,20 +8,17 @@ from playwright.sync_api import sync_playwright
 from pathlib import Path
 import re
 
-# 目标文档
+# 目标文档 - 中文版 Claude Code 文档
 DOCS = {
-    "sub-agents": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
-    "skills": "https://docs.anthropic.com/en/docs/claude-code/skills",
-    "slash-commands": "https://docs.anthropic.com/en/docs/claude-code/slash-commands",
-    "hooks": "https://docs.anthropic.com/en/docs/claude-code/hooks",
-    "plugins": "https://docs.anthropic.com/en/docs/claude-code/plugins",
-    "settings": "https://docs.anthropic.com/en/docs/claude-code/settings",
-    "agent-teams": "https://docs.anthropic.com/en/docs/claude-code/agent-teams",
-    # 额外文档
-    "overview": "https://docs.anthropic.com/en/docs/claude-code/overview",
-    "quickstart": "https://docs.anthropic.com/en/docs/claude-code/quickstart",
-    "best-practices": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
-    "features": "https://docs.anthropic.com/en/docs/claude-code/features-overview",
+    "features-overview": "https://code.claude.com/docs/zh-CN/features-overview",
+    "how-claude-code-works": "https://code.claude.com/docs/zh-CN/how-claude-code-works",
+    "sub-agents": "https://code.claude.com/docs/zh-CN/sub-agents",
+    "agent-teams": "https://code.claude.com/docs/zh-CN/agent-teams",
+    "plugins": "https://code.claude.com/docs/zh-CN/plugins",
+    "skills": "https://code.claude.com/docs/zh-CN/skills",
+    "hooks-guide": "https://code.claude.com/docs/zh-CN/hooks-guide",
+    "headless": "https://code.claude.com/docs/zh-CN/headless",
+    "troubleshooting": "https://code.claude.com/docs/zh-CN/troubleshooting",
 }
 
 OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "claude-code"
