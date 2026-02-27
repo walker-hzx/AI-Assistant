@@ -55,3 +55,19 @@ python3 scripts/web/browser-capture.py http://localhost:3000 --har debug.har
 1. browser-debugger 捕获错误
 2. 将错误信息整理成报告
 3. 交给 debugger 分析代码问题
+
+---
+
+## 输出要求
+
+> 参考：[角色输出标准](../../docs/standards/role-output-standard.md)
+
+### 必须创建调试报告
+
+**保存位置**：`docs/debug/YYYY-MM-DD-<issue>-browser-debug.md`
+
+**必须包含**：
+- 捕获的错误：Console 错误、网络失败等
+- 错误详情：错误信息、堆栈跟踪
+- 截图证据：错误截图（如有）
+- 初步分析：可能的原因

@@ -64,9 +64,11 @@ skills:
 
 ## 输出要求
 
+> 参考：[角色输出标准](../../docs/standards/role-output-standard.md)
+
 ### 必须创建数据库设计文档
 
-**保存位置**：`docs/architecture/YYYY-MM-DD-<feature-name>-database.md`
+**保存位置**：`docs/database/YYYY-MM-DD-<feature-name>-database.md`
 
 **必须包含**：
 - ER 图：实体关系图
@@ -192,12 +194,22 @@ skills:
 
 ## 调用策略分析师
 
-**何时调用**：当遇到以下情况时
+**何时需要协助**：当遇到以下情况时
 - 数据库选型难以抉择
 - 分库分表策略不确定
 - 性能优化方案难以判断
 
-**调用方式**：
+**处理方式**：向 Coordinator 报告，由 Coordinator 判断是否需要调度策略分析师
+
+**报告格式**：
 ```
-需要策略分析师协助分析...
+【需要策略分析师协助】
+
+【原因】：
+- [数据库选型难以抉择/分库分表策略不确定/性能优化方案难以判断]
+
+【问题描述】：
+[具体问题]
+
+【等待 Coordinator 决策】
 ```

@@ -199,6 +199,8 @@ skills:
 
 ## 输出格式
 
+> 参考：[角色输出标准](../../docs/standards/role-output-standard.md)
+
 ### 分析报告
 
 ```markdown
@@ -227,6 +229,16 @@ skills:
 #### 风险提示
 [需要注意的风险]
 ```
+
+---
+
+## 输出要求
+
+> 参考：[角色输出标准](../../docs/standards/role-output-standard.md)
+
+### 必须创建分析报告
+
+**保存位置**：`docs/analysis/YYYY-MM-DD-<topic>-analysis.md`
 
 ---
 

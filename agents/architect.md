@@ -60,6 +60,8 @@ skills:
 
 ## 输出要求
 
+> 参考：[角色输出标准](../../docs/standards/role-output-standard.md)
+
 ### 必须创建架构设计文档
 
 **保存位置**：`docs/architecture/YYYY-MM-DD-<feature-name>.md`

@@ -65,9 +65,11 @@ skills:
 
 ## 输出要求
 
+> 参考：[角色输出标准](../../docs/standards/role-output-standard.md)
+
 ### 必须创建重构计划文档
 
-**保存位置**：`docs/plans/YYYY-MM-DD-<feature-name>-refactoring.md`
+**保存位置**：`docs/refactoring/YYYY-MM-DD-<feature-name>-refactoring.md`
 
 **必须包含**：
 - 问题分析：代码问题和影响
@@ -197,14 +199,24 @@ skills:
 
 ## 调用策略分析师
 
-**何时调用**：当遇到以下情况时
+**何时需要协助**：当遇到以下情况时
 - 大规模重构难以确定范围
 - 重构收益难以评估
 - 重构风险难以判断
 
-**调用方式**：
+**处理方式**：向 Coordinator 报告，由 Coordinator 判断是否需要调度策略分析师
+
+**报告格式**：
 ```
-需要策略分析师协助分析...
+【需要策略分析师协助】
+
+【原因】：
+- [大规模重构难以确定范围/重构收益难以评估/重构风险难以判断]
+
+【问题描述】：
+[具体问题]
+
+【等待 Coordinator 决策】
 ```
 
 ---
