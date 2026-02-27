@@ -1,13 +1,13 @@
 ---
 name: discuss
-description: "【必须通过管家】开始需求讨论 - 帮助明确需求，coordinator 智能调度执行"
+description: "智能调度：coordinator开始需求讨论 - 帮助明确需求，coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 需求讨论
 
-**【重要】此命令必须通过 coordinator（管家）调度执行**
+**【重要】此命令通过 coordinator 智能调度执行**
 
 使用 `/discuss` 开始需求讨论，coordinator 会根据需求智能调度。
 

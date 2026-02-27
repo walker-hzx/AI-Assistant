@@ -1,13 +1,13 @@
 ---
 name: thinking
-description: "【必须通过管家】思维教练 - coordinator 智能调度执行"
+description: "智能调度：coordinator思维教练 - coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 思维教练
 
-**【重要】此命令必须通过 coordinator（管家）调度执行**
+**【重要】此命令通过 coordinator 智能调度执行**
 
 使用 `/thinking` 进行思维反思和问题分析，coordinator 会智能调度。
 

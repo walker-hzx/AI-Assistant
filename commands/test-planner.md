@@ -1,13 +1,13 @@
 ---
 name: test-planner
-description: "【必须通过管家】测试设计专家 - coordinator 智能调度执行"
+description: "智能调度：coordinator测试设计专家 - coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 测试设计
 
-**【重要】此命令必须通过 coordinator（管家）调度执行**
+**【重要】此命令通过 coordinator 智能调度执行**
 
 使用 `/test-planner` 设计 E2E 测试场景和测试用例，coordinator 会智能调度。
 

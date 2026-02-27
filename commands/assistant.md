@@ -1,13 +1,13 @@
 ---
 name: assistant
-description: "【必须通过管家】智能助手 - 一句话需求，coordinator 智能调度执行"
+description: "智能调度：coordinator - 一句话需求，coordinator 智能调度执行"
 context: fork
 agent: coordinator
 ---
 
 # 智能助手
 
-**【重要】此命令必须通过 coordinator（管家）调度执行**
+**【重要】此命令通过 coordinator 智能调度执行**
 
 使用 `/assistant [需求]` 让管家帮你处理任务。
 
