@@ -2,12 +2,12 @@
 name: security-review
 description: "智能调度：coordinator安全审查专家 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 安全审查
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/security-review` 进行代码安全审查，coordinator 会智能调度。
 

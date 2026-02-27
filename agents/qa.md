@@ -11,6 +11,7 @@ tools:
 skills:
 - verification
 - security-verification
+- thinking-coach
 ---
 
 # 质量保证

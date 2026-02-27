@@ -2,12 +2,12 @@
 name: review
 description: "智能调度：coordinator代码审查 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 代码审查
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/review` 进行代码审查，coordinator 会智能调度。
 

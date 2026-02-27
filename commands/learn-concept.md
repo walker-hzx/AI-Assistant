@@ -2,12 +2,12 @@
 name: learn-concept
 description: "智能调度：coordinator搜索学习工具 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 学习概念
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/learn-concept` 搜索并学习不确定的概念，coordinator 会智能调度。
 

@@ -9,6 +9,7 @@ tools:
   - Bash
 skills:
 - code-review
+- thinking-coach
 ---
 
 # 代码审查

@@ -11,6 +11,7 @@ tools:
   - Bash
 skills:
 - debugging
+- thinking-coach
 ---
 
 # 调试专家

@@ -11,6 +11,7 @@ skills:
 - task-splitting
 - dependency-analysis
 - milestone-planning
+- thinking-coach
 ---
 
 # 计划制定者

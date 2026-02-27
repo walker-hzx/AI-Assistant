@@ -2,12 +2,12 @@
 name: debugging
 description: "智能调度：coordinator调试专家 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 调试专家
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/debugging` 进行系统化的错误定位和修复，coordinator 会智能调度。
 

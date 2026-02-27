@@ -2,12 +2,12 @@
 name: verification
 description: "智能调度：coordinator验证功能 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 功能验证
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/verification` 验证功能是否正确实现，coordinator 会智能调度。
 

@@ -2,12 +2,12 @@
 name: executing-plans
 description: "智能调度：coordinator执行实施计划 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 执行计划
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/executing-plans` 根据计划执行开发任务，coordinator 会智能调度。
 

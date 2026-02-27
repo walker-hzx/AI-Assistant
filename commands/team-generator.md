@@ -2,12 +2,12 @@
 name: team-generator
 description: "智能调度：coordinator生成团队配置 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 团队生成器
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/team-generator` 创建 Claude Agent Team 配置，coordinator 会智能调度。
 

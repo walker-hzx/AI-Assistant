@@ -13,6 +13,7 @@ skills:
 - code-implementation
 - tdd
 - progress-tracking
+- thinking-coach
 ---
 
 # 执行者

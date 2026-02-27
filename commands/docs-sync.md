@@ -2,12 +2,12 @@
 name: docs-sync
 description: "智能调度：coordinator文档同步工具 - coordinator 智能调度执行"
 context: fork
-agent: coordinator
+skill: coordinator
 ---
 
 # 文档同步
 
-**【重要】此命令通过 coordinator 智能调度执行**
+**【重要】此命令通过 Skill 智能调度执行**
 
 使用 `/docs-sync` 爬取框架/组件库文档，coordinator 会智能调度。
 

@@ -11,6 +11,7 @@ skills:
 - requirement-understanding
 - requirement-analysis
 - requirement-validation
+- thinking-coach
 ---
 
 # 需求分析师
