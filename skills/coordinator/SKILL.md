@@ -2,10 +2,6 @@
 name: coordinator
 description: "智能管家 - 完整调度流程：意图分析 → 方案规划 → 执行调度 → 结果收集"
 user-invocable: true
-sub-skills:
-  - coordinator-intent
-  - coordinator-planning
-  - coordinator-dispatch
 ---
 
 # 智能管家
