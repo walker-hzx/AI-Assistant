@@ -163,7 +163,7 @@ user-invocable: true
 3. 选择最匹配的角色
 4. 【重要】使用 Task 工具调用角色：
    Task(<角色名>, prompt="<任务描述>")
-   （例如：Task(code-implementation, prompt="实现用户登录功能"）
+   （例如：Task(executor, prompt="实现用户登录功能"）
 ```
 
 **按场景选择 Subagent**：
@@ -176,10 +176,10 @@ user-invocable: true
 | 需要了解项目现状 | project-researcher | project-researcher | 调研项目现状 |
 | 需要查资料/文档 | web-researcher | web-researcher | 爬取和研究网页 |
 | 需求需要详细分析 | requirement-analysis | requirements-analyst | 多角度分析需求完整性 |
-| 需要编写代码 | code-implementation | executor | 按计划编写代码 |
-| 需要单元测试 | unit-tester | qa | 编写单元测试 |
+| 需要编写代码 | executor | executor | 按计划编写代码 |
+| 需要单元测试 | qa | qa | 编写单元测试 |
 | 需要 E2E 测试 | e2e-tester | e2e-tester | 端到端测试 |
-| 需要设计测试用例 | test-planner | test-designer | 设计测试用例 |
+| 需要设计测试用例 | test-designer | test-designer | 设计测试用例 |
 | 需要安全审查 | security-review | security-reviewer | 检查安全漏洞 |
 | 需要代码审查 | code-review | code-reviewer | 验证代码质量 |
 | 需要调试 bug | debugging | debugger | 定位和修复 bug |
@@ -354,8 +354,8 @@ Task: <任务描述>
     ↓
 【管家】制定计划 → 生成 docs/plans/...plan.md
     ↓
-【管家】执行轮次 1：调度「code-implementation」角色
-    → Task(code-implementation, prompt="实现用户登录功能")
+【管家】执行轮次 1：调度「executor」角色
+    → Task(executor, prompt="实现用户登录功能")
     ↓
 【管家】检查执行结果 → 完成
     ↓
