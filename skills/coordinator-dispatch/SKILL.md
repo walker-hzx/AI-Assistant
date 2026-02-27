@@ -143,29 +143,17 @@ Task(subagent_type="ai-assistant:planner", prompt="...")  # 禁止
 
 ### 步骤 1：开始执行
 
-> **【强制】必须先创建文档再执行**
+> **【强制】调度记录由 coordinator 主技能创建，coordinator-dispatch 负责更新**
 
-**第一步：创建管家调度记录**
+**第一步：读取调度记录**
 ```
-使用 Write 工具创建文档：`docs/plans/YYYY-MM-DD-<task>-coordinator.md`
+读取文档：`docs/plans/YYYY-MM-DD-<task>-coordinator.md`
+```
 
-文档内容模板（必须填写完整）：
-```markdown
-# 管家任务记录
-
-**时间**：{YYYY-MM-DD HH:MM}
-**任务**：{一句话描述}
-**类型**：{简单/普通/复杂}
-
-## 意图分析
-- 用户真实意图：{从 coordinator-intent 获取}
-- 任务类型：{bug修复/功能开发/优化/其他}
-- 复杂度判断：{简单/普通/复杂}
-
-## 方案规划
-- 选择的角色：{从 coordinator-planning 获取}
-- 执行顺序：{阶段列表}
-- 里程碑：{每个阶段的检查点}
+**第二步：更新执行状态**
+```
+更新调度记录中的执行状态，标记当前阶段为"进行中"
+```
 
 ## 任务分派
 | 阶段 | 角色 | 任务 | 状态 |
@@ -334,26 +322,17 @@ Skill 执行完成
 
 | 文档 | 路径 | 生成时机 | 状态 |
 |------|------|---------|------|
-| **管家调度记录** | `docs/plans/YYYY-MM-DD-<task>-coordinator.md` | **开始执行前** | **必须** |
-| **执行日志** | `docs/plans/YYYY-MM-DD-<task>-execution-log.md` | 执行过程中持续更新 | 可选 |
+| **执行日志** | `docs/plans/YYYY-MM-DD-<task>-execution-log.md` | 执行过程中持续更新 | 必须 |
 
-> **【强制】未创建管家调度记录文档，禁止开始执行！**
+> **注意**：调度记录由 coordinator 主技能创建，coordinator-dispatch 负责更新执行状态
 
-### 管家调度记录内容
+### 执行日志内容
 
 ```markdown
-# 管家任务记录
+# 管家任务执行日志
 
 **时间**：{YYYY-MM-DD HH:MM}
 **任务**：{一句话描述}
-**类型**：{简单/普通/复杂}
-
-## 意图分析
-- 用户真实意图：{从 coordinator-intent 获取}
-- 任务类型：{bug修复/功能开发/优化/其他}
-- 复杂度判断：{简单/普通/复杂}
-
-## 方案规划
 - 选择的角色：{从 coordinator-planning 获取}
 - 执行顺序：{阶段列表}
 - 里程碑：{每个阶段的检查点}
