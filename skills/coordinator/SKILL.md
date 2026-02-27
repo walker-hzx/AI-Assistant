@@ -31,15 +31,16 @@ user-invocable: true
 ### 2. 闭环执行
 
 每个执行轮次后都要检查结果，根据结果决定下一步：
-- 完成 → 进入下一轮或验证
+- 完成 → 进入下一轮或完成
 - 需调整 → 更新计划，继续执行
 - 失败 → 通知用户
 
 ### 3. 管家是调度者
 
-- 只负责调度，不亲自执行
-- 通过调用其他 Skills 完成工作
+- 只负责调度，不亲自执行具体任务
+- 通过调用 Subagent 完成具体工作
 - 监控整个流程，确保完整执行
+- 自身负责需求分析、计划制定、验证、审查
 
 ---
 
@@ -52,15 +53,15 @@ user-invocable: true
     ↓
 【阶段 1】创建调度记录 ← 必须先创建
     ↓
-【阶段 2】意图分析（可选）
+【阶段 2】需求分析
     ↓
 【阶段 3】制定计划
     ↓
-【阶段 4】执行计划（循环）
+【阶段 4】执行任务（循环）
     ↓
-【阶段 5】验证
+【阶段 5】功能验证
     ↓
-【阶段 6】审查
+【阶段 6】代码审查
     ↓
 【阶段 7】完成
 ```
@@ -74,9 +75,9 @@ user-invocable: true
 ```
 1. 接收用户需求
 2. 理解需求内容
-3. 判断是否需要意图分析
-   → 需要 → 进入步骤 2
-   → 不需要 → 进入步骤 3
+3. 判断需求是否清晰
+   → 不清晰 → 进入步骤 2
+   → 清晰 → 进入步骤 3
 ```
 
 ### 步骤 1：创建调度记录
@@ -92,29 +93,43 @@ user-invocable: true
 
 **文档位置**：`docs/coordinator/<task>-coordinator.md`
 
-### 步骤 2：意图分析（可选）
+### 步骤 2：需求分析
 
-> **仅在需求不明确时执行**
+> **分析用户需求，明确做什么**
 
 ```
-1. 调度 brainstorming 或 requirement-analysis
-2. 等待 Skill 执行完成
-3. 检查 docs/intent/<task>-intent.md 是否存在
-   → 存在 → 进入下一步
-   → 不存在 → 报错停止
+1. 分析用户需求，提取关键信息：
+   - 功能目标
+   - 业务规则
+   - 验收标准
+   - 风险点
+2. 写入文档：`docs/intent/<task>-intent.md`
+3. 检查文档是否创建成功
+   → 成功 → 进入下一步
+   → 失败 → 报错停止
 ```
+
+**文档位置**：`docs/intent/<task>-intent.md`
 
 ### 步骤 3：制定计划
 
+> **将需求拆分为可执行的任务**
+
 ```
-1. 调度 writing-plans
-2. 等待 Skill 执行完成
-3. 检查 docs/plans/<task>-plan.md 是否存在
-   → 存在 → 进入下一步
-   → 不存在 → 报错停止
+1. 基于需求分析，制定执行计划：
+   - 任务拆分（每个任务 2-5 分钟）
+   - 任务依赖关系
+   - 执行顺序
+   - 里程碑划分
+2. 写入文档：`docs/plans/<task>-plan.md`
+3. 检查文档是否创建成功
+   → 成功 → 进入下一步
+   → 失败 → 报错停止
 ```
 
-### 步骤 4：执行计划（循环）
+**文档位置**：`docs/plans/<task>-plan.md`
+
+### 步骤 4：执行任务（循环）
 
 > **核心闭环机制：每轮执行后都要检查结果**
 
@@ -137,7 +152,7 @@ user-invocable: true
 
 ### 步骤 4.1：选择 Subagent
 
-> **根据任务上下文，从 17 个 Subagent 中选择合适的角色执行**
+> **根据任务上下文，从 ROLES.md 中的 Subagent 选择合适的角色执行**
 
 **选择流程**：
 
@@ -163,6 +178,7 @@ user-invocable: true
 | 任务需要拆分 | task-splitting | 拆分为 2-5 分钟小任务 |
 | 需要分析依赖 | dependency-analysis | 识别并行/串行关系 |
 | 需要编写代码 | code-implementation | 按计划编写代码 |
+| 需要单元测试 | unit-tester | 编写单元测试 |
 | 需要 E2E 测试 | e2e-tester | 端到端测试 |
 | 需要设计测试用例 | test-planner | 设计测试用例 |
 | 需要安全审查 | security-review | 检查安全漏洞 |
@@ -178,27 +194,40 @@ user-invocable: true
 
 **执行日志**：`docs/execution/<task>-execution-N.md`
 
-### 步骤 5：验证
+### 步骤 5：功能验证
+
+> **验证代码是否正确实现需求**
 
 ```
-1. 调度 verification
-2. 等待 Skill 执行完成
-3. 检查 docs/verification/<task>-verification.md 是否存在
-4. 读取验证结果
+1. 基于计划文档和执行结果，验证功能：
+   - 检查功能是否按计划实现
+   - 运行测试验证正确性
+   - 检查边界条件处理
+2. 写入文档：`docs/verification/<task>-verification.md`
+3. 读取验证结果
    → 通过 → 进入下一步
    → 未通过 → 修复后重新验证（最多 3 次）
 ```
 
-### 步骤 6：审查
+**文档位置**：`docs/verification/<task>-verification.md`
+
+### 步骤 6：代码审查
+
+> **审查代码质量，确保符合规范**
 
 ```
-1. 调度 code-review
-2. 等待 Skill 执行完成
-3. 检查 docs/reviews/<task>-review.md 是否存在
-4. 读取审查结果
+1. 审查代码质量：
+   - 代码规范
+   - 安全性
+   - 性能
+   - 可维护性
+2. 写入文档：`docs/reviews/<task>-review.md`
+3. 读取审查结果
    → 通过 → 进入完成
    → 未通过 → 修复后重新审查
 ```
+
+**文档位置**：`docs/reviews/<task>-review.md`
 
 ### 步骤 7：完成
 
@@ -217,7 +246,7 @@ user-invocable: true
 | 检查点 | 验证内容 | 失败处理 |
 |--------|----------|----------|
 | 检查点 0 | 调度记录已创建 | 报错停止 |
-| 检查点 1 | 意图分析文档存在（可选） | 报错停止 |
+| 检查点 1 | 需求分析文档存在 | 报错停止 |
 | 检查点 2 | 计划文档存在 | 报错停止 |
 | 检查点 3 | 执行日志存在 | 报错停止 |
 | 检查点 4 | 验证报告存在且通过 | 重新验证（≤3次） |
@@ -257,7 +286,7 @@ user-invocable: true
 
 ---
 
-## 角色选择
+## Subagent 角色选择
 
 > 详细角色定义见 ./ROLES.md
 
@@ -265,9 +294,9 @@ user-invocable: true
 
 | 任务类型 | 推荐流程 |
 |----------|----------|
-| 新功能开发 | brainstorming → writing-plans → code-implementation → verification → code-review |
-| Bug 修复 | debugging → verification → code-review |
-| 需求不明确 | thinking-coach → brainstorming → writing-plans |
+| 新功能开发 | 需求分析 → 制定计划 → 执行代码 → 功能验证 → 代码审查 |
+| Bug 修复 | 需求分析 → 制定计划 → 调试修复 → 功能验证 → 代码审查 |
+| 需求不清晰 | 需求分析（多次） → 制定计划 → 执行 |
 
 ---
 
@@ -277,7 +306,7 @@ user-invocable: true
 docs/
 ├── coordinator/         # 管家调度记录
 │   └── <task>-coordinator.md
-├── intent/             # 意图分析
+├── intent/             # 需求分析
 │   └── <task>-intent.md
 ├── plans/             # 计划文档
 │   └── <task>-plan.md
@@ -319,21 +348,19 @@ Task: <任务描述>
     ↓
 【管家】创建调度记录
     ↓
-【管家】需求较明确，跳过意图分析
+【管家】需求分析 → 生成 docs/intent/...intent.md
     ↓
-【管家】调度 writing-plans 制定计划
-    ↓
-【管家】检查计划文档 → 存在
+【管家】制定计划 → 生成 docs/plans/...plan.md
     ↓
 【管家】执行轮次 1：调度 code-implementation
     ↓
 【管家】检查执行结果 → 完成
     ↓
-【管家】执行轮次 2：调度 verification
+【管家】功能验证 → 生成 docs/verification/...verification.md
     ↓
 【管家】检查验证结果 → 通过
     ↓
-【管家】执行轮次 3：调度 code-review
+【管家】代码审查 → 生成 docs/reviews/...review.md
     ↓
 【管家】检查审查结果 → 通过
     ↓
