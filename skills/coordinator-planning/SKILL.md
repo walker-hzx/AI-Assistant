@@ -13,6 +13,31 @@ description: "方案制定 - 选择角色组合、安排执行顺序、制定里
 
 ---
 
+## 【强制】检查点验证
+
+> **开始执行前，必须验证前置条件**
+
+### 前置条件
+
+本技能作为 coordinator 的子技能执行，前置条件：
+- [ ] coordinator-intent 的意图分析文档已生成（`docs/intent/<task>-intent.md`）
+
+### 验证方式
+
+使用 Glob 工具检查 `docs/intent/<task>-intent.md` 是否存在。
+
+### 验证失败处理
+
+如果验证失败：
+```
+【错误】方案规划无法执行
+【原因】：意图分析文档未生成
+【位置】：docs/intent/<task>-intent.md
+【处理】：请先完成 coordinator-intent 阶段
+```
+
+---
+
 ## 【重要】输入输出
 
 ### 输入
@@ -353,8 +378,9 @@ description: "方案制定 - 选择角色组合、安排执行顺序、制定里
 
 ## 下一步
 
-交给 coordinator-dispatch 执行
-```
+【管家】调度 coordinator-dispatch 执行
+
+> **注意**：coordinator 会自动调度，无需手动操作
 
 ### 检查项
 

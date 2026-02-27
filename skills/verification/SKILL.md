@@ -84,7 +84,9 @@ user-invocable: true
 
 - **读取**：先读取 `docs/plans/` 下的计划文档和执行日志
 - **产出**：验收报告保存到 `docs/verification/`
-- **下一步**：code-review 会读取验收报告
+- **下一步**：等待 coordinator 调度审查
+
+---
 
 ## 【阶段门控】确认提示
 
@@ -102,9 +104,8 @@ user-invocable: true
 
 ⚠️ 需要您确认：
 1. 验收报告是否认可？
-2. 可以进入代码审查阶段了吗？
 
-下一步：code-review（代码审查）
+✅ 验证完成，等待 coordinator 调度审查
 ```
 
 > **验证失败处理**：
