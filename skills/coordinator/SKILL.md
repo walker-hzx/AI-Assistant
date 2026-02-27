@@ -161,7 +161,9 @@ user-invocable: true
 1. 分析当前任务需要什么能力
 2. 对照 ROLES.md 中的角色能力
 3. 选择最匹配的角色
-4. 调度执行
+4. 【重要】使用 Skill 工具调用角色：
+   Skill: ai-assistant:<角色名>
+   （例如：Skill: ai-assistant:code-implementation）
 ```
 
 **按场景选择 Subagent**：
@@ -355,7 +357,7 @@ Task: <任务描述>
     ↓
 【管家】制定计划 → 生成 docs/plans/...plan.md
     ↓
-【管家】执行轮次 1：调度 code-implementation
+【管家】执行轮次 1：调度「code-implementation」角色执行任务
     ↓
 【管家】检查执行结果 → 完成
     ↓
