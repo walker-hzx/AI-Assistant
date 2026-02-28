@@ -127,14 +127,18 @@
 ### 示意
 
 ```
-当前项目：/Users/huangzhixin/Desktop/Code/AI/AI-Assistant
+当前项目：/path/to/project
 
-✅ 允许：Read(/Users/huangzhixin/Desktop/Code/AI/AI-Assistant/src/**/*.ts)
-✅ 允许：Glob(/Users/huangzhixin/Desktop/Code/AI/AI-Assistant/**/*.md)
-❌ 禁止：Edit(/Users/huangzhixin/Desktop/Code/OtherProject/**)
-❌ 禁止：Bash(rm -rf /Users/huangzhixin/Desktop/**)
+| 工具 | 项目目录内 | 项目目录外 |
+|------|-----------|-----------|
+| Read | ✅ 允许 | ✅ 允许 |
+| Glob | ✅ 允许 | ❌ 默认禁止 |
+| Grep | ✅ 允许 | ❌ 默认禁止 |
+| Edit | ✅ 允许 | ❌ 禁止 |
+| Write | ✅ 允许 | ❌ 禁止 |
+| Bash | ✅ 允许 | ❌ 禁止 |
 
-需要用户授权：Write(/Users/huangzhixin/Desktop/OtherProject/**)
+例外：用户明确授权后可操作外部目录
 ```
 
 ---
