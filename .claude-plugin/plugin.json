@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.8.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.8.0 新增：任务状态检测机制，解决同一会话中无法触发管家流程的问题",
+  "version": "2.9.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.9.0 新增：project-init增加权限配置检查，自动配置工具权限限制",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
