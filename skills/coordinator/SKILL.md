@@ -468,8 +468,8 @@ ai-assistant:browser-debugger, ai-assistant:team-generator
 | team-generator | docs/plans/ | docs/plans/ | 写入团队配置 |
 
 **管家调度原则**：
-1. 计划文档中声明执行者：`**执行者：** executor`
-2. 调用时使用 `Task(executor)` 或自然语言
+1. 计划文档中声明执行者：`**执行者：** ai-assistant:executor`
+2. 调用时使用 `Task(ai-assistant:executor)` 或自然语言
 3. 任务细节通过文档传递（Subagent 从 docs/plans/ 读取）
 
 ---

@@ -78,11 +78,12 @@
 使用 Task 工具调用 Subagent：
 
 ```
-Task(<角色名>, prompt="<任务描述>")
+Task(ai-assistant:<角色名>)
 ```
 
 示例：
 ```
-Task(executor, prompt="实现用户登录功能")
-Task(debugger, prompt="修复登录页面的报错")
+Task(ai-assistant:executor)
+Task(ai-assistant:debugger)
+Task(ai-assistant:requirements-analyst)
 ```
