@@ -108,6 +108,37 @@
 
 ---
 
+## 文件操作范围限制
+
+> 所有文件操作默认仅限当前项目目录
+
+### 核心原则
+
+- **Read 工具**：无限制（可读取任意目录）
+- **Write/Edit/Bash**：仅限当前项目目录
+- **Glob/Grep**：默认仅搜索当前项目目录
+
+### 具体规则
+
+1. 所有文件操作（Glob、Grep、Read、Edit、Write、Bash）默认仅限当前项目目录
+2. 当前项目目录通过 Claude Code 的 PWD（当前工作目录）获取
+3. 操作外部目录前必须获得用户明确授权
+
+### 示意
+
+```
+当前项目：/Users/huangzhixin/Desktop/Code/AI/AI-Assistant
+
+✅ 允许：Read(/Users/huangzhixin/Desktop/Code/AI/AI-Assistant/src/**/*.ts)
+✅ 允许：Glob(/Users/huangzhixin/Desktop/Code/AI/AI-Assistant/**/*.md)
+❌ 禁止：Edit(/Users/huangzhixin/Desktop/Code/OtherProject/**)
+❌ 禁止：Bash(rm -rf /Users/huangzhixin/Desktop/**)
+
+需要用户授权：Write(/Users/huangzhixin/Desktop/OtherProject/**)
+```
+
+---
+
 ## 沟通约定
 
 | 描述 | 指代 |
