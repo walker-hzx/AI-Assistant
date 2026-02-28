@@ -43,6 +43,7 @@
 |------|------|---------|
 | security-reviewer | 安全审查 - 检查安全漏洞 | 需要安全审查 |
 | code-reviewer | 代码审查 - 验证代码质量 | 需要代码审查 |
+| ui-ux-reviewer | UI/UX 审查 - 分析页面视觉和交互，提供优化方案 | 需要优化页面样式和交互 |
 | evaluator | 质量评估 - 评估产出物质量，生成优化建议 | 需要质量门控、流程复盘 |
 
 ### 调试类
@@ -70,6 +71,7 @@
 | 测试验证 | test-designer, e2e-tester, qa |
 | 安全审查 | security-reviewer |
 | 代码审查 | code-reviewer |
+| UI/UX 优化 | ui-ux-reviewer |
 | 质量评估 | evaluator |
 | 问题调试 | debugger, browser-debugger, code-analysis |
 | 复杂决策 | strategist, team-generator |

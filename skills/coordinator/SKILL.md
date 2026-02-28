@@ -338,6 +338,7 @@ Task(ai-assistant:web-researcher)
 | 需要设计测试用例 | test-designer | test-designer | 设计测试用例 |
 | 需要安全审查 | security-reviewer | security-reviewer | 检查安全漏洞 |
 | 需要代码审查 | code-reviewer | code-reviewer | 验证代码质量 |
+| 需要 UI/UX 优化 | ui-ux-reviewer | ui-ux-reviewer | 分析页面视觉和交互，提供优化方案 |
 | 需要调试 bug | debugger | debugger | 定位和修复 bug |
 | 前端需要调试 | browser-debugger | browser-debugger | 捕获前端错误 |
 | 需要并行任务 | team-generator | - | 创建多角色协作团队 |
@@ -509,7 +510,7 @@ ai-assistant:requirement-analysis, ai-assistant:requirements-miner, ai-assistant
 ai-assistant:e2e-tester, ai-assistant:test-designer,
 ai-assistant:security-reviewer, ai-assistant:code-reviewer, ai-assistant:debugger,
 ai-assistant:browser-debugger, ai-assistant:team-generator,
-ai-assistant:evaluator
+ai-assistant:evaluator, ai-assistant:ui-ux-reviewer
 ```
 
 **禁止使用的名称**：
@@ -539,6 +540,7 @@ ai-assistant:evaluator
 | 文档编写 | executor | 直接编写 |
 | 安全审查 | security-reviewer | 安全审查 |
 | 代码审查 | code-reviewer | 代码审查 |
+| UI/UX 优化 | ui-ux-reviewer + executor | UI/UX 分析 + 代码优化 |
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.12.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.12.0 优化：文件操作范围限制示意改用表格形式，更清晰直观",
+  "version": "2.13.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.13.0 新增：ui-ux-reviewer Agent，用于分析和优化页面 UI/UX",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
@@ -44,6 +44,7 @@
     "./agents/e2e-tester.md",
     "./agents/browser-debugger.md",
     "./agents/project-researcher.md",
-    "./agents/evaluator.md"
+    "./agents/evaluator.md",
+    "./agents/ui-ux-reviewer.md"
   ]
 }

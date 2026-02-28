@@ -55,6 +55,7 @@ user-invocable: true
 | code-analysis | 代码分析 - 系统分析 |
 | debugging | 调试专家 - 定位修复 bug |
 | security-review | 安全审查 |
+| ui-ux-reviewer | UI/UX 审查 - 页面视觉和交互优化 |
 | ... | ... |
 ```
 
