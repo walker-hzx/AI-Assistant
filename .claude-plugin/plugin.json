@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.20.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.20.0 优化：code-reviewer 增加场景化审查，security-reviewer 增加 AI/LLM 安全审查",
+  "version": "2.21.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.21.0 优化：e2e-tester 增加场景化测试模板，executor 增加通用代码模式",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
