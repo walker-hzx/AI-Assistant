@@ -429,7 +429,10 @@ Task(ai-assistant:web-researcher)
 ### 步骤 7：完成
 
 ```
-1. 更新调度记录状态为"已完成"
+1. 【必须】更新调度记录状态（使用 Edit 工具）：
+   - 读取 docs/coordinator/<task>-coordinator.md
+   - 使用 Edit 工具将 "- **状态**：进行中" 改为 "- **状态**：已完成"
+   - 【重要】必须验证修改成功
 2. 汇总所有文档
 3. 向用户报告任务完成
 ```

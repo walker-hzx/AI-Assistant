@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.9.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.9.0 新增：project-init增加权限配置检查，自动配置工具权限限制",
+  "version": "2.10.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.10.0 新增：coordinator 步骤7明确要求使用 Edit 工具更新任务状态为已完成，并添加验证步骤",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
