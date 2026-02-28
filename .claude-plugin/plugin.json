@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.15.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.15.0 重构：coordinator 从强制流程改为智能调度，根据任务类型灵活决定步骤",
+  "version": "2.16.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.16.0 重构：coordinator 配套文件与 SKILL.md 保持一致，更新 EXECUTION.md、CHECKPOINT.md、OUTPUT.md",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"

@@ -6,66 +6,55 @@
 
 ## 文档类型
 
-| 文档类型 | 路径 | 创建者 | 说明 |
-|----------|------|--------|------|
-| 调度记录 | `docs/coordinator/<task>-coordinator.md` | coordinator | 任务总览和状态 |
-| 意图分析 | `docs/intent/<task>-intent.md` | 需求类角色 | 需求理解 |
-| 计划文档 | `docs/plans/<task>-plan.md` | 计划类角色 | 执行计划 |
-| 执行日志 | `docs/execution/<task>-execution-N.md` | coordinator | 执行过程记录 |
-| 验证报告 | `docs/verification/<task>-verification.md` | 验证类角色 | 功能验证 |
-| 审查报告 | `docs/reviews/<task>-review.md` | 审查类角色 | 代码审查 |
+| 文档类型 | 路径 | 创建者 | 是否必需 |
+|----------|------|--------|----------|
+| 调度记录 | `docs/coordinator/<task>-coordinator.md` | coordinator | 必需 |
+| 需求分析 | `docs/intent/<task>-intent.md` | 需求类角色 | 可选 |
+| 计划文档 | `docs/plans/<task>-plan.md` | 计划类角色 | 可选 |
+| 执行日志 | `docs/execution/<task>-execution-N.md` | coordinator | 必需 |
+| 验证报告 | `docs/verification/<task>-verification.md` | 验证类角色 | 可选 |
+| 审查报告 | `docs/reviews/<task>-review.md` | 审查类角色 | 可选 |
+| 质量评估 | `docs/quality/<task>-summary.md` | evaluator | 仅复杂任务 |
 
 ---
 
 ## 调度记录模板
 
 ```markdown
-# 管家任务调度记录
+# 任务调度记录
 
-**时间**：{YYYY-MM-DD HH:MM}
-**任务**：{一句话描述}
-**类型**：{简单/普通/复杂}
-**状态**：{进行中/已完成/失败}
-
-## 任务概览
-- 用户需求：{用户原始需求}
-- 任务类型：{需求类/实现类/问题类/优化类}
-- 复杂度：{简单/普通/复杂}
-
-## 计划
-{计划的角色组合和任务列表}
-
-## 执行轮次
-| 轮次 | 状态 | 角色 | 结果 |
-|------|------|------|------|
-| 1 | 已完成 | 需求分析、制定计划 | 通过 |
-| 2 | 进行中 | executor | - |
+- **任务名称**：{任务名}
+- **任务类型**：{功能开发/Bug修复/调研/其他}
+- **创建时间**：{YYYY-MM-DD}
+- **状态**：{进行中/已完成/失败}
 
 ## 阶段状态
-| 阶段 | 状态 | 文档 |
+
+| 阶段 | 状态 | 说明 |
 |------|------|------|
-| 调度记录 | ✅ 完成 | docs/coordinator/xxx-coordinator.md |
-| 意图分析 | ✅ 完成 | docs/intent/xxx-intent.md |
-| 制定计划 | ✅ 完成 | docs/plans/xxx-plan.md |
-| 执行计划 | 进行中 | docs/execution/xxx-execution-1.md |
-| 功能验证 | 待执行 | docs/verification/xxx-verification.md |
-| 代码审查 | 待执行 | docs/reviews/xxx-review.md |
+| 任务状态检测 | ✅ | 已完成 |
+| 接收任务 | ✅ | 已完成 |
+| 需求分析 | ✅/待执行 | - |
+| 制定计划 | ✅/待执行 | - |
+| 执行任务 | 进行中 | - |
+| 功能验证 | 待执行 | - |
+| 代码审查 | 待执行 | - |
+| 完成 | 待执行 | - |
 ```
 
 ---
 
-## 意图分析模板
+## 需求分析模板
 
 ```markdown
-# 意图分析：{任务名称}
+# 需求分析：{任务名称}
 
 **时间**：{YYYY-MM-DD HH:MM}
-**任务**：{用户原始需求}
 
 ## 需求理解
 - 用户真实意图：{一句话说清楚}
-- 任务类型：{需求类/实现类/问题类/优化类}
-- 复杂度：{简单/普通/复杂}
+- 任务类型：{功能开发/Bug修复/调研/其他}
+- 复杂度：{简单/中等/复杂}
 
 ## 详细分析
 {多角度分析内容}
@@ -83,7 +72,6 @@
 # 实施计划：{任务名称}
 
 **时间**：{YYYY-MM-DD HH:MM}
-**任务**：{任务描述}
 
 ## 角色组合
 {角色列表和用途}
@@ -98,11 +86,6 @@
 
 ## 执行轮次
 ### 轮次 1
-- 角色：{角色名}
-- 任务：{任务描述}
-- 预期输出：{输出文档}
-
-### 轮次 2
 - 角色：{角色名}
 - 任务：{任务描述}
 - 预期输出：{输出文档}
@@ -125,7 +108,7 @@
 ## 执行记录
 ### 调用角色
 - 角色：{角色名}
-- Skill：{skill 调用}
+- 调用：Task(ai-assistant:xxx)
 
 ### 执行过程
 {执行详细过程}
@@ -133,9 +116,6 @@
 ### 输出结果
 - 输出文档：{路径}
 - 执行结果：{成功/失败/需调整}
-
-## 问题记录（如有）
-{遇到的问题及处理}
 
 ## 下一步
 - [ ] {下一步任务}
@@ -149,7 +129,7 @@
 # 验证报告：{任务名称}
 
 **时间**：{YYYY-MM-DD HH:MM}
-**验证者**：verification
+**验证者**：qa
 
 ## 验证结果
 - 状态：{通过/未通过/有条件通过}
@@ -163,12 +143,6 @@
 ### 测试结果
 {测试执行结果}
 
-## 问题列表（如有）
-| 问题 | 严重程度 | 状态 |
-|------|----------|------|
-| 问题1 | 高 | 待修复 |
-| 问题2 | 中 | 已修复 |
-
 ## 结论
 {验证结论}
 ```
@@ -181,12 +155,11 @@
 # 审查报告：{任务名称}
 
 **时间**：{YYYY-MM-DD HH:MM}
-**审查者**：code-review
+**审查者**：code-reviewer
 
 ## 审查结果
 - 状态：{通过/未通过/有条件通过}
 - 严重问题：{数量}
-- 中等问题：{数量}
 - 建议：{数量}
 
 ## 代码质量
@@ -208,14 +181,14 @@
 ## 文档命名规范
 
 ```
-格式：{日期}-{任务名}-{类型}.md
+格式：<task>-<type>.md
 
 示例：
-- 2026-02-27-user-login-coordinator.md
-- 2026-02-27-user-login-intent.md
-- 2026-02-27-user-login-plan.md
-- 2026-02-27-user-login-execution-1.md
-- 2026-02-27-user-login-execution-2.md
-- 2026-02-27-user-login-verification.md
-- 2026-02-27-user-login-review.md
+- user-login-coordinator.md
+- user-login-intent.md
+- user-login-plan.md
+- user-login-execution-1.md
+- user-login-verification.md
+- user-login-review.md
+- user-login-summary.md
 ```
