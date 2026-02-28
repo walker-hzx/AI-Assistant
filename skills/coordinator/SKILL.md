@@ -122,11 +122,19 @@ user-invocable: true
    - 业务规则
    - 验收标准
    - 风险点
-2. 写入文档：`docs/intent/<task>-intent.md`
-3. 检查文档是否创建成功
+2. 【重要】如果是测试用例增强或Bug修复任务，需要查找已有测试脚本：
+   - 使用 Glob 工具查找该功能模块的测试脚本（scripts/test_*.py）
+   - 分析需要回归的测试用例
+3. 写入文档：`docs/intent/<task>-intent.md`
+4. 检查文档是否创建成功
    → 成功 → 进入思考2
    → 失败 → 报错停止
 ```
+
+**【重要】回归测试检查**：
+- 测试用例增强和Bug修复任务，需要查找已有测试脚本
+- 分析需要回归的测试用例编号
+- 在需求文档中标注回归测试需求
 
 **思考2：需求完整性检查**
 - 需求理解完整吗？
@@ -160,7 +168,7 @@ user-invocable: true
 
 | 关键词 | 任务类型 | 必需角色 |
 |--------|---------|---------|
-| "测试用例"、"测试场景" | 测试用例增强 | test-designer + executor |
+| "测试用例"、"测试场景" | 测试用例增强 | test-designer + executor + qa |
 | "修复bug"、"修复错误" | Bug修复 | debugger + executor + qa |
 | "重构" | 代码重构 | code-analysis + executor |
 | "调研"、"分析" | 调研任务 | web-researcher / project-researcher |
@@ -192,9 +200,14 @@ user-invocable: true
 
 **里程碑：** 里程碑X （可选）
 
+**回归测试用例：** TEST_001, TEST_005 （可选，需要回归的已有测试用例）
+
+**新增测试用例：** TEST_046, TEST_047 （可选，新增的测试用例）
+
 **验收标准：**
 - [ ] 标准1：功能正常运行
 - [ ] 标准2：单元测试通过
+- [ ] 标准3：回归测试全部通过（如果有）
 
 **回滚步骤（可选）：**
 1. `git checkout src/xxx.ts`
@@ -319,11 +332,20 @@ Task(ai-assistant:web-researcher)
    - 检查功能是否按计划实现
    - 运行测试验证正确性
    - 检查边界条件处理
-2. 写入文档：`docs/verification/<task>-verification.md`
-3. 读取验证结果
+2. 【重要】如果有回归测试需求，需要运行回归测试用例：
+   - 回归测试用例：计划中标注的需要回归的测试用例
+   - 新增测试用例：计划中标注的新增测试用例
+   - 两者都需要通过
+3. 写入文档：`docs/verification/<task>-verification.md`
+4. 读取验证结果
    → 通过 → 进入下一步
    → 未通过 → 修复后重新验证（最多 3 次）
 ```
+
+**【重要】回归测试验证**：
+- 回归测试用例：确保修复新问题时，不破坏已有功能
+- 新增测试用例：验证新问题是否修复
+- 两者都必须通过才能算验证通过
 
 **文档位置**：`docs/verification/<task>-verification.md`
 
@@ -479,7 +501,7 @@ ai-assistant:evaluator
 | 任务类型 | 必需角色组合 | 说明 |
 |----------|--------------|------|
 | 功能开发 | requirement-analysis + executor | 需求分析 + 代码实现 |
-| 测试用例增强 | test-designer + executor | 测试设计 + 代码实现 |
+| 测试用例增强 | test-designer + executor + qa | 测试设计 + 代码实现 + 验证（含回归测试） |
 | Bug修复 | debugger + executor + qa | 调试 + 实现 + 验证 |
 | 代码重构 | code-analysis + executor | 分析 + 实现 |
 | 调研任务 | web-researcher / project-researcher | 调研 |
