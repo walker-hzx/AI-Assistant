@@ -69,6 +69,8 @@ user-invocable: true
     ↓
 【阶段 6】代码审查
     ↓
+【阶段 6.5】质量评估 ← 新增
+    ↓
 【阶段 7】完成
 ```
 
@@ -271,6 +273,7 @@ Task(ai-assistant:web-researcher)
 | 需要调试 bug | debugger | debugger | 定位和修复 bug |
 | 前端需要调试 | browser-debugger | browser-debugger | 捕获前端错误 |
 | 需要并行任务 | team-generator | - | 创建多角色协作团队 |
+| 需要质量门控/复盘 | evaluator | evaluator | 评估产出物质量，生成优化建议 |
 
 **选择原则**：
 - 按场景选择，不是一次性全部调用
@@ -309,11 +312,42 @@ Task(ai-assistant:web-researcher)
    - 可维护性
 2. 写入文档：`docs/reviews/<task>-review.md`
 3. 读取审查结果
-   → 通过 → 进入完成
+   → 通过 → 进入质量评估（阶段 6.5）
    → 未通过 → 修复后重新审查
 ```
 
 **文档位置**：`docs/reviews/<task>-review.md`
+
+### 步骤 6.5：质量评估（新增）
+
+> **评估各阶段产出物质量，生成优化建议**
+
+```
+1. 调度 evaluator 评估各阶段产出物：
+   - 需求文档质量
+   - 计划文档质量
+   - 执行结果质量
+   - 验证报告质量
+   - 审查报告质量
+2. 读取评估结果
+3. 根据评估结果判断：
+   → 合格 → 生成汇总报告 → 进入完成
+   → 不合格 → 退回重做 → 重新执行相关阶段
+4. 生成最终汇总报告：`docs/quality/<task>-summary.md`
+```
+
+**【重要】质量评估触发时机**：
+- 每个阶段产出后立即评估（可选）
+- 代码审查后必须进行质量评估
+- 任务完成时必须生成汇总报告
+
+**评估内容**：
+- 产出物质量评估
+- Subagent 选择评估
+- 系统级优化建议
+
+**文档位置**：`docs/quality/<task>-eval-N.md`（阶段评估）
+**文档位置**：`docs/quality/<task>-summary.md`（汇总报告）
 
 ### 步骤 7：完成
 
@@ -338,6 +372,7 @@ Task(ai-assistant:web-researcher)
 | 检查点 3 | 执行日志存在 | 报错停止 |
 | 检查点 4 | 验证报告存在且通过 | 重新验证（≤3次） |
 | 检查点 5 | 审查报告存在且通过 | 重新审查 |
+| 检查点 6 | 质量评估报告存在且通过 | 重新评估 |
 
 ### 检查函数
 
@@ -367,14 +402,15 @@ Task(ai-assistant:web-researcher)
 - 不检查上一轮结果就继续执行
 - 跳过验证阶段
 - 跳过审查阶段
-- 验证/审查失败后不修复就继续
+- 跳过质量评估阶段 ← 新增
+- 验证/审查/评估失败后不修复就继续 ← 新增
 - **【重要】管家自己执行任务（禁止，必须调度 Subagent）**
 - **【重要】使用错误的 Subagent 名称（必须使用白名单中的名称）**
 
 ✅ **正确做法**：
 - 必须先创建调度记录
 - 每轮执行后必须检查结果
-- 验证/审查必须通过才能继续
+- 验证/审查/评估必须通过才能继续
 - 失败后修复或通知用户
 - 所有任务必须调度 Subagent 执行，管家不亲自写代码
 
@@ -392,7 +428,8 @@ ai-assistant:project-researcher, ai-assistant:web-researcher,
 ai-assistant:requirement-analysis, ai-assistant:requirements-miner, ai-assistant:executor, ai-assistant:qa,
 ai-assistant:e2e-tester, ai-assistant:test-designer,
 ai-assistant:security-reviewer, ai-assistant:code-reviewer, ai-assistant:debugger,
-ai-assistant:browser-debugger, ai-assistant:team-generator
+ai-assistant:browser-debugger, ai-assistant:team-generator,
+ai-assistant:evaluator
 ```
 
 **禁止使用的名称**：
@@ -414,9 +451,9 @@ ai-assistant:browser-debugger, ai-assistant:team-generator
 
 | 任务类型 | 推荐流程 |
 |----------|----------|
-| 新功能开发 | 需求分析 → 制定计划 → 执行代码 → 功能验证 → 代码审查 |
-| Bug 修复 | 需求分析 → 制定计划 → 调试修复 → 功能验证 → 代码审查 |
-| 需求不清晰 | 需求分析（多次） → 制定计划 → 执行 |
+| 新功能开发 | 需求分析 → 制定计划 → 执行代码 → 功能验证 → 代码审查 → 质量评估 |
+| Bug 修复 | 需求分析 → 制定计划 → 调试修复 → 功能验证 → 代码审查 → 质量评估 |
+| 需求不清晰 | 需求分析（多次） → 制定计划 → 执行 → 质量评估 |
 
 ---
 
@@ -468,6 +505,7 @@ ai-assistant:browser-debugger, ai-assistant:team-generator
 | web-researcher | 全局 | docs/plans/ | 写入研究成果 |
 | browser-debugger | docs/execution/ | docs/execution/ | 读取错误日志 |
 | team-generator | docs/plans/ | docs/plans/ | 写入团队配置 |
+| evaluator | docs/intent/, docs/plans/, docs/execution/, docs/verification/, docs/reviews/ | docs/quality/ | 读取各阶段产出，输出质量评估报告 |
 
 **管家调度原则**：
 1. 计划文档中声明执行者：`**执行者：** ai-assistant:executor`
@@ -491,8 +529,15 @@ docs/
 │   └── <task>-execution-2.md
 ├── verification/       # 验证报告
 │   └── <task>-verification.md
-└── reviews/           # 审查报告
-    └── <task>-review.md
+├── reviews/           # 审查报告
+│   └── <task>-review.md
+└── quality/           # 质量评估报告（新增）
+    ├── <task>-eval-1.md   # 阶段评估
+    ├── <task>-eval-2.md
+    ├── <task>-eval-3.md
+    ├── <task>-eval-4.md
+    ├── <task>-eval-5.md
+    └── <task>-summary.md  # 最终汇总报告
 ```
 
 > 详细规范见 ./OUTPUT.md

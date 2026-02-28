@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.5.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.5.0 新增：requirements-miner 需求挖掘 Agent，支持逆向分析项目代码提取功能",
+  "version": "2.6.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.6.0 新增：evaluator 质量评估 Agent，支持流程质量门控和系统级优化建议",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
@@ -43,6 +43,7 @@
     "./agents/web-researcher.md",
     "./agents/e2e-tester.md",
     "./agents/browser-debugger.md",
-    "./agents/project-researcher.md"
+    "./agents/project-researcher.md",
+    "./agents/evaluator.md"
   ]
 }
