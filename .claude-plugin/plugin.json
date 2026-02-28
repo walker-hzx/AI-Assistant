@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.13.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.13.0 新增：ui-ux-reviewer Agent，用于分析和优化页面 UI/UX",
+  "version": "2.14.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.14.0 重构：coordinator SKILL.md 步骤编号，修复两个步骤1等问题，流程更清晰",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
