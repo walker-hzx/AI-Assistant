@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.4.9",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.4.9 修复：Task 调用格式（移除 prompt 参数，修正 Agent 名称）",
+  "version": "2.5.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.5.0 新增：requirements-miner 需求挖掘 Agent，支持逆向分析项目代码提取功能",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
@@ -25,6 +25,7 @@
   "commands": ["./commands/"],
   "agents": [
     "./agents/requirements-analyst.md",
+    "./agents/requirements-miner.md",
     "./agents/planner.md",
     "./agents/executor.md",
     "./agents/qa.md",

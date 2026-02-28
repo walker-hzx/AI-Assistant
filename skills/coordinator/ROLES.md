@@ -21,6 +21,7 @@
 | 角色 | 用途 | 典型场景 |
 |------|------|---------|
 | requirement-analysis | 需求分析 - 多角度分析需求完整性 | 需求需要详细分析 |
+| requirements-miner | 需求挖掘 - 逆向分析代码提取功能 | 中途接手项目、没有需求文档 |
 
 ### 实现类
 
@@ -62,7 +63,7 @@
 
 | 阶段 | 可调用的 Subagent |
 |------|------------------|
-| 需求分析 | thinking-coach, requirement-analysis, web-researcher, project-researcher |
+| 需求分析 | thinking-coach, requirement-analysis, requirements-miner, web-researcher, project-researcher |
 | 任务规划 | strategist |
 | 代码执行 | executor, web-researcher |
 | 测试验证 | test-designer, e2e-tester, qa |

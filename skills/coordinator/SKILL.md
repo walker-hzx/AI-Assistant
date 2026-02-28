@@ -261,6 +261,7 @@ Task(ai-assistant:web-researcher)
 | 需要了解项目现状 | project-researcher | project-researcher | 调研项目现状 |
 | 需要查资料/文档 | web-researcher | web-researcher | 爬取和研究网页 |
 | 需求需要详细分析 | requirement-analysis | requirements-analyst | 多角度分析需求完整性 |
+| 中途接手项目/无需求文档 | requirements-miner | requirements-miner | 逆向分析代码提取功能 |
 | 需要编写代码 | executor | executor | 按计划编写代码 |
 | 需要单元测试 | qa | qa | 编写单元测试 |
 | 需要 E2E 测试 | e2e-tester | e2e-tester | 端到端测试 |
@@ -388,7 +389,7 @@ Task(ai-assistant:web-researcher)
 ```
 ai-assistant:thinking-coach, ai-assistant:strategist, ai-assistant:code-analysis,
 ai-assistant:project-researcher, ai-assistant:web-researcher,
-ai-assistant:requirement-analysis, ai-assistant:executor, ai-assistant:qa,
+ai-assistant:requirement-analysis, ai-assistant:requirements-miner, ai-assistant:executor, ai-assistant:qa,
 ai-assistant:e2e-tester, ai-assistant:test-designer,
 ai-assistant:security-reviewer, ai-assistant:code-reviewer, ai-assistant:debugger,
 ai-assistant:browser-debugger, ai-assistant:team-generator
@@ -452,6 +453,7 @@ ai-assistant:browser-debugger, ai-assistant:team-generator
 | Subagent | 文档读取 | 文档写入 | 说明 |
 |----------|---------|---------|------|
 | requirement-analysis | docs/intent/ | docs/plans/ | 分析结果写入文档 |
+| requirements-miner | 全局 | docs/requirements/ | 逆向分析代码生成需求文档 |
 | executor | docs/plans/, docs/intent/ | docs/execution/ | 从计划读取详细步骤 |
 | debugger | docs/execution/, docs/intent/ | docs/execution/ | 读取执行日志定位问题 |
 | qa | docs/plans/, docs/execution/ | docs/verification/ | 读取计划和执行结果 |
