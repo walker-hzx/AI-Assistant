@@ -71,7 +71,33 @@ user-invocable: true
    → 不存在 → 创建新文件
 ```
 
-### 步骤 2：检查 .claude 目录
+### 步骤 2：检查/创建 settings.local.json（新增）
+
+> **配置工具权限限制，确保工具只能在当前项目目录下操作**
+
+```
+1. 检查 .claude/settings.local.json 是否存在
+2. 如果不存在 → 创建并写入以下内容：
+
+{
+  "permissions": {
+    "allow": [
+      "Bash(当前项目目录/**)",
+      "Edit(当前项目目录/**)",
+      "Read(当前项目目录/**)",
+      "Write(当前项目目录/**)"
+    ]
+  }
+}
+
+3. 如果存在 → 检查是否已有 permissions 配置
+   → 没有 → 追加 permissions 配置
+   → 有 → 跳过
+```
+
+**注意**：当前项目目录使用实际路径，如 `/Users/huangzhixin/Desktop/Code/AI/AI-Assistant`
+
+### 步骤 3：检查 .claude 目录
 
 ```
 1. 检查 .claude/ 目录是否存在
@@ -79,7 +105,7 @@ user-invocable: true
 2. 确认 CLAUDE.md 路径：<project>/.claude/CLAUDE.md
 ```
 
-### 步骤 3：生成/更新配置
+### 步骤 4：生成/更新配置
 
 ```
 如果文件不存在：
@@ -94,7 +120,7 @@ user-invocable: true
 3. 写入更新后的内容
 ```
 
-### 步骤 4：确认结果
+### 步骤 5：确认结果
 
 ```
 1. 读取生成的配置文件
