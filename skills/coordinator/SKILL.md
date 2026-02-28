@@ -51,11 +51,17 @@ user-invocable: true
 ```
 【阶段 0】接收任务
     ↓
+【思考1】任务类型和复杂度分析 ← 新增
+    ↓
 【阶段 1】创建调度记录 ← 必须先创建
     ↓
 【阶段 2】需求分析
     ↓
+【思考2】需求完整性检查 ← 新增
+    ↓
 【阶段 3】制定计划
+    ↓
+【思考3】计划风险评估 ← 新增
     ↓
 【阶段 4】执行任务（循环）
     ↓
@@ -75,10 +81,16 @@ user-invocable: true
 ```
 1. 接收用户需求
 2. 理解需求内容
-3. 判断需求是否清晰
+3. 【思考1】调用 thinking-coach 分析任务类型和复杂度
+4. 判断需求是否清晰
    → 不清晰 → 进入步骤 2
    → 清晰 → 进入步骤 3
 ```
+
+**思考1内容**：
+- 这是什么类型的任务？（功能开发/Bug修复/调研/分析等）
+- 任务复杂度如何？（简单/中等/复杂）
+- 有什么潜在风险？
 
 ### 步骤 1：创建调度记录
 
@@ -105,9 +117,14 @@ user-invocable: true
    - 风险点
 2. 写入文档：`docs/intent/<task>-intent.md`
 3. 检查文档是否创建成功
-   → 成功 → 进入下一步
+   → 成功 → 进入思考2
    → 失败 → 报错停止
 ```
+
+**思考2：需求完整性检查**
+- 需求理解完整吗？
+- 有没有遗漏的场景？
+- 有没有模糊不清的地方？
 
 **文档位置**：`docs/intent/<task>-intent.md`
 
@@ -124,9 +141,14 @@ user-invocable: true
    - 【重要】每个任务都要指定执行者（Subagent）
 2. 写入文档：`docs/plans/<task>-plan.md`
 3. 检查文档是否创建成功
-   → 成功 → 进入下一步
+   → 成功 → 进入思考3
    → 失败 → 报错停止
 ```
+
+**思考3：计划风险评估**
+- 计划最优吗？有没有更好的方式？
+- 任务拆分是否合理？
+- 有什么潜在风险？如何应对？
 
 **【强制】计划文档格式**：
 
@@ -135,7 +157,7 @@ user-invocable: true
 ```markdown
 ### 任务 N：[任务名称]
 
-**执行者：** executor （必填，从 ROLES.md 中选择）
+**执行者：** ai-assistant:executor （必填，使用完整名称）
 
 **输入：** docs/plans/xxx-plan.md （从哪里读取信息）
 
@@ -151,16 +173,18 @@ user-invocable: true
 
 **【重要】Task 调用说明**：
 
-> **由于 Task(subagent, prompt="") 可能不被支持，请使用以下方式**
+> **必须使用完整的 ai-assistant: 前缀名称**
 
 1. **计划文档中声明执行者**（必填）：
    ```markdown
-   **执行者：** executor
+   **执行者：** ai-assistant:executor
+   **执行者：** ai-assistant:web-researcher
    ```
 
-2. **调用时使用**：
-   - `Task(executor)` - 只用名称
-   - 或自然语言 "使用 executor subagent"
+2. **调用时使用完整名称**：
+   - `Task(ai-assistant:executor)` - 使用完整名称
+   - `Task(ai-assistant:web-researcher)`
+   - 或自然语言 "使用 ai-assistant:executor subagent"
 
 3. **任务细节通过文档传递**：
    - Subagent 从 docs/plans/ 读取计划详情
@@ -193,14 +217,20 @@ user-invocable: true
 
 > **根据任务上下文，从 ROLES.md 中的 Subagent 选择合适的角色执行**
 
+**【重要】Agent 名称格式**：
+
+由于 plugin.json 中定义的 agents 都带有 `ai-assistant:` 前缀，调用时必须使用完整名称。
+
 **调用方式**（二选一）：
 
 ```
-方式一：使用 Task 工具 + Agent 名称
-Task(executor)
+方式一：使用 Task 工具 + 完整 Agent 名称
+Task(ai-assistant:executor)
+Task(ai-assistant:web-researcher)
 
 方式二：使用自然语言描述
-使用 executor subagent
+使用 ai-assistant:executor subagent
+使用 ai-assistant:web-researcher subagent
 ```
 
 **计划文档中必须明确声明**：
@@ -208,7 +238,7 @@ Task(executor)
 ```markdown
 ### 任务 N：[任务名称]
 
-**执行者：** executor （必填）
+**执行者：** ai-assistant:executor （必填，使用完整名称）
 ```
 
 **选择流程**：
@@ -351,22 +381,27 @@ Task(executor)
 
 ## 【强制】Subagent 名称白名单
 
-> **必须严格使用以下名称，禁止使用其他名称**
+> **必须使用完整的 ai-assistant: 前缀名称，禁止使用短名称**
+
+**正确的 Agent 名称**：
 
 ```
-thinking-coach, strategist, code-analysis, project-researcher, web-researcher,
-requirement-analysis, executor, qa, e2e-tester, test-designer,
-security-reviewer, code-reviewer, debugger, browser-debugger, team-generator
+ai-assistant:thinking-coach, ai-assistant:strategist, ai-assistant:code-analysis,
+ai-assistant:project-researcher, ai-assistant:web-researcher,
+ai-assistant:requirement-analysis, ai-assistant:executor, ai-assistant:qa,
+ai-assistant:e2e-tester, ai-assistant:test-designer,
+ai-assistant:security-reviewer, ai-assistant:code-reviewer, ai-assistant:debugger,
+ai-assistant:browser-debugger, ai-assistant:team-generator
 ```
 
 **禁止使用的名称**：
+- web-researcher ❌（正确名称是 ai-assistant:web-researcher）
+- executor ❌（正确名称是 ai-assistant:executor）
+- debugging ❌（正确名称是 ai-assistant:debugger）
+- code-review ❌（正确名称是 ai-assistant:code-reviewer）
+- security-review ❌（正确名称是 ai-assistant:security-reviewer）
 - code-implementation ❌
 - executing-plans ❌
-- implementation ❌
-- 执行 ❌
-- debugging ❌（正确名称是 debugger）
-- code-review ❌（正确名称是 code-reviewer）
-- security-review ❌（正确名称是 security-reviewer）
 
 ---
 
@@ -381,6 +416,30 @@ security-reviewer, code-reviewer, debugger, browser-debugger, team-generator
 | 新功能开发 | 需求分析 → 制定计划 → 执行代码 → 功能验证 → 代码审查 |
 | Bug 修复 | 需求分析 → 制定计划 → 调试修复 → 功能验证 → 代码审查 |
 | 需求不清晰 | 需求分析（多次） → 制定计划 → 执行 |
+
+---
+
+## 【强制】思考模式
+
+> **三思而后行 - 在关键节点进行深度思考**
+
+### 管家层面的思考触发点
+
+| 触发点 | 思考内容 | 调用 Agent |
+|--------|---------|-----------|
+| 思考1：接收任务后 | 任务类型是什么？复杂度如何？有什么风险？ | thinking-coach |
+| 思考2：需求分析后 | 需求完整吗？有遗漏吗？有模糊处吗？ | thinking-coach |
+| 思考3：制定计划后 | 计划最优吗？有没有更好的方式？ | thinking-coach |
+
+### Subagent 层面的思考规则
+
+| 任务复杂度 | 是否思考 | 思考内容 |
+|-----------|---------|---------|
+| 简单（<5分钟） | 否 | - |
+| 中等（5-15分钟） | 简短思考 | 实现方式 |
+| 复杂（>15分钟） | 是 | 边界情况、风险点 |
+
+**注意**：Subagent 的思考在 Agent 描述中体现，无需管家额外调用。
 
 ---
 
@@ -515,8 +574,8 @@ Task: <任务描述>
     ↓
 【管家】制定计划 → 生成 docs/plans/...plan.md
     ↓
-【管家】执行轮次 1：调度「executor」角色
-    → Task(executor)
+【管家】执行轮次 1：调度「ai-assistant:executor」角色
+    → Task(ai-assistant:executor)
     ↓
 【管家】检查执行结果 → 完成
     ↓
