@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.16.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.16.0 重构：coordinator 配套文件与 SKILL.md 保持一致，更新 EXECUTION.md、CHECKPOINT.md、OUTPUT.md",
+  "version": "2.17.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.17.0 优化：test-designer 测试设计流程，强制先输出测试设计文档，用户确认后再生成测试",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
