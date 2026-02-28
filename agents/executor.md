@@ -2,6 +2,7 @@
 name: executor
 description: "执行者 - 按计划实现代码，具体完成功能开发。使用时机：有明确的实施计划要执行、需要具体实现代码、需要处理边界条件和异常"
 model: inherit
+version: 2.18.0
 tools:
   - Read
   - Write
@@ -200,6 +201,202 @@ skills:
 ```
 
 **如果思考后仍无法解决 → 暂停，寻求帮助**
+
+---
+
+## 通用代码模式
+
+> 以下是代码结构的参考模式，**可根据项目习惯调整**。核心是保持结构清晰，不是强制规范。
+
+### 1. 前端组件通用模式
+
+**核心结构**（适用于 Vue/React/其他框架）：
+
+```typescript
+// 1. 类型定义（Props & Events）
+interface Props {
+  itemId?: number
+  mode?: 'view' | 'edit'
+}
+
+interface Emits {
+  (e: 'submit', data: FormData): void
+  (e: 'cancel'): void
+}
+
+// 2. 状态管理
+const loading = ref(false)
+const formData = reactive<FormData>({
+  name: '',
+  description: ''
+})
+
+// 3. 计算属性（可选）
+const isValid = computed(() => formData.name.length > 0)
+
+// 4. 方法
+const handleSubmit = async () => {
+  if (!isValid.value) return
+  loading.value = true
+  try {
+    await api.submit(formData)
+    emit('submit', formData)
+  } finally {
+    loading.value = false
+  }
+}
+
+// 5. 生命周期/副作用
+onMounted(async () => {
+  if (props.itemId) {
+    const data = await fetchItem(props.itemId)
+    Object.assign(formData, data)
+  }
+})
+```
+
+**模式要点**：
+- ✅ 类型定义分离
+- ✅ 状态与逻辑分离
+- ✅ 不可变更新（使用 `Object.assign` 或展开）
+- ✅ Loading 状态管理
+
+---
+
+### 2. API 端点通用模式
+
+```python
+# 1. Schema 定义（输入验证）
+class ItemCreate(BaseModel):
+    name: str = Field(..., min_length=1)
+    description: str | None = None
+
+# 2. 路由实现
+@router.post("/items")
+async def create_item(
+    item: ItemCreate,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    # 业务逻辑
+    db_item = Item(**item.model_dump(), owner_id=current_user.id)
+    db.add(db_item)
+    await db.commit()
+    return db_item
+```
+
+**模式要点**：
+- ✅ Schema 验证（入口把控）
+- ✅ 依赖注入（数据库、会话）
+- ✅ 认证授权
+- ✅ 错误处理
+
+---
+
+### 3. 数据模型通用模式
+
+```python
+# 数据库模型
+class Item(Base):
+    __tablename__ = "items"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False)
+    owner_id = Column(Integer, ForeignKey("users.id"))
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, onupdate=func.now())
+
+    # 关系定义
+    owner = relationship("User", back_populates="items")
+```
+
+**模式要点**：
+- ✅ 主键 + 索引
+- ✅ 时间戳（创建/更新）
+- ✅ 外键关系
+- ✅ 软删除支持（可选）
+
+---
+
+### 4. Service 层通用模式
+
+```python
+class ItemService:
+    def __init__(self, db: AsyncSession):
+        self.db = db
+
+    async def create(self, data: ItemCreate, owner_id: int) -> Item:
+        # 1. 业务验证
+        self._validate(data)
+
+        # 2. 创建记录
+        item = Item(**data.model_dump(), owner_id=owner_id)
+        self.db.add(item)
+        await self.db.commit()
+        await self.db.refresh(item)
+        return item
+
+    async def get(self, item_id: int) -> Item | None:
+        return await self.db.get(Item, item_id)
+
+    async def list(self, owner_id: int, skip: int = 0, limit: int = 10) -> list[Item]:
+        # 分页查询
+        ...
+
+    async def update(self, item_id: int, data: ItemUpdate) -> Item:
+        item = await self.get(item_id)
+        if not item:
+            raise NotFoundError()
+
+        # 不可变更新
+        for key, value in data.model_dump(exclude_unset=True).items():
+            setattr(item, key, value)
+
+        await self.db.commit()
+        return item
+
+    async def delete(self, item_id: int) -> None:
+        ...
+```
+
+**模式要点**：
+- ✅ 单一职责（一个 Service 类对应一个实体）
+- ✅ 事务处理
+- ✅ 异常抛出（让上层处理）
+- ✅ 不可变更新模式
+
+---
+
+### 5. 错误处理通用模式
+
+```python
+# 1. 定义业务异常
+class AppException(Exception):
+    def __init__(self, message: str, status_code: int = 400):
+        self.message = message
+        self.status_code = status_code
+        super().__init__(message)
+
+# 2. 全局异常处理
+async def global_exception_handler(request: Request, exc: Exception):
+    if isinstance(exc, AppException):
+        return JSONResponse(
+            status_code=exc.status_code,
+            content={"error": exc.message}
+        )
+    # 未知异常
+    logger.error(f"Unexpected: {exc}", exc_info=True)
+    return JSONResponse(
+        status_code=500,
+        content={"error": "服务器错误"}
+    )
+```
+
+**模式要点**：
+- ✅ 业务异常定义
+- ✅ 全局统一处理
+- ✅ 日志记录
+- ✅ 敏感信息保护
 
 ---
 
