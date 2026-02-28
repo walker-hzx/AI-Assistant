@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.6.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.6.0 新增：evaluator 质量评估 Agent，支持流程质量门控和系统级优化建议",
+  "version": "2.7.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.7.0 新增：Bug修复区分复杂度+首轮质量门控，优化执行效率",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
