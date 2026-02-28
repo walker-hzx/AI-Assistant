@@ -340,7 +340,7 @@ ai-assistant:project-researcher, ai-assistant:web-researcher,
 ai-assistant:requirement-analysis, ai-assistant:requirements-miner, ai-assistant:executor, ai-assistant:qa,
 ai-assistant:e2e-tester, ai-assistant:test-designer,
 ai-assistant:security-reviewer, ai-assistant:code-reviewer, ai-assistant:debugger,
-ai-assistant:browser-debugger, ai-assistant:team-generator,
+ai-assistant:browser-debugger,
 ai-assistant:evaluator, ai-assistant:ui-ux-reviewer
 ```
 

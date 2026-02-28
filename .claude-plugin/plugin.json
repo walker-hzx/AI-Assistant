@@ -26,7 +26,6 @@
   "agents": [
     "./agents/requirements-analyst.md",
     "./agents/requirements-miner.md",
-    "./agents/planner.md",
     "./agents/executor.md",
     "./agents/qa.md",
     "./agents/code-reviewer.md",
@@ -36,10 +35,6 @@
     "./agents/security-reviewer.md",
     "./agents/test-designer.md",
     "./agents/strategist.md",
-    "./agents/architect.md",
-    "./agents/database-expert.md",
-    "./agents/performance-expert.md",
-    "./agents/refactoring-expert.md",
     "./agents/web-researcher.md",
     "./agents/e2e-tester.md",
     "./agents/browser-debugger.md",

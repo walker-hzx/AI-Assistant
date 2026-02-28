@@ -57,7 +57,7 @@
 
 | 角色 | 用途 | 典型场景 |
 |------|------|---------|
-| team-generator | 团队生成 - 创建多角色协作团队 | 需要并行任务 |
+| (无) | | |
 
 ---
 
@@ -74,7 +74,7 @@
 | UI/UX 优化 | ui-ux-reviewer |
 | 质量评估 | evaluator |
 | 问题调试 | debugger, browser-debugger, code-analysis |
-| 复杂决策 | strategist, team-generator |
+| 复杂决策 | strategist |
 
 ---
 
