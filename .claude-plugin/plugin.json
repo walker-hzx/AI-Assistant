@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.11.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.11.0 新增：project-init 和 CLAUDE.md 中增加文件操作范围限制说明，明确文件操作仅限当前项目目录",
+  "version": "2.12.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.12.0 优化：文件操作范围限制示意改用表格形式，更清晰直观",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
