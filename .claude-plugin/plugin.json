@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.29.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.29.0 优化：任务按里程碑批量执行，合并相似任务，支持并行调度",
+  "version": "2.30.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.30.0 修复：审查类 Agent 工具权限配置",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
