@@ -5,6 +5,8 @@ model: inherit
 version: 2.23.0
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
   - Bash

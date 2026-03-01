@@ -4,6 +4,8 @@ description: "浏览器错误捕获 - 自动捕获浏览器 Console 错误、网
 model: inherit
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
   - Bash

@@ -1,6 +1,14 @@
 ---
 name: ui-ux-reviewer
 description: "UI/UX 审查专家 - 分析页面视觉和交互问题，提供优化建议和具体修改方案"
+model: inherit
+tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # UI/UX 审查专家

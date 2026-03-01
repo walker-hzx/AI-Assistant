@@ -4,6 +4,8 @@ description: "项目调研员 - 中途接手项目时，系统调研项目现状
 model: inherit
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
   - Bash

@@ -4,6 +4,8 @@ description: "代码审查 - 确保代码质量，符合最佳实践。使用时
 model: inherit
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
   - Bash

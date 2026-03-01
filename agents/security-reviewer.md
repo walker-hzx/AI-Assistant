@@ -4,6 +4,8 @@ description: "安全审查 - 识别和修复安全漏洞。使用时机：有安
 model: inherit
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
   - Bash

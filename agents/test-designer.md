@@ -4,9 +4,10 @@ description: "测试设计 - 设计测试用例，确保测试覆盖。使用时
 model: inherit
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
-  - Write
 skills:
 - test-planner
 ---
