@@ -51,23 +51,20 @@
 |-------|------|
 | coordinator | 智能调度 - 任务调度和协调 |
 | requirements-analyst | 需求分析师 - 理解用户真正想要什么 |
-| planner | 规划专家 - 创建详细实施计划 |
 | executor | 执行者 - 按计划实现代码 |
 | qa | 质量保证 - 验证功能正确 |
 | code-reviewer | 代码审查 - 确保代码质量 |
 | debugger | 调试专家 - 定位和修复 bug |
 | thinking-coach | 思维教练 - 反思思维方式 |
 | strategist | 策略分析师 - 深度分析决策 |
-| architect | 架构师 - 系统设计决策 |
-| database-expert | 数据库专家 - 数据库设计优化 |
-| performance-expert | 性能专家 - 性能分析优化 |
-| refactoring-expert | 重构专家 - 代码重构 |
 | security-reviewer | 安全审查 - 漏洞检测 |
 | test-designer | 测试设计 - 设计测试用例 |
 | code-analysis | 代码分析师 - 系统分析代码 |
 | project-researcher | 项目调研 - 中途接手项目 |
 | web-researcher | 网页研究 - 爬取网页分析 |
 | e2e-tester | E2E 测试 - 执行端到端测试 |
+| ui-ux-reviewer | UI/UX 审查 - 页面视觉和交互优化 |
+| evaluator | 质量评估 - 评估产出物质量 |
 
 ### Commands
 
@@ -106,8 +103,7 @@ coordinator → planner → executor → qa → code-reviewer
    - `/brainstorming` - 需求分析，明确要做什么
 
 2. **规划阶段**
-   - coordinator-planning - 制定执行方案
-   - coordinator-dispatch - 任务派发
+   - coordinator - 智能调度，制定执行方案
 
 3. **执行阶段**
    - executor - 按计划实现代码
@@ -120,18 +116,16 @@ coordinator → planner → executor → qa → code-reviewer
 
 5. **审查阶段**
    - code-reviewer - 代码审查，确保代码质量
+   - evaluator - 质量评估（复杂任务）
    - 完成后更新 `docs/蓝图.md`
 
 ## 项目结构
 
 ```
 AI-Assistant/
-├── skills/                  # Skills (34个)
-│   ├── assistant/
+├── skills/                  # Skills
+│   ├── coordinator/        # 智能管家（核心调度）
 │   ├── brainstorming/
-│   ├── coordinator-intent/
-│   ├── coordinator-planning/
-│   ├── coordinator-dispatch/
 │   ├── writing-plans/
 │   ├── executing-plans/
 │   ├── verification/
@@ -141,10 +135,9 @@ AI-Assistant/
 │   ├── web-researcher/
 │   ├── e2e-tester/
 │   └── ...
-├── agents/                  # Agents (18个)
+├── agents/                  # Agents (16个)
 │   ├── coordinator.md
 │   ├── requirements-analyst.md
-│   ├── planner.md
 │   ├── executor.md
 │   ├── qa.md
 │   ├── code-reviewer.md

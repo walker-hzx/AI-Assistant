@@ -16,22 +16,20 @@
 |------|---------|---------|---------|
 | coordinator | 任务记录 | `docs/plans/` | `YYYY-MM-DD-<task>-coordinator.md` |
 | requirements-analyst | 需求分析报告 | `docs/requirements/` | `YYYY-MM-DD-<feature>-requirements.md` |
-| planner | 实施计划 | `docs/plans/` | `YYYY-MM-DD-<feature>-plan.md` |
 | executor | 执行日志 | `docs/plans/` | `YYYY-MM-DD-<feature>-execution-log.md` |
 | qa | 验证报告 | `docs/verification/` | `YYYY-MM-DD-<feature>-verification.md` |
 | code-reviewer | 审查报告 | `docs/reviews/` | `YYYY-MM-DD-<feature>-review.md` |
 | strategist | 分析报告 | `docs/analysis/` | `YYYY-MM-DD-<topic>-analysis.md` |
 | debugger | 调试报告 | `docs/debug/` | `YYYY-MM-DD-<issue>-debug.md` |
 | code-analysis | 分析报告 | `docs/analysis/` | `YYYY-MM-DD-<topic>-code-analysis.md` |
-| architect | 架构文档 | `docs/architecture/` | `YYYY-MM-DD-<topic>-architecture.md` |
-| database-expert | 数据库文档 | `docs/database/` | `YYYY-MM-DD-<topic>-database.md` |
-| performance-expert | 性能报告 | `docs/performance/` | `YYYY-MM-DD-<topic>-performance.md` |
-| refactoring-expert | 重构报告 | `docs/refactoring/` | `YYYY-MM-DD-<topic>-refactoring.md` |
 | security-reviewer | 安全报告 | `docs/security/` | `YYYY-MM-DD-<feature>-security.md` |
+| test-designer | 测试用例 | `docs/testing/` | `YYYY-MM-DD-<feature>-test-cases.md` |
 | project-researcher | 调研报告 | `docs/research/` | `YYYY-MM-DD-<project>-research.md` |
 | web-researcher | 研究报告 | `docs/research/` | `YYYY-MM-DD-<topic>-web-research.md` |
 | e2e-tester | 测试报告 | `docs/testing/` | `YYYY-MM-DD-<feature>-e2e.md` |
 | browser-debugger | 调试报告 | `docs/debug/` | `YYYY-MM-DD-<issue>-browser-debug.md` |
+| ui-ux-reviewer | 审查报告 | `docs/reviews/` | `YYYY-MM-DD-<feature>-ui-ux-review.md` |
+| evaluator | 评估报告 | `docs/quality/` | `YYYY-MM-DD-<task>-quality.md` |
 
 ---
 

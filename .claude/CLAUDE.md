@@ -26,7 +26,7 @@
 
 ### ROLES.md
 
-`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 15 个 Subagent 角色。
+`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 17 个 Subagent 角色。
 
 ---
 

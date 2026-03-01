@@ -39,10 +39,10 @@
 
 ```json
 // ❌ 错误
-"agents": "./agents/planner.md"
+"agents": "./agents/executor.md"
 
 // ✅ 正确
-"agents": ["./agents/planner.md"]
+"agents": ["./agents/executor.md"]
 ```
 
 ### Agents 路径规则
@@ -55,9 +55,9 @@
 
 // ✅ 正确
 "agents": [
-  "./agents/planner.md",
-  "./agents/architect.md",
-  "./agents/code-reviewer.md"
+  "./agents/executor.md",
+  "./agents/code-reviewer.md",
+  "./agents/debugger.md"
 ]
 ```
 
@@ -131,7 +131,7 @@ claude plugin validate .claude-plugin/plugin.json
 
 ## 文件路径格式
 
-- 始终使用相对路径：`./agents/planner.md`
+- 始终使用相对路径：`./agents/executor.md`
 - 使用正斜杠 `/`，即使在 Windows 上
 - 不要使用绝对路径
 
@@ -141,7 +141,7 @@ claude plugin validate .claude-plugin/plugin.json
 {
   "version": "1.0.0",
   "agents": [
-    "./agents/planner.md",
+    "./agents/executor.md",
     "./agents/code-reviewer.md"
   ],
   "commands": ["./commands/"],
