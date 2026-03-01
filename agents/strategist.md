@@ -4,6 +4,8 @@ description: "策略分析师 - 深度分析问题本质，评估方案，识别
 model: sonnet
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
 skills:

@@ -4,6 +4,11 @@ description: "思维教练 - 帮你厘清思路，像高手一样给你洞见和
 model: inherit
 tools:
   - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 skills:
 - thinking-coach
 ---

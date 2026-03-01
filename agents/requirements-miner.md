@@ -4,6 +4,8 @@ description: "需求挖掘 - 逆向分析项目代码，提取已实现的功能
 model: inherit
 tools:
   - Read
+  - Write
+  - Edit
   - Glob
   - Grep
   - Bash
