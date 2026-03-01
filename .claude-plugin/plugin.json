@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.23.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.23.0 优化：增强 code-analysis 架构分析能力，支持架构逻辑分析、逻辑漏洞识别、架构优化建议",
+  "version": "2.24.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.24.0 优化：增强 coordinator 思维能力，强制管家遇到任务必须创建调度文档，必须调度 Subagent",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
