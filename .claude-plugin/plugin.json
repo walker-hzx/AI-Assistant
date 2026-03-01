@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.36.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.36.0 优化：改进\"展示选项，让用户做决定\"原则，通用化而非写死具体步骤",
+  "version": "2.37.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.37.0 修复：修正 Subagent 名称错误，requirement-analysis → requirements-analyst",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"

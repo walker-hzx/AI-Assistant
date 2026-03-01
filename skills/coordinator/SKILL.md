@@ -231,7 +231,7 @@ user-invocable: true
 
 **【重要】管家不能自己用 Write/Edit 创建文档，必须调度 Subagent**：
 - 创建调度记录 → 调度 `executor`
-- 创建需求文档 → 调度 `requirement-analysis`
+- 创建需求文档 → 调度 `requirements-analyst`
 - 创建计划文档 → 调度 `writing-plans` 或 `executor`
 - 创建验证/审查报告 → 调度 `qa` / `code-reviewer`
 
@@ -432,7 +432,7 @@ user-invocable: true
    - 验收标准
    - 风险点
 2. 如果是测试/Bug任务，查找已有测试脚本
-3. 调度 requirement-analysis 创建需求文档：`docs/intent/<task>-intent.md`
+3. 调度 requirements-analyst 创建需求文档：`docs/intent/<task>-intent.md`
    - 任务描述：分析用户需求，生成需求文档
    - 输入：用户原始需求
    - 输出：需求文档文件路径
@@ -487,7 +487,7 @@ user-invocable: true
 | Bug修复 | debugger + executor + qa |
 | 代码重构 | code-analysis + executor |
 | 调研任务 | web-researcher / project-researcher |
-| 功能开发 | requirement-analysis + executor |
+| 功能开发 | requirements-analyst + executor |
 | UI/UX 优化 | ui-ux-reviewer + executor |
 | 安全审查 | security-reviewer |
 | 架构分析 | code-analysis + strategist |
@@ -572,7 +572,7 @@ user-invocable: true
 | 需要分析代码问题 | code-analysis |
 | 需要了解项目现状 | project-researcher |
 | 需要查资料/文档 | web-researcher |
-| 需求需要详细分析 | requirement-analysis |
+| 需求需要详细分析 | requirements-analyst |
 | 需要编写代码 | executor |
 | 需要单元测试 | qa |
 | 需要 E2E 测试 | e2e-tester |
@@ -821,11 +821,11 @@ user-invocable: true
 ```
 ai-assistant:thinking-coach, ai-assistant:strategist, ai-assistant:code-analysis,
 ai-assistant:project-researcher, ai-assistant:web-researcher,
-ai-assistant:requirement-analysis, ai-assistant:requirements-miner, ai-assistant:executor, ai-assistant:qa,
+ai-assistant:requirements-analyst, ai-assistant:requirements-miner, ai-assistant:executor, ai-assistant:qa,
 ai-assistant:e2e-tester, ai-assistant:test-designer,
 ai-assistant:security-reviewer, ai-assistant:code-reviewer, ai-assistant:debugger,
 ai-assistant:browser-debugger,
-ai-assistant:evaluator, ai-assistant:ui-ux-reviewer
+ai-assistant:evaluator, ai-assistant:ui-ux-reviewer, ai-assistant:requirements-analyst
 ```
 
 ---
@@ -910,7 +910,7 @@ Task: <任务描述>
 |------|------|
 | thinking-coach | 任务不清晰、需要分析 |
 | strategist | 有多方案需要评估 |
-| requirement-analysis | 需求需要详细分析 |
+| requirements-analyst | 需求需要详细分析 |
 | executor | 需要编写代码 |
 | code-reviewer | 需要代码审查 |
 | security-reviewer | 需要安全审查 |
