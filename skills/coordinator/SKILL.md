@@ -521,6 +521,17 @@ user-invocable: true
    - 使用 Edit 工具将状态改为"已完成"
    - 验证修改成功
 2. 汇总所有文档
+
+【询问 1】清理临时文档
+   询问用户："是否清理临时文档（调度记录）？"
+   - 是 → 删除 docs/coordinator/<task>-coordinator.md
+   - 否 → 保留
+
+【询问 2】更新全局文档
+   询问用户："是否更新到全局文档（蓝图/需求文档）？"
+   - 是 → 调度 update-blueprint skill 更新 docs/蓝图.md 或 docs/requirements/README.md
+   - 否 → 跳过
+
 3. 向用户报告任务完成
 ```
 

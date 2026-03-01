@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.25.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.25.0 优化：强化 coordinator 流程，添加强制调度记录模板、门控检查、禁止跳步",
+  "version": "2.26.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.26.0 优化：任务完成后询问是否清理临时文档、是否更新全局文档",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
