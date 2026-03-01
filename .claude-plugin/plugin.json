@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.27.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.27.0 优化：强制通过 Subagent 创建文档、新增安静模式、自动更新执行记录",
+  "version": "2.28.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.28.0 优化：严格执行任务列表逐个执行，添加执行时间，检查任务依赖关系",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
