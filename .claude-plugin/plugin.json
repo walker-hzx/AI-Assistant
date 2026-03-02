@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.41.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.41.0 新增：全局文档维护机制，任务开始前必须读取蓝图，任务完成后必须更新蓝图",
+  "version": "2.44.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.44.0 新增：质疑者机制，在关键节点增加质疑环节，确保质量",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
