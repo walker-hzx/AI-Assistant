@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.44.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.44.0 新增：质疑者机制，在关键节点增加质疑环节，确保质量",
+  "version": "2.45.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.45.0 新增：需求理解确认检查点，强制检查需求歧义，必须用户确认后才能继续",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
