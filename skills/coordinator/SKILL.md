@@ -1196,23 +1196,23 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 
 | 场景 | 调用的 Subagent |
 |------|----------------|
-| 需求不清晰 | thinking-coach |
-| 多个方案需要评估 | strategist |
-| 需要分析代码问题 | code-analysis |
-| 需要了解项目现状 | project-researcher |
-| 需要查资料/文档 | web-researcher |
-| 需求需要详细分析 | requirements-analyst |
-| 需要编写代码 | executor |
-| 需要单元测试 | qa |
-| 需要 E2E 测试 | e2e-tester |
-| 需要设计测试用例 | test-designer |
-| 需要安全审查 | security-reviewer |
-| 需要代码审查 | code-reviewer |
-| 需要 UI/UX 优化 | ui-ux-reviewer |
-| 需要调试 bug | debugger |
-| 前端需要调试 | browser-debugger |
-| 需要质量门控 | evaluator |
-| 需要逆向挖掘需求 | requirements-miner |
+| 需求不清晰 | ai-assistant:thinking-coach |
+| 多个方案需要评估 | ai-assistant:strategist |
+| 需要分析代码问题 | ai-assistant:code-analysis |
+| 需要了解项目现状 | ai-assistant:project-researcher |
+| 需要查资料/文档 | ai-assistant:web-researcher |
+| 需求需要详细分析 | ai-assistant:requirements-analyst |
+| 需要编写代码 | ai-assistant:executor |
+| 需要单元测试 | ai-assistant:qa |
+| 需要 E2E 测试 | ai-assistant:e2e-tester |
+| 需要设计测试用例 | ai-assistant:test-designer |
+| 需要安全审查 | ai-assistant:security-reviewer |
+| 需要代码审查 | ai-assistant:code-reviewer |
+| 需要 UI/UX 优化 | ai-assistant:ui-ux-reviewer |
+| 需要调试 bug | ai-assistant:debugger |
+| 前端需要调试 | ai-assistant:browser-debugger |
+| 需要质量门控 | ai-assistant:evaluator |
+| 需要逆向挖掘需求 | ai-assistant:requirements-miner |
 | 需要建设性质疑 | ai-assistant:skeptics |
 
 ---
