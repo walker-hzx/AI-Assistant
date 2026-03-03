@@ -15,6 +15,7 @@
 | 验证报告 | `docs/verification/<task>-verification.md` | 验证类角色 | 可选 |
 | 审查报告 | `docs/reviews/<task>-review.md` | 审查类角色 | 可选 |
 | 质量评估 | `docs/quality/<task>-summary.md` | evaluator | 仅复杂任务 |
+| 质疑报告 | `docs/skeptics/<task>-<type>-skeptics.md` | skeptics | 质疑环节必做 |
 
 ---
 
@@ -178,6 +179,49 @@
 
 ---
 
+## 质疑报告模板
+
+```markdown
+# 质疑报告：{质疑类型}
+
+**时间**：{YYYY-MM-DD HH:MM}
+**质疑者**：skeptics
+**质疑类型**：{requirement/completeness/plan/output/verification/review}
+
+## 整体评价
+[简要说明整体评价]
+
+## 质疑点
+
+### 🔴 阻断级（必须处理）
+
+| 序号 | 质疑点 | 说明 | 建议 |
+|------|-------|------|------|
+| 1 | ... | ... | ... |
+
+### 🟠 重要级（建议处理）
+
+| 序号 | 质疑点 | 说明 | 建议 |
+|------|-------|------|------|
+| 1 | ... | ... | ... |
+
+### 🟡 建议级（可选处理）
+
+| 序号 | 质疑点 | 说明 | 建议 |
+|------|-------|------|------|
+| 1 | ... | ... | ... |
+
+## 结论
+
+- 阻断级问题：X个
+- 重要级问题：X个
+- 建议级问题：X个
+
+**建议**：[总结建议]
+```
+
+---
+
 ## 文档命名规范
 
 ```
@@ -191,4 +235,10 @@
 - user-login-verification.md
 - user-login-review.md
 - user-login-summary.md
+- user-login-requirement-skeptics.md
+- user-login-completeness-skeptics.md
+- user-login-plan-skeptics.md
+- user-login-output-skeptics.md
+- user-login-verification-skeptics.md
+- user-login-review-skeptics.md
 ```

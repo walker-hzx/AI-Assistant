@@ -114,9 +114,9 @@
 
 ---
 
-## 【核心】任务类型与检查点对照
+## 【核心】任务对照
 
-| 任务类型 | 必做检查点 | 可选检查点 |
+| 类型与检查点任务类型 | 必做检查点 | 可选检查点 |
 |----------|------------|-------------|
 | 调研任务 | 0, 1, 4, 8 | 2, 3 |
 | Bug修复 | 0, 1, 2, 4, 5, 8 | 3, 6 |
@@ -126,6 +126,19 @@
 | 测试用例增强 | 0, 1, 2, 3, 4, 5, 8 | 6, 7 |
 | UI/UX 优化 | 0, 1, 2, 4, 5, 6, 8 | 3, 7 |
 | 安全审查 | 0, 1, 2, 4, 5, 6, 8 | 3, 7 |
+
+### 质疑检查点（所有任务必做）
+
+| 检查点 | 质疑类型 | 触发时机 | 输出文档 |
+|--------|---------|----------|----------|
+| 质疑1 | requirement | 步骤1完成后 | `docs/skeptics/<task>-requirement-skeptics.md` |
+| 质疑2 | completeness | 步骤2完成后 | `docs/skeptics/<task>-completeness-skeptics.md` |
+| 质疑3 | plan | 步骤3完成后 | `docs/skeptics/<task>-plan-skeptics.md` |
+| 质疑4 | output | 步骤4完成后 | `docs/skeptics/<task>-output-skeptics.md` |
+| 质疑5 | verification | 步骤5完成后 | `docs/skeptics/<task>-verification-skeptics.md` |
+| 质疑6 | review | 步骤6完成后 | `docs/skeptics/<task>-review-skeptics.md` |
+
+**注意**：quietMode=true 或 unattendedMode=true 时跳过质疑环节
 
 ### 触发条件说明
 
@@ -152,6 +165,8 @@
 - docs/execution/<task>-execution-N.md
 - docs/verification/<task>-verification.md
 - docs/reviews/<task>-review.md
+- docs/quality/<task>-summary.md
+- docs/skeptics/<task>-*-skeptics.md（质疑环节）
 
 【检查必填字段】
 使用 Read 工具读取文档内容，检查必填字段是否存在

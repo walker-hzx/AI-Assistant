@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.45.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.45.0 新增：需求理解确认检查点，强制检查需求歧义，必须用户确认后才能继续",
+  "version": "2.49.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.49.0 新增：skeptics质疑者agent（建设性质疑）",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
@@ -40,6 +40,7 @@
     "./agents/browser-debugger.md",
     "./agents/project-researcher.md",
     "./agents/evaluator.md",
-    "./agents/ui-ux-reviewer.md"
+    "./agents/ui-ux-reviewer.md",
+    "./agents/skeptics.md"
   ]
 }
