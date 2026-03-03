@@ -560,7 +560,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 
 2. 根据 thinking-coach 的分析结果，形成理解摘要
 
-3. 调度 executor 创建调度记录：`docs/coordinator/<task>-coordinator.md`
+3. 调度 ai-assistant:executor 创建调度记录：`docs/coordinator/<task>-coordinator.md`
    - 任务描述：创建调度记录，包含任务基本信息
    - 理解摘要：thinking-coach 分析后的用户真实意图
    - 输出：调度记录文件路径
@@ -678,7 +678,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
    - [ ] 接口契约已定义？
 
 【执行】
-1. 调度 requirements-analyst 创建需求强化检查文档
+1. 调度 ai-assistant:requirements-analyst 创建需求强化检查文档
 2. 文档路径：`docs/intent/<task>-requirements-check.md`
 3. 读取检查结果，更新调度记录
 
@@ -887,7 +887,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
    - 验收标准
    - 风险点
 2. 如果是测试/Bug任务，查找已有测试脚本
-3. 调度 requirements-analyst 创建需求文档：`docs/intent/<task>-intent.md`
+3. 调度 ai-assistant:requirements-analyst 创建需求文档：`docs/intent/<task>-intent.md`
    - 任务描述：分析用户需求，生成需求文档
    - 输入：用户原始需求
    - 输出：需求文档文件路径
@@ -934,7 +934,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 
 ```
 1. 判断任务类型，对照角色组合
-2. 调度 executor 创建计划文档：`docs/plans/<task>-plan.md`
+2. 调度 ai-assistant:executor 创建计划文档：`docs/plans/<task>-plan.md`
    - 任务描述：根据需求创建实施计划
    - 输入：需求文档路径
    - 输出：计划文档文件路径
@@ -955,15 +955,15 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 
 | 任务类型 | 必需角色 |
 |----------|----------|
-| 测试用例增强 | test-designer + executor + qa |
-| Bug修复 | debugger + executor + qa |
-| 代码重构 | code-analysis + executor |
-| 调研任务 | web-researcher / project-researcher |
-| 功能开发 | requirements-analyst + executor |
-| UI/UX 优化 | ui-ux-reviewer + executor |
-| 安全审查 | security-reviewer |
-| 架构分析 | code-analysis + strategist |
-| 性能优化 | code-analysis + executor |
+| 测试用例增强 | ai-assistant:test-designer + ai-assistant:executor + ai-assistant:qa |
+| Bug修复 | ai-assistant:debugger + ai-assistant:executor + ai-assistant:qa |
+| 代码重构 | ai-assistant:code-analysis + ai-assistant:executor |
+| 调研任务 | ai-assistant:web-researcher / ai-assistant:project-researcher |
+| 功能开发 | ai-assistant:requirements-analyst + ai-assistant:executor |
+| UI/UX 优化 | ai-assistant:ui-ux-reviewer + ai-assistant:executor |
+| 安全审查 | ai-assistant:security-reviewer |
+| 架构分析 | ai-assistant:code-analysis + ai-assistant:strategist |
+| 性能优化 | ai-assistant:code-analysis + ai-assistant:executor |
 
 **文档位置**：`docs/plans/<task>-plan.md`
 
@@ -1002,7 +1002,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 | E2E-01 | 用户登录 | 输入→提交→跳转 | 页面跳转正确 |
 
 【执行】
-1. 调度 test-designer 创建测试设计文档
+1. 调度 ai-assistant:test-designer 创建测试设计文档
 2. 文档路径：`docs/plans/<task>-test-design.md`
 3. 读取测试用例，更新调度记录中的"测试设计"章节
 
@@ -1049,7 +1049,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 | 服务崩溃 | 告警+日志 | 显示维护页面 |
 
 【执行】
-1. 调度 strategist 创建风险预案文档
+1. 调度 ai-assistant:strategist 创建风险预案文档
 2. 文档路径：`docs/plans/<task>-risk-plan.md`
 3. 读取风险预案，更新调度记录
 
@@ -1251,7 +1251,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 1. 验证功能是否按计划实现
 2. 运行测试验证正确性
 3. 如果有回归测试需求，运行回归测试
-4. 调度 qa 创建验证文档：`docs/verification/<task>-verification.md`
+4. 调度 ai-assistant:qa 创建验证文档：`docs/verification/<task>-verification.md`
    - 任务描述：验证功能是否正确实现
    - 输入：代码文件、需求文档
    - 输出：验证报告文件路径
@@ -1317,7 +1317,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 ```
 
 【执行】
-1. 调度 qa 创建量化验证文档
+1. 调度 ai-assistant:qa 创建量化验证文档
 2. 文档路径：`docs/verification/<task>-quantitative.md`
 3. 读取量化结果，更新调度记录
 
@@ -1366,7 +1366,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 - [ ] 登出功能回归
 
 【执行】
-1. 调度 code-analysis 创建依赖影响分析文档
+1. 调度 ai-assistant:code-analysis 创建依赖影响分析文档
 2. 文档路径：`docs/verification/<task>-impact.md`
 3. 读取影响分析，更新调度记录
 
@@ -1412,7 +1412,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 
 ```
 1. 审查代码质量（规范、安全、性能、可维护性）
-2. 调度 code-reviewer 创建审查文档：`docs/reviews/<task>-review.md`
+2. 调度 ai-assistant:code-reviewer 创建审查文档：`docs/reviews/<task>-review.md`
    - 任务描述：审查代码质量
    - 输入：代码文件
    - 输出：审查报告文件路径
@@ -1453,7 +1453,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 
 【执行】
 1. 判断是否涉及敏感操作
-2. 如果是，调度 security-reviewer 创建安全审查文档
+2. 如果是，调度 ai-assistant:security-reviewer 创建安全审查文档
 3. 文档路径：`docs/reviews/<task>-security.md`
 
 【门控检查】
@@ -1500,7 +1500,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 **此步骤仅复杂任务需要**。
 
 ```
-1. 调度 evaluator 评估产出物质量
+1. 调度 ai-assistant:evaluator 评估产出物质量
 2. 读取评估结果
 3. 根据结果判断：
    → 合格 → 进入完成
@@ -1656,9 +1656,9 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 > **绝对禁止的行为**
 
 ❌ **绝对禁止**：
-- 修改代码（必须调度 executor）
-- 修复 bug（必须调度 debugger + executor）
-- 执行测试（必须调度 qa/e2e-tester）
+- 修改代码（必须调度 ai-assistant:executor）
+- 修复 bug（必须调度 ai-assistant:debugger + ai-assistant:executor）
+- 执行测试（必须调度 ai-assistant:qa/ai-assistant:e2e-tester）
 - 运行命令（必须调度相关 Subagent）
 - **直接调用 Write/Edit 创建文档**（必须调度 Subagent）
 
@@ -1788,7 +1788,7 @@ Task: <任务描述>
     ↓
 【管家】制定计划（功能开发需要计划）
     ↓
-【管家】执行：调度 executor
+【管家】执行：调度 ai-assistant:executor
     ↓
 【管家】功能验证
     ↓
