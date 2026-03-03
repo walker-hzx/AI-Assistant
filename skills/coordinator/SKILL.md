@@ -612,7 +612,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 5. 更新状态为"进行中"
 
 6. 【质疑环节】需求确认（必须）
-   - 调度 skeptics agent 进行需求质疑：
+   - 调度 ai-assistant:skeptics 进行需求质疑：
      - 任务描述：对需求文档进行质疑
      - 质疑类型：requirement
      - 被质疑文档：thinking-coach 分析结果
@@ -896,7 +896,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
    → 失败 → 停止并提示用户
 
 5. 【质疑环节】需求完整性质疑（必须）
-   - 调度 skeptics agent 进行需求完整性质疑：
+   - 调度 ai-assistant:skeptics 进行需求完整性质疑：
      - 任务描述：对需求文档进行完整性质疑
      - 质疑类型：completeness
      - 被质疑文档：docs/intent/<task>-intent.md
@@ -1068,7 +1068,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 > **验证计划的可执行性和完整性**
 
 ```
-1. 调度 skeptics agent 进行计划质疑：
+1. 调度 ai-assistant:skeptics 进行计划质疑：
    - 任务描述：对计划文档进行质疑
    - 质疑类型：plan
    - 被质疑文档：docs/plans/<task>-plan.md
@@ -1213,7 +1213,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 | 前端需要调试 | browser-debugger |
 | 需要质量门控 | evaluator |
 | 需要逆向挖掘需求 | requirements-miner |
-| 需要建设性质疑 | skeptics |
+| 需要建设性质疑 | ai-assistant:skeptics |
 
 ---
 
@@ -1222,7 +1222,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 > **验证产出的质量和完整性**
 
 ```
-1. 调度 skeptics agent 进行产出质疑：
+1. 调度 ai-assistant:skeptics 进行产出质疑：
    - 任务描述：对执行产出进行质疑
    - 质疑类型：output
    - 被质疑内容：执行记录和产出物列表
@@ -1385,7 +1385,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 > **验证验证报告的全面性**
 
 ```
-1. 调度 skeptics agent 进行验证结果质疑：
+1. 调度 ai-assistant:skeptics 进行验证结果质疑：
    - 任务描述：对验证报告进行质疑
    - 质疑类型：verification
    - 被质疑文档：docs/verification/<task>-verification.md
@@ -1472,7 +1472,7 @@ confidence = 基础分 + 类型识别准确度 + 关键词匹配度
 > **验证审查报告的完整性**
 
 ```
-1. 调度 skeptics agent 进行审查结果质疑：
+1. 调度 ai-assistant:skeptics 进行审查结果质疑：
    - 任务描述：对审查报告进行质疑
    - 质疑类型：review
    - 被质疑文档：docs/reviews/<task>-review.md
