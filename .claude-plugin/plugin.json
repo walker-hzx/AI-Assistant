@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.49.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.49.0 新增：skeptics质疑者agent（建设性质疑）",
+  "version": "2.49.1",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.49.1 新增：skeptics质疑者agent（建设性质疑），6大质疑环节均由 skeptics 执行",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
