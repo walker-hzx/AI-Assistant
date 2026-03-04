@@ -1,6 +1,7 @@
 ---
 name: test-planner
 description: 测试设计专家。分析需求、挖掘复杂场景、设计测试场景和测试用例。强调深度需求分析，支持 TDD 流程。
+model: sonnet
 user-invocable: true
 ---
 

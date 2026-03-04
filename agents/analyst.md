@@ -2,6 +2,11 @@
 name: analyst
 description: "分析师 - 需求理解、问题分析、策略制定、多角度思考"
 model: inherit
+allowed-tools:
+  - Read
+  - Grep
+  - Glob
+  - semantic_search
 skills:
   - requirement-analysis
   - requirement-understanding

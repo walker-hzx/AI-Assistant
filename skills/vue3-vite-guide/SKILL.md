@@ -1,6 +1,8 @@
 ---
 name: vue3-vite-guide
 description: Vue3 Vite 开发指南 - 提供 Vue3 + TypeScript + Vite 代码规范
+model: sonnet
+user-invocable: false
 ---
 
 # Vue3 Vite 开发指南

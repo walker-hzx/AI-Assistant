@@ -1,6 +1,7 @@
 ---
 name: unit-tester
 description: "单元测试 - 编写和执行单元测试，确保代码质量。使用 Jest/Vitest/Pytest 等框架"
+model: sonnet
 user-invocable: true
 ---
 

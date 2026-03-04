@@ -1,7 +1,8 @@
 ---
 name: project-researcher
 description: "项目调研 - 中途接手项目时，系统调研项目现状，评估代码质量，识别规范和封装，给出批判性评估建议"
-model: inherit
+model: sonnet
+user-invocable: false
 ---
 
 # 项目调研

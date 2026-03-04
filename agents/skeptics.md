@@ -2,6 +2,9 @@
 name: skeptics
 description: "质疑者 - 建设性质疑，帮助发现被忽略的问题"
 model: inherit
+allowed-tools:
+  - Read
+  - Grep
 ---
 
 # 质疑者

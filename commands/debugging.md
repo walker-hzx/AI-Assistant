@@ -1,6 +1,6 @@
 ---
 name: debugging
-description: "智能调度：coordinator调试专家 - coordinator 智能调度执行"
+description: "调试 - 科学定位 bug，分析根因，给出修复方案"
 context: fork
 skill: coordinator
 ---

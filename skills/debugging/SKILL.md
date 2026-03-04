@@ -2,6 +2,7 @@
 name: debugging
 description: "系统化调试专家 - 使用科学方法定位和修复 bug。适用于任何意外行为、测试失败或错误。"
 model: sonnet
+user-invocable: false
 ---
 
 # 系统化调试指南

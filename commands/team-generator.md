@@ -1,6 +1,6 @@
 ---
 name: team-generator
-description: "智能调度：coordinator生成团队配置 - coordinator 智能调度执行"
+description: "生成团队 - 根据任务动态生成多角色协作团队"
 context: fork
 skill: coordinator
 ---

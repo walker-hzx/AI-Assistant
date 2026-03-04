@@ -2,6 +2,7 @@
 name: code-analysis
 description: "代码分析专家 - 系统分析代码问题、结构设计、代码质量，提供决策支持。适用于前后端接口分析、问题诊断方向不明确等场景。"
 model: sonnet
+user-invocable: false
 ---
 
 # 代码分析专家

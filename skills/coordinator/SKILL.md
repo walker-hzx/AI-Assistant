@@ -1,6 +1,7 @@
 ---
 name: coordinator
 description: "智能管家（星星）- 自适应智能调度系统"
+model: sonnet
 user-invocable: true
 ---
 

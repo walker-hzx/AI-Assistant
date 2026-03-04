@@ -186,54 +186,39 @@ Claude Code 扩展机制
 
 ## 三、对插件项目的优化建议
 
+> **更新于 2026-03-04**：以下建议已根据 v3.0.0 重构结果更新
+
 ### 3.1 当前配置分析
 
 | 配置 | 数量 | 说明 |
 |------|------|------|
-| Skills | 13 | 核心能力 |
-| Commands | 4 | 快捷入口 |
-| Agents | 4 | 子代理（部分重复）|
+| Skills | 30 | 核心能力（含指南类）|
+| Commands | 12 | 快捷入口 |
+| Agents | 8 | 6+2 角色（6核心+2可选）|
 | Teams | 6 | 团队配置 |
 
 ### 3.2 优化建议
 
-#### 建议 1：删除重复的 Agents
+#### ~~建议 1：删除重复的 Agents~~ ✅ 已完成（v3.0.0）
 
-| Agent | 对应 Skill | 建议 |
-|-------|-----------|------|
-| planner | writing-plans | ❌ 删除 |
-| tdd-guide | test-planner | ❌ 删除 |
-| code-reviewer | code-review | ❌ 删除 |
-| security-reviewer | (无) | ⚠️ 保留或转 Skill |
+已完成重构：17角色 → 6+2角色（analyst, executor, tester, reviewer, researcher, debugger + skeptics, ui-ux-reviewer）
 
-**理由**：
-- 功能完全重复
-- 没有独特价值（不需要成本控制/工具限制）
-- 增加维护成本
+#### ~~建议 2：补齐 Commands~~ ✅ 已完成（v3.0.0）
 
-#### 建议 2：补齐 Commands
+当前 Commands（12个）：`discuss`, `plan`, `review`, `thinking`, `debugging`, `verification`, `executing-plans`, `team-generator`, `docs-sync`, `learn-concept`, `security-review`, `test-planner`
 
-当前 Commands：`discuss`, `plan`, `review`, `thinking`
+#### ~~建议 3：标准化 Skills Metadata~~ ✅ 已完成（2026-03-04）
 
-**建议添加**：
-- `/executing-plans` → executing-plans
-- `/verification` → verification
-- `/debugging` → debugging
-- `/team-generator` → team-generator
-
-#### 建议 3：标准化 Skills Metadata
-
-当前 Skills 部分缺少以下字段：
-
-| 字段 | 建议 |
-|------|------|
-| `model` | 高频使用技能添加 |
-| `user-invocable` | 明确是否为菜单可见 |
-| `disable-model-invocation` | 按需添加 |
+已完成：
+- 所有 Skills 补齐 `model` 字段
+- 所有 Skills 明确设置 `user-invocable`（用户可调用 vs 内部使用）
+- 修复 `project-researcher` 的 `model: inherit` → `model: sonnet`
+- 修复 `e2e-tester` name 字段不匹配问题
+- `coordinator` 补齐 `model: sonnet`
 
 #### 建议 4：充分利用 Teams
 
-你已配置 6 个 Teams，符合官方最佳实践：
+已配置 6 个 Teams，符合官方最佳实践：
 - requirements-incubation
 - requirements-review
 - development
@@ -241,7 +226,15 @@ Claude Code 扩展机制
 - code-review
 - code-analysis
 
-**这是正确的方向**，Agent Teams 正是为复杂协作场景设计的。
+**待验证**：Teams 依赖实验性功能 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`，建议验证可用性。
+
+#### 建议 5：为只读 Agents 添加工具约束（新） ✅ 已完成（2026-03-04）
+
+已为以下 agents 添加 `allowed-tools` 约束：
+- `analyst`：Read, Grep, Glob, semantic_search
+- `researcher`：Read, Grep, Glob, semantic_search, fetch_webpage
+- `reviewer`：Read, Grep, Glob, semantic_search
+- `skeptics`：Read, Grep
 
 ---
 
@@ -279,12 +272,14 @@ Claude Code 扩展机制
 
 ## 五、后续行动
 
-| 优先级 | 行动 | 预期收益 |
-|--------|------|---------|
-| P1 | 删除 3 个重复 Agents | 减少维护 |
-| P2 | 补齐高频 Commands | 方便调用 |
-| P3 | 标准化 Skills metadata | 一致性 |
-| P4 | 验证 Teams 功能 | 复杂任务协作 |
+| 优先级 | 行动 | 状态 |
+|--------|------|------|
+| P1 | 删除 3 个重复 Agents | ✅ 已完成（v3.0.0 重构）|
+| P2 | 补齐高频 Commands（12个）| ✅ 已完成 |
+| P3 | 标准化 Skills metadata | ✅ 已完成 |
+| P4 | 为只读 Agents 加 allowed-tools | ✅ 已完成 |
+| P5 | 优化 Commands 描述文字 | ✅ 已完成 |
+| P6 | 验证 Teams 功能 | ⏳ 待验证 |
 
 ---
 

@@ -1,6 +1,8 @@
 ---
 name: update-blueprint
 description: 更新项目蓝图 - 记录项目当前状态
+model: sonnet
+user-invocable: false
 ---
 
 # 项目蓝图更新助手

@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: "智能调度：coordinator安全审查专家 - coordinator 智能调度执行"
+description: "安全审查 - 识别 OWASP Top 10 漏洞，检查密钥泄露和注入风险"
 context: fork
 skill: coordinator
 ---

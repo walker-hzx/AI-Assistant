@@ -1,6 +1,6 @@
 ---
 name: test-planner
-description: "智能调度：coordinator测试设计专家 - coordinator 智能调度执行"
+description: "测试设计 - 分析需求，设计测试场景和测试用例"
 context: fork
 skill: coordinator
 ---

@@ -1,6 +1,6 @@
 ---
 name: executing-plans
-description: "智能调度：coordinator执行实施计划 - coordinator 智能调度执行"
+description: "执行计划 - 按照实施计划逐步执行，带审查检查点"
 context: fork
 skill: coordinator
 ---

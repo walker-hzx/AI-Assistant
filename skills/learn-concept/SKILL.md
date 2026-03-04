@@ -1,6 +1,7 @@
 ---
 name: learn-concept
 description: "搜索学习工具 - 遇到不确定的概念时，搜索并学习"
+model: sonnet
 user-invocable: true
 ---
 

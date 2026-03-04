@@ -1,6 +1,6 @@
 ---
 name: docs-sync
-description: "智能调度：coordinator文档同步工具 - coordinator 智能调度执行"
+description: "文档同步 - 抓取框架官方文档，生成结构化使用指南"
 context: fork
 skill: coordinator
 ---

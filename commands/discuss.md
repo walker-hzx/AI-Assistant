@@ -1,6 +1,6 @@
 ---
 name: discuss
-description: "智能调度：coordinator开始需求讨论 - 帮助明确需求，coordinator 智能调度执行"
+description: "需求讨论 - 帮助明确需求，3个核心问题法探索用户意图"
 context: fork
 skill: coordinator
 ---

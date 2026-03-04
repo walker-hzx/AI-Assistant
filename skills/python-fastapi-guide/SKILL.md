@@ -1,6 +1,8 @@
 ---
 name: python-fastapi-guide
 description: Python FastAPI 开发指南 - 提供 Python + FastAPI 代码规范
+model: sonnet
+user-invocable: false
 ---
 
 # Python FastAPI 开发指南

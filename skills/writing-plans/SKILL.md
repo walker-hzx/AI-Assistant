@@ -1,6 +1,8 @@
 ---
 name: writing-plans
 description: 当你有规格说明或多步骤任务的需求时，在接触代码之前使用此技能创建详细实施计划
+model: sonnet
+user-invocable: false
 ---
 
 # 编写实施计划

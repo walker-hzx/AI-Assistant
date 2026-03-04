@@ -1,6 +1,6 @@
 ---
 name: review
-description: "智能调度：coordinator代码审查 - coordinator 智能调度执行"
+description: "代码审查 - 审查代码质量、安全性，给出可操作改进建议"
 context: fork
 skill: coordinator
 ---

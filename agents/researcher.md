@@ -2,6 +2,12 @@
 name: researcher
 description: "调研员 - 代码库分析、项目调研、技术文档查阅"
 model: inherit
+allowed-tools:
+  - Read
+  - Grep
+  - Glob
+  - semantic_search
+  - fetch_webpage
 skills:
   - code-analysis
   - project-researcher

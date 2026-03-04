@@ -1,7 +1,8 @@
 ---
-name: e2e-testing
+name: e2e-tester
 description: "E2E 测试执行 - 执行端到端测试，确保用户流程正常工作。使用 Playwright/Cypress，包含 UI 断言指南和前端验证技巧"
 model: sonnet
+user-invocable: false
 ---
 
 # E2E 测试执行

@@ -2,6 +2,11 @@
 name: reviewer
 description: "审查员 - 代码审查、安全审查、质量评估"
 model: inherit
+allowed-tools:
+  - Read
+  - Grep
+  - Glob
+  - semantic_search
 skills:
   - code-review
   - security-review

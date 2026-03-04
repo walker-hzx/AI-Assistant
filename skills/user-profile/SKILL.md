@@ -1,6 +1,7 @@
 ---
 name: user-profile
 description: "查看用户画像和学习数据 - 显示收集的用户偏好和行为模式"
+model: sonnet
 user-invocable: true
 ---
 

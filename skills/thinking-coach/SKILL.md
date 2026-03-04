@@ -1,6 +1,7 @@
 ---
 name: thinking-coach
 description: "思维教练 - 当你不清楚问题是什么、方向在哪、思维方式有偏差时，帮你厘清思路，像高手一样给你洞见和方向"
+model: sonnet
 user-invocable: true
 ---
 

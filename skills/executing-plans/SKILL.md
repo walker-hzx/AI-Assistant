@@ -1,6 +1,8 @@
 ---
 name: executing-plans
 description: 当你有书面的实现计划要在单独的会话中执行，并带有审查检查点时使用此技能
+model: sonnet
+user-invocable: false
 ---
 
 # 执行计划

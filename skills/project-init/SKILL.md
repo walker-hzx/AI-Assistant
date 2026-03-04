@@ -1,6 +1,7 @@
 ---
 name: project-init
 description: "项目初始化 - 为当前项目初始化 Claude Code 配置，注入管家和 Subagent 上下文"
+model: sonnet
 user-invocable: true
 ---
 

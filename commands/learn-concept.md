@@ -1,6 +1,6 @@
 ---
 name: learn-concept
-description: "智能调度：coordinator搜索学习工具 - coordinator 智能调度执行"
+description: "学习概念 - 搜索并学习不确定的技术概念"
 context: fork
 skill: coordinator
 ---

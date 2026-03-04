@@ -1,6 +1,6 @@
 ---
 name: verification
-description: "智能调度：coordinator验证功能 - coordinator 智能调度执行"
+description: "功能验证 - 在声称完成前验证代码是否正确实现需求"
 context: fork
 skill: coordinator
 ---

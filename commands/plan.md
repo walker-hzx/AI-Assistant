@@ -1,6 +1,6 @@
 ---
 name: plan
-description: "智能调度：coordinator制定详细实施计划 - coordinator 智能调度执行"
+description: "制定计划 - 分析需求，制定详细实施计划"
 context: fork
 skill: coordinator
 ---
