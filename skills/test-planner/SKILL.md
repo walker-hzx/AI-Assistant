@@ -222,7 +222,7 @@ docs/
 4. 运行测试 → 失败（功能未实现）
 5. executor 实现登录功能
 6. 运行测试 → 通过
-7. code-reviewer 审查代码
+7. reviewer 审查代码
 ```
 
 ---
@@ -249,8 +249,7 @@ docs/plans/YYYY-MM-DD-[feature]-test-plan.md
 ## 与其他工具的协作
 
 - **test-planner**（本工具）→ 需求分析 + 测试用例生成
-- **qa** → 验证功能
-- **e2e-tester** → 执行 E2E 测试
+- **tester** → 验证功能、执行 E2E 测试
 
 流程：
 1. 使用 test-planner 分析需求、生成测试用例

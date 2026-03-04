@@ -1,95 +1,140 @@
 # Subagent 角色定义
 
-> 本文档定义 Coordinator 可调度的 Subagent 角色
+> 6 个核心角色 + 2 个可选角色，覆盖完整开发流程
 
 ---
 
-## 角色列表
+## 核心角色
 
-### 分析类
+### analyst — 分析师
 
-| 角色 | 用途 | 典型场景 |
-|------|------|---------|
-| thinking-coach | 思维教练 - 厘清思路，给出方向 | 需求不清晰、方向不明 |
-| strategist | 策略分析师 - 深度分析，评估方案 | 多个方案需要选择 |
-| code-analysis | 代码分析 - 系统分析代码问题 | 代码有问题需要分析 |
-| project-researcher | 项目调研 - 调研项目现状 | 需要了解项目现状 |
-| web-researcher | 网页研究 - 爬取和研究网页 | 需要查资料/文档 |
+**职责**：需求理解、问题分析、策略制定、多角度思考
 
-### 需求类
+| 何时调度 | 输入 | 输出 |
+|---------|------|------|
+| 需求不清晰、需要深度分析 | 用户需求描述 + 上下文 | 需求分析结果、方案建议 |
+| 多个方案需要评估 | 方案列表 + 约束条件 | 对比分析、推荐方案 |
+| 复杂决策 | 决策背景 | 利弊分析、风险识别 |
 
-| 角色 | 用途 | 典型场景 |
-|------|------|---------|
-| requirement-analysis | 需求分析 - 多角度分析需求完整性 | 需求需要详细分析 |
-| requirements-miner | 需求挖掘 - 逆向分析代码提取功能 | 中途接手项目、没有需求文档 |
-
-### 实现类
-
-| 角色 | 用途 | 典型场景 |
-|------|------|---------|
-| executor | 代码实现 - 按计划编写代码 | 需要编写代码 |
-
-### 验证类
-
-| 角色 | 用途 | 典型场景 |
-|------|------|---------|
-| e2e-tester | E2E 测试 - 端到端测试 | 需要 E2E 测试 |
-| test-designer | 测试设计 - 分析需求深度，挖掘复杂场景，设计测试用例 | 需要设计测试用例 |
-| qa | 质量保证 - 验证功能正确性 | 需要验证功能 |
-
-### 审查类
-
-| 角色 | 用途 | 典型场景 |
-|------|------|---------|
-| security-reviewer | 安全审查 - 检查安全漏洞 | 需要安全审查 |
-| code-reviewer | 代码审查 - 验证代码质量 | 需要代码审查 |
-| ui-ux-reviewer | UI/UX 审查 - 分析页面视觉和交互，提供优化方案 | 需要优化页面样式和交互 |
-| evaluator | 质量评估 - 评估产出物质量，生成优化建议 | 需要质量门控、流程复盘 |
-| skeptics | 质疑者 - 在关键节点进行建设性质疑 | 需要质疑检查 |
-
-### 调试类
-
-| 角色 | 用途 | 典型场景 |
-|------|------|---------|
-| debugger | 调试专家 - 定位和修复 bug | 需要调试 bug |
-| browser-debugger | 浏览器调试 - 捕获前端错误 | 前端需要调试 |
-
-### 辅助类
-
-| 角色 | 用途 | 典型场景 |
-|------|------|---------|
-| (无) | | |
+**合并自**：thinking-coach + strategist + requirements-analyst + requirements-miner
 
 ---
 
-## 按阶段调用
+### executor — 执行者
 
-| 阶段 | 可调用的 Subagent |
-|------|------------------|
-| 需求分析 | thinking-coach, requirement-analysis, requirements-miner, web-researcher, project-researcher |
-| 任务规划 | strategist |
-| 代码执行 | executor, web-researcher |
-| 测试验证 | test-designer, e2e-tester, qa |
-| 安全审查 | security-reviewer |
-| 代码审查 | code-reviewer |
-| UI/UX 优化 | ui-ux-reviewer |
-| 质量评估 | evaluator |
-| 问题调试 | debugger, browser-debugger, code-analysis |
-| 复杂决策 | strategist |
+**职责**：代码实现、文件创建、按计划执行、重构
+
+| 何时调度 | 输入 | 输出 |
+|---------|------|------|
+| 需要写代码 | 任务描述 + 计划（如有） | 实现的代码 |
+| 需要创建文件 | 文件需求描述 | 创建的文件 |
+| 需要重构 | 重构目标 + 范围 | 重构后的代码 |
+
+**关键**：executor 接收的是"目标"而非"步骤"，自己决定如何实现。
+
+---
+
+### tester — 测试员
+
+**职责**：测试设计、测试执行、功能验证、覆盖率检查
+
+| 何时调度 | 输入 | 输出 |
+|---------|------|------|
+| 功能实现后需要验证 | 功能描述 + 代码位置 | 测试结果 |
+| 需要设计测试用例 | 需求描述 | 测试用例 |
+| 需要 E2E 测试 | 用户流程描述 | E2E 测试脚本 + 结果 |
+
+**合并自**：qa + test-designer + e2e-tester
+
+---
+
+### reviewer — 审查员
+
+**职责**：代码审查、安全审查、质量评估
+
+| 何时调度 | 输入 | 输出 |
+|---------|------|------|
+| 代码写完后 | 变更的代码 | 审查意见（问题 + 建议） |
+| 涉及安全敏感操作 | 代码 + 安全关注点 | 安全审查结果 |
+| 复杂任务完成后 | 整体产出 | 质量评估 |
+
+**合并自**：code-reviewer + security-reviewer + evaluator
+
+---
+
+### researcher — 调研员
+
+**职责**：代码库分析、项目调研、技术文档查阅、网页研究
+
+| 何时调度 | 输入 | 输出 |
+|---------|------|------|
+| 需要分析现有代码 | 分析目标 | 代码分析报告 |
+| 需要查技术文档 | 技术问题 | 文档摘要 + 解决方案 |
+| 需要调研项目现状 | 调研目标 | 项目现状分析 |
+
+**合并自**：code-analysis + project-researcher + web-researcher
+
+---
+
+### debugger — 调试员
+
+**职责**：Bug 定位、错误分析、修复方案、前后端调试
+
+| 何时调度 | 输入 | 输出 |
+|---------|------|------|
+| 遇到 bug 需要定位 | 错误描述 + 复现步骤 | 根因分析 + 修复方案 |
+| 前端控制台报错 | 错误信息 | 问题定位 + 修复 |
+| 性能问题 | 问题描述 | 瓶颈分析 + 优化建议 |
+
+**合并自**：debugger + browser-debugger
+
+---
+
+## 可选增强角色
+
+### skeptics — 质疑者
+
+**何时调度**：L 档复杂任务的计划制定后，需要第三方视角质疑
+
+### ui-ux-reviewer — UI/UX 审查
+
+**何时调度**：前端页面开发后，需要交互和视觉层面的专业审查
+
+---
+
+## 调度规则
+
+### 按任务档位
+
+| 档位 | 典型角色组合 |
+|------|-------------|
+| S | 无（管家直接做） |
+| M | executor → tester |
+| L | analyst → executor → tester → reviewer |
+
+### 调度原则
+
+1. **最少调度** — 能用 1 个角色解决就不用 2 个
+2. **目标驱动** — 告诉角色"做什么"而非"怎么做"
+3. **结果检查** — 每次调度后检查结果，决定下一步
 
 ---
 
 ## 调用方式
 
-使用 Task 工具调用 Subagent：
-
 ```
-Task(ai-assistant:<角色名>)
+Task(ai-assistant:<角色名>, "任务描述")
 ```
 
-示例：
-```
-Task(ai-assistant:executor)
-Task(ai-assistant:debugger)
-Task(ai-assistant:requirements-analyst)
-```
+### 角色名映射
+
+| 新角色 | Task 调用名 |
+|--------|------------|
+| analyst | `ai-assistant:analyst` |
+| executor | `ai-assistant:executor` |
+| tester | `ai-assistant:tester` |
+| reviewer | `ai-assistant:reviewer` |
+| researcher | `ai-assistant:researcher` |
+| debugger | `ai-assistant:debugger` |
+| skeptics | `ai-assistant:skeptics` |
+| ui-ux-reviewer | `ai-assistant:ui-ux-reviewer` |

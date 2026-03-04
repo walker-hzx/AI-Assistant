@@ -109,7 +109,7 @@ user-invocable: true
 
 ### 1. 自我审查（提交前）
 
-在调用 code-reviewer agent 之前，先进行自我审查：
+在调用 reviewer agent 之前，先进行自我审查：
 
 **常见问题检查：**
 - [ ] 是否有明显的语法错误
@@ -137,7 +137,7 @@ HEAD_SHA=$(git rev-parse HEAD)
 
 **调用审查：**
 ```bash
-Task: code-reviewer
+Task: reviewer
 描述: 审查刚完成的xxx功能
 ```
 

@@ -51,12 +51,12 @@ user-invocable: true
 
 | 角色 | 用途 |
 |------|------|
-| thinking-coach | 思维教练 - 厘清思路 |
-| code-analysis | 代码分析 - 系统分析 |
-| debugging | 调试专家 - 定位修复 bug |
-| security-review | 安全审查 |
-| ui-ux-reviewer | UI/UX 审查 - 页面视觉和交互优化 |
-| ... | ... |
+| analyst | 需求理解、问题分析、策略制定 |
+| executor | 代码实现、功能开发 |
+| tester | 测试设计、执行、功能验证 |
+| reviewer | 代码审查、安全审查、质量评估 |
+| researcher | 代码分析、项目调研、文档查阅 |
+| debugger | Bug 定位和修复 |
 ```
 
 ### 3. 文件操作范围限制（新增）

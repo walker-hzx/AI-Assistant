@@ -45,26 +45,18 @@
 | python-fastapi-guide | Python FastAPI 开发指南 |
 | vue3-vite-guide | Vue3 Vite 开发指南 |
 
-### Agents
+### Agents（6 核心 + 2 可选）
 
 | Agent | 说明 |
 |-------|------|
-| coordinator | 智能调度 - 任务调度和协调 |
-| requirements-analyst | 需求分析师 - 理解用户真正想要什么 |
-| executor | 执行者 - 按计划实现代码 |
-| qa | 质量保证 - 验证功能正确 |
-| code-reviewer | 代码审查 - 确保代码质量 |
-| debugger | 调试专家 - 定位和修复 bug |
-| thinking-coach | 思维教练 - 反思思维方式 |
-| strategist | 策略分析师 - 深度分析决策 |
-| security-reviewer | 安全审查 - 漏洞检测 |
-| test-designer | 测试设计 - 设计测试用例 |
-| code-analysis | 代码分析师 - 系统分析代码 |
-| project-researcher | 项目调研 - 中途接手项目 |
-| web-researcher | 网页研究 - 爬取网页分析 |
-| e2e-tester | E2E 测试 - 执行端到端测试 |
-| ui-ux-reviewer | UI/UX 审查 - 页面视觉和交互优化 |
-| evaluator | 质量评估 - 评估产出物质量 |
+| analyst | 需求理解、问题分析、策略制定 |
+| executor | 代码实现、功能开发 |
+| tester | 测试设计、执行、功能验证 |
+| reviewer | 代码审查、安全审查、质量评估 |
+| researcher | 代码分析、项目调研、文档查阅 |
+| debugger | Bug 定位和修复 |
+| skeptics | 建设性质疑（可选） |
+| ui-ux-reviewer | UI/UX 审查（可选） |
 
 ### Commands
 
@@ -75,7 +67,7 @@
 | /verification | 验证 - 确认代码正确实现需求 |
 | /code-review | 代码审查 |
 | /team-generator | 团队生成 - 创建多角色协作团队 |
-| /thinking | 思维反思 - 使用 thinking-coach 技能 |
+| /thinking | 思维反思 - 使用 analyst 角色 |
 
 ## 安装
 
@@ -92,32 +84,26 @@ cp -r AI-Assistant ~/.claude/plugins/
 ## 工作流程
 
 ```
-需求 → 规划 → 执行 → 验证 → 审查
-  ↓      ↓      ↓      ↓      ↓
-coordinator → planner → executor → qa → code-reviewer
+S 档（简单）: 理解 → 直接执行 → 完成
+M 档（中等）: 理解 → 计划 → executor → 验证 → 完成
+L 档（复杂）: 理解 → analyst → 计划 → executor → tester → reviewer → 完成
 ```
 
-### 完整流程
+### 三档自适应
 
-1. **需求阶段**
-   - `/brainstorming` - 需求分析，明确要做什么
+1. **S 档（简单任务）**
+   - Coordinator 直接执行，无需调度
 
-2. **规划阶段**
-   - coordinator - 智能调度，制定执行方案
+2. **M 档（中等任务）**
+   - 使用 TodoWrite 跟踪进度
+   - 调度 1-2 个角色完成
 
-3. **执行阶段**
-   - executor - 按计划实现代码
-   - 使用 TDD 方法开发
-   - 每个任务完成后更新进度
-
-4. **验证阶段**
-   - qa - 功能验证
-   - e2e-tester - E2E 测试
-
-5. **审查阶段**
-   - code-reviewer - 代码审查，确保代码质量
-   - evaluator - 质量评估（复杂任务）
-   - 完成后更新 `docs/蓝图.md`
+3. **L 档（复杂任务）**
+   - 完整调度流程
+   - analyst 分析需求
+   - executor 实现代码
+   - tester 验证功能
+   - reviewer 审查质量
 
 ## 项目结构
 
@@ -131,20 +117,20 @@ AI-Assistant/
 │   ├── verification/
 │   ├── code-review/
 │   ├── debugging/
-│   ├── thinking-coach/
+│   ├── code-analysis/
 │   ├── web-researcher/
 │   ├── e2e-tester/
 │   └── ...
-├── agents/                  # Agents (16个)
-│   ├── coordinator.md
-│   ├── requirements-analyst.md
+├── agents/                  # Agents（6 核心 + 2 可选）
+│   ├── analyst.md
 │   ├── executor.md
-│   ├── qa.md
-│   ├── code-reviewer.md
+│   ├── tester.md
+│   ├── reviewer.md
+│   ├── researcher.md
 │   ├── debugger.md
-│   ├── e2e-tester.md
-│   ├── web-researcher.md
-│   └── ...
+│   ├── skeptics.md
+│   ├── ui-ux-reviewer.md
+│   └── _archived/          # 旧版 agent 归档
 ├── commands/               # Commands
 ├── docs/                   # 文档
 │   ├── requirements/       # 需求文档
@@ -172,11 +158,11 @@ AI-Assistant/
 
 ## 项目理念
 
-自主设计的 Claude Code 插件，基于团队协作理念：
+自主设计的 Claude Code 插件，基于自适应协作理念：
 
-- **管家调度**：Coordinator 协调分析、计划、执行
-- **角色分工**：不同角色负责不同阶段
-- **文档驱动**：每个阶段产出明确文档
+- **管家调度**：Coordinator 根据任务复杂度自适应选择 S/M/L 档流程
+- **角色精简**：6 核心角色 + 2 可选角色，各司其职
+- **上下文驱动**：信息在会话中流转，仅在 L 档任务创建文档
 
 ## 参考文档
 

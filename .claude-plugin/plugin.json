@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.52.2",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.52.2 优化：test-designer 简化原则 - 新增思维纠正（特征 vs 功能），强调抓住核心特征",
+  "version": "3.0.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.0 重构：17角色→6+2角色，三档自适应流程（S/M/L）",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
@@ -24,23 +24,13 @@
   "skills": ["./skills/"],
   "commands": ["./commands/"],
   "agents": [
-    "./agents/requirements-analyst.md",
-    "./agents/requirements-miner.md",
+    "./agents/analyst.md",
     "./agents/executor.md",
-    "./agents/qa.md",
-    "./agents/code-reviewer.md",
-    "./agents/thinking-coach.md",
+    "./agents/tester.md",
+    "./agents/reviewer.md",
+    "./agents/researcher.md",
     "./agents/debugger.md",
-    "./agents/code-analysis.md",
-    "./agents/security-reviewer.md",
-    "./agents/test-designer.md",
-    "./agents/strategist.md",
-    "./agents/web-researcher.md",
-    "./agents/e2e-tester.md",
-    "./agents/browser-debugger.md",
-    "./agents/project-researcher.md",
-    "./agents/evaluator.md",
-    "./agents/ui-ux-reviewer.md",
-    "./agents/skeptics.md"
+    "./agents/skeptics.md",
+    "./agents/ui-ux-reviewer.md"
   ]
 }

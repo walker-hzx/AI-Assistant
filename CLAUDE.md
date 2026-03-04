@@ -14,17 +14,9 @@ AI-Assistant 是一个 Claude Code 插件项目，用于辅助全栈开发。
 ## 开发流程
 
 ```
-需求阶段: coordinator → coordinator-intent
-    ↓
-规划阶段: coordinator-planning
-    ↓
-执行阶段: coordinator-dispatch → executor
-    ↓
-验证阶段: qa / e2e-tester
-    ↓
-审查阶段: code-review
-    ↓
-完成阶段: update-blueprint
+S 档: 用户 → coordinator 直接执行 → 完成
+M 档: 用户 → coordinator → executor → 验证 → 完成
+L 档: 用户 → coordinator → analyst → executor → tester → reviewer → 完成
 ```
 
 ## 核心规范

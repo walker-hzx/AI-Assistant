@@ -29,5 +29,5 @@ skill: coordinator
 
 此命令会调用 coordinator，coordinator 会：
 - 分析要学习的概念
-- 决定是否需要 web-researcher 查资料
+- 决定是否需要 researcher 查资料
 - 调度合适的角色协助

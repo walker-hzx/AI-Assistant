@@ -592,11 +592,10 @@ const result = processData(transformed);
 
 遇到以下情况时，考虑调用其他 agents：
 
-- **安全相关问题** → 使用 `security-reviewer` agent
-- **需要大规模重构** → 使用 `planner` agent
-- **测试失败且难以定位** → 使用 `tdd-guide` agent
-- **性能问题** → 使用 `architect` agent 进行性能分析
-- **需要代码审查** → 使用 `code-reviewer` agent
+- **安全相关问题** → 使用 `reviewer` agent
+- **需要大规模重构** → 返回 coordinator 重新规划
+- **测试失败且难以定位** → 使用 `tester` agent
+- **需要代码审查** → 使用 `reviewer` agent
 
 ---
 

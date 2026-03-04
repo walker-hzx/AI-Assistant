@@ -29,5 +29,5 @@ skill: coordinator
 
 此命令会调用 coordinator，coordinator 会：
 - 分析代码
-- 决定是否需要 security-reviewer
+- 决定是否需要 reviewer
 - 调度合适的角色执行

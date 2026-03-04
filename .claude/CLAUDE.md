@@ -10,23 +10,23 @@
 
 ## 架构说明
 
-### Coordinator + Subagent 模式
+### Coordinator + Subagent 自适应模式
 
-- **Coordinator（管家/星星）**：调度中心，负责管理流程
-- **Subagent**：具体执行者，负责完成任务
-- **Task 工具**：调用 Subagent 的方式
+- **Coordinator（管家/星星）**：自适应调度中心，简单任务直接做，复杂任务调度角色
+- **6 个核心角色**：analyst, executor, tester, reviewer, researcher, debugger
+- **2 个可选角色**：skeptics, ui-ux-reviewer
 
-### 核心流程
+### 三档自适应流程
 
 ```
-用户 → Coordinator → 调度 Subagent → 完成任务
-                  ↓
-            需求分析 → 制定计划 → 执行任务 → 功能验证 → 代码审查
+S 档（简单）: 理解 → 直接执行 → 完成
+M 档（中等）: 理解 → 计划(TodoWrite) → executor → 验证 → 完成
+L 档（复杂）: 理解 → analyst → 计划 → executor → tester → reviewer → 完成
 ```
 
 ### ROLES.md
 
-`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 17 个 Subagent 角色。
+`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 8 个角色。
 
 ---
 
@@ -43,35 +43,35 @@
 
 ## 开发规范
 
-### 管家流程
-
-| 阶段 | 职责 | 输出文档 |
-|------|------|---------|
-| 需求分析 | 理解需求，明确做什么 | `docs/intent/<task>-intent.md` |
-| 制定计划 | 拆分任务，安排顺序 | `docs/plans/<task>-plan.md` |
-| 执行任务 | 调度 Subagent 完成 | `docs/execution/<task>-execution-N.md` |
-| 功能验证 | 验证功能正确性 | `docs/verification/<task>-verification.md` |
-| 代码审查 | 审查代码质量 | `docs/reviews/<task>-review.md` |
-
 ### 管家原则
 
-1. **不亲自执行** - 所有任务调度 Subagent 执行
-2. **文档驱动** - 所有操作以文档为载体
-3. **闭环执行** - 每轮执行后检查结果
+1. **自适应** - 根据任务复杂度选择 S/M/L 档流程
+2. **上下文驱动** - 信息在会话中流转，只在 L 档任务创建文档
+3. **闭环执行** - 每轮执行后检查结果，迭代调整
+4. **简单任务直接做** - S 档不走流程，不调 subagent
+
+### 文档产出
+
+| 任务档位 | 文档 |
+|----------|------|
+| S 档 | 无 |
+| M 档 | TodoWrite 跟踪 |
+| L 档 | `docs/plans/<task>-plan.md` |
 
 ---
 
-## Subagent 列表
+## 角色列表
 
-| 类别 | Subagent |
-|------|---------|
-| 分析类 | thinking-coach, strategist, code-analysis, project-researcher, web-researcher |
-| 需求类 | requirement-analysis |
-| 实现类 | executor |
-| 验证类 | e2e-tester, test-designer, qa |
-| 审查类 | security-reviewer, code-reviewer |
-| 调试类 | debugger, browser-debugger |
-| 辅助类 | team-generator |
+| 角色 | 职责 |
+|------|------|
+| analyst | 需求理解、问题分析、策略制定 |
+| executor | 代码实现、功能开发 |
+| tester | 测试设计、执行、功能验证 |
+| reviewer | 代码审查、安全审查、质量评估 |
+| researcher | 代码分析、项目调研、文档查阅 |
+| debugger | Bug 定位和修复 |
+| skeptics | 建设性质疑（可选） |
+| ui-ux-reviewer | UI/UX 审查（可选） |
 
 ---
 

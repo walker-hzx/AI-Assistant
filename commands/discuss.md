@@ -28,6 +28,6 @@ skill: coordinator
 ## 说明
 
 此命令会调用 coordinator，coordinator 会分析需求并决定调用哪个角色：
-- 需求不清晰 → 调用 requirements-analyst
-- 需要计划 → 调用 planner
+- 需求不清晰 → 调用 analyst
+- 需要计划 → 制定计划
 - 需要实现 → 调用 executor

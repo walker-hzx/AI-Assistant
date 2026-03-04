@@ -392,17 +392,14 @@ model: sonnet
 | **debugging** | 定位 + 修复 | 解决问题，让代码正常工作 | 已知 bug，需要修复 |
 | **code-review** | 代码规范审查 | 合规性检查 | 代码规范检查 |
 | **security-review** | 安全漏洞审查 | 发现并修复安全漏洞 | 安全相关 |
-| **thinking-coach** | 思维反思、思路纠正 | 思维方式改进 | 思维层面问题 |
 
-**使用建议**：
-- 问题方向不明确，想要全面分析 → code-analysis
-- 已知具体错误，需要修复 → debugging
-- 代码规范审查 → code-review
-- 安全问题 → security-review
-- 思维方式问题 → thinking-coach
+**对应角色**：
+- code-analysis → researcher 角色
+- debugging → debugger 角色
+- code-review / security-review → reviewer 角色
 
 **协作场景**：
-- code-analysis（分析问题）→ debugging（修复问题）→ code-review（检查修复）
+- researcher（分析问题）→ debugger（修复问题）→ reviewer（检查修复）
 
 ---
 

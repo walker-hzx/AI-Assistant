@@ -28,5 +28,5 @@ skill: coordinator
 
 此命令会调用 coordinator，coordinator 会：
 - 分析你的困惑
-- 决定是否需要 thinking-coach
+- 决定是否需要 analyst
 - 调度合适的角色协助

@@ -29,5 +29,5 @@ skill: coordinator
 
 此命令会调用 coordinator，coordinator 会：
 - 分析测试需求
-- 决定是否需要 test-designer
+- 决定是否需要 tester
 - 调度合适的角色设计测试

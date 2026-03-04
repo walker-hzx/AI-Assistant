@@ -138,7 +138,7 @@ teams/
 **成员**：
 | 角色 | 职责 | skills |
 |------|------|--------|
-| Lead | 引导提问 + 统筹 + 产出文档 | thinking-coach |
+| Lead | 引导提问 + 统筹 + 产出文档 | requirement-analysis |
 | 技术导师 | 技术调研 + 可行性分析 | learn-concept, docs-sync |
 | 需求分析师 | 业务分析 + 用户分析 + 功能细化 | brainstorming |
 | 质疑者 | 假设验证 + 风险识别 | - |
