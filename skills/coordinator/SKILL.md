@@ -125,10 +125,10 @@ user-invocable: true
 
 ### 步骤 1：接收任务 + 创建调度记录
 
-**【强制】管家不能自己创建文档，必须调度 Subagent**
+**【强制】管家不能自己创建文档，必须使用 Task 调用 Subagent**
 
 1. 深度理解用户需求（调用 thinking-coach）
-2. 调度 executor 创建调度记录
+2. 使用 Task 调用 executor 创建调度记录
 3. 门控检查
 
 > 模板参考：templates/调度记录.md
@@ -141,7 +141,7 @@ user-invocable: true
 
 **只有调研任务可以跳过此步骤**
 
-1. 调度 requirements-analyst 创建需求文档
+1. 使用 Task 调用 requirements-analyst 创建需求文档
 2. 质疑环节
 
 ---
@@ -152,7 +152,7 @@ user-invocable: true
 
 **只有调研任务可以跳过此步骤**
 
-1. 调度 executor 创建计划文档
+1. 使用 Task 调用 executor 创建计划文档
 2. 详细节点：
    > 参考：nodes/PLANNING.md
    - 测试设计
@@ -173,7 +173,7 @@ user-invocable: true
 
 > 参考：nodes/VERIFICATION.md
 
-1. 调度 qa 创建验证文档
+1. 使用 Task 调用 qa 创建验证文档
 2. 量化验证
 3. 依赖影响分析
 4. 质疑环节
@@ -184,7 +184,7 @@ user-invocable: true
 
 > 参考：nodes/QUALITY.md
 
-1. 调度 code-reviewer 创建审查文档
+1. 使用 Task 调用 code-reviewer 创建审查文档
 2. 安全审查触发（敏感操作）
 3. 质疑环节
 
@@ -261,9 +261,9 @@ user-invocable: true
 ## 【关键】管家行为边界
 
 ❌ **绝对禁止**：
-- 修改代码（必须调度 ai-assistant:executor）
-- 修复 bug（必须调度 ai-assistant:debugger）
-- 执行测试（必须调度 ai-assistant:qa）
+- 修改代码（必须使用 Task 调用 ai-assistant:executor）
+- 修复 bug（必须使用 Task 调用 ai-assistant:debugger）
+- 执行测试（必须使用 Task 调用 ai-assistant:qa）
 - **直接调用 Write/Edit 创建文档**
 
 ✅ **允许**：
@@ -335,7 +335,7 @@ Task: <任务描述>
     ↓
 【管家】制定计划
     ↓
-【管家】执行：调度 ai-assistant:executor
+【管家】执行：使用 Task 调用 ai-assistant:executor
     ↓
 【管家】功能验证
     ↓
