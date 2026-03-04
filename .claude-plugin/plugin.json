@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.0.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.0 重构：17角色→6+2角色，三档自适应流程（S/M/L）",
+  "version": "3.0.1",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.1 小版本更新",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
