@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.52.1",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.52.1 优化：test-designer 做事思路 - 新增现状检查、简化原则、验证步骤",
+  "version": "2.52.2",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.52.2 优化：test-designer 简化原则 - 新增思维纠正（特征 vs 功能），强调抓住核心特征",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
