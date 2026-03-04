@@ -1,7 +1,6 @@
 ---
 name: discuss
 description: "需求讨论 - 帮助明确需求，3个核心问题法探索用户意图"
-context: fork
 skill: coordinator
 ---
 

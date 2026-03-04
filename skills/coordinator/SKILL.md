@@ -245,20 +245,46 @@ researcher（调研技术方案 / 分析代码）
 
 > 详见 ROLES.md
 
-| 角色 | 何时调度 |
-|------|---------|
-| analyst | 需求不清晰、需要多角度分析、复杂决策 |
-| executor | 需要写代码、创建文件、实现功能 |
-| tester | 需要设计测试、运行测试、验证功能 |
-| reviewer | 代码写完后需要审查质量和安全 |
-| researcher | 需要调研技术、阅读文档、分析代码库 |
-| debugger | 需要定位和修复 bug |
+### ⚠️ 调度方式：使用 Task 工具
+
+调度 subagent 时，**MUST 使用 Task 工具**。这是 Claude Code 提供的内置工具，用于创建子智能体。
+
+**语法**：
+```
+Task(角色名, "任务描述")
+```
+
+**示例**：
+```
+Task(executor, "实现用户搜索功能。目标：在 UserList.vue 添加搜索框，支持按名称过滤。约束：Vue 3 Composition API + TypeScript。验收标准：输入关键词可过滤列表，有防抖。")
+
+Task(debugger, "定位登录失败的 bug。现象：点击登录后返回 500 错误。相关代码：src/api/auth.ts, backend/api/v1/auth.py。")
+
+Task(tester, "验证用户搜索功能。功能：按名称过滤用户列表。代码位置：src/pages/UserList.vue。验收标准：空输入显示全部，关键词匹配正确过滤，特殊字符不崩溃。")
+```
+
+**关键规则**：
+- **NEVER** 用伪代码或注释代替 Task 调用（如"这里调度 executor"）— 必须实际执行 Task()
+- 每次 Task 返回后，执行**检查点评估协议**
+- 角色名必须与 agents/ 目录下的 agent name 一致
+
+### 可用角色
+
+| 角色 | Task 调用 | 何时调度 |
+|------|----------|---------|
+| analyst | `Task(analyst, "...")` | 需求不清晰、需要多角度分析、复杂决策 |
+| executor | `Task(executor, "...")` | 需要写代码、创建文件、实现功能 |
+| tester | `Task(tester, "...")` | 需要设计测试、运行测试、验证功能 |
+| reviewer | `Task(reviewer, "...")` | 代码写完后需要审查质量和安全 |
+| researcher | `Task(researcher, "...")` | 需要调研技术、阅读文档、分析代码库 |
+| debugger | `Task(debugger, "...")` | 需要定位和修复 bug |
 
 **可选增强角色**（特殊场景使用）：
-| 角色 | 何时调度 |
-|------|---------|
-| skeptics | 复杂任务的计划需要质疑验证 |
-| ui-ux-reviewer | 前端页面需要交互/视觉优化 |
+
+| 角色 | Task 调用 | 何时调度 |
+|------|----------|---------|
+| skeptics | `Task(skeptics, "...")` | 复杂任务的计划需要质疑验证 |
+| ui-ux-reviewer | `Task(ui-ux-reviewer, "...")` | 前端页面需要交互/视觉优化 |
 
 ---
 
@@ -342,19 +368,26 @@ researcher（调研技术方案 / 分析代码）
 管家：
 1. 判断档位 → M 档（新功能，涉及业务逻辑）
 2. 制定计划（TodoWrite）
-   - [ ] 添加搜索组件
-   - [ ] 实现搜索逻辑
-   - [ ] 添加防抖
+   - [ ] 添加搜索组件 + 搜索逻辑 + 防抖
+   - [ ] 验证功能
 3. 调度 executor：
-   "目标：给用户列表加搜索功能
-    上下文：用户列表在 src/pages/UserList.vue
-    约束：Vue 3 Composition API + TypeScript
-    验收标准：输入关键词可过滤用户，有防抖"
+   Task(executor, "给用户列表加搜索功能。
+     目标：在 src/pages/UserList.vue 添加搜索框，输入关键词过滤用户列表。
+     上下文：用户列表组件在 src/pages/UserList.vue，使用 Vue 3 Composition API。
+     约束：TypeScript + Composition API，使用 lodash debounce。
+     验收标准：输入关键词可过滤用户，有 300ms 防抖，空输入显示全部。")
 4. 检查点评估 executor 结果：
    ✅ 完整性通过 → 进入测试环节
-5. 调度 tester 验证功能
+5. 调度 tester：
+   Task(tester, "验证用户列表搜索功能。
+     功能：按名称过滤用户列表。
+     代码位置：src/pages/UserList.vue。
+     验收标准：空输入显示全部，关键词匹配正确过滤，特殊字符不崩溃。")
 6. 检查点评估 tester 结果：
-   ⚠️ 发现空输入未处理 → 追加任务给 executor
+   ⚠️ 发现空输入未处理 → 追加任务给 executor：
+   Task(executor, "修复搜索功能的空输入问题。
+     问题：空字符串搜索时未正确显示全部用户。
+     修复位置：src/pages/UserList.vue 的 filterUsers 方法。")
 7. executor 修复 → 再次评估 → ✅ 通过
 8. 完成
 ```
@@ -366,21 +399,26 @@ researcher（调研技术方案 / 分析代码）
 
 管家：
 1. 判断档位 → L 档（跨模块、高风险）
-2. 调度 analyst 进行需求分析：
-   "目标：分析用户认证系统需求
-    验收标准：明确认证方式、权限模型、涉及的接口"
+2. 调度 analyst：
+   Task(analyst, "分析用户认证系统需求。
+     目标：明确认证方式、权限模型、涉及的接口。
+     上下文：Vue 3 前端 + FastAPI 后端 + PostgreSQL。
+     验收标准：产出认证方式选型、权限模型、API 接口列表、数据模型。")
 3. 检查点评估 analyst 结果 → ✅ 通过
 4. 基于分析结果制定详细计划（创建 docs/plans/auth-plan.md）
 5. 里程碑 1 - 数据模型：
-   a. executor 实现 → 检查点评估 → ✅
-   b. tester 验证 → 检查点评估 → ⚠️ 密码字段未加密
-   c. 追加任务给 executor → 检查点评估 → ✅
+   a. Task(executor, "实现用户认证数据模型。目标：创建 User 模型，包含密码哈希。...")
+      → 检查点评估 → ✅
+   b. Task(tester, "验证用户认证数据模型。检查密码哈希、字段验证...")
+      → 检查点评估 → ⚠️ 密码字段未加密
+   c. Task(executor, "修复：密码字段需要使用 bcrypt 加密...")
+      → 检查点评估 → ✅
 6. 里程碑 2 - API 接口：
-   a. executor 实现 → 检查点评估 → ✅
-   b. tester 验证 → 检查点评估 → ✅
+   a. Task(executor, "实现认证 API 接口。包含 login/register/refresh...") → ✅
+   b. Task(tester, "验证认证 API。测试登录、注册、token 刷新...") → ✅
 7. 里程碑 3 - 前端页面：
-   a. executor 实现 → 检查点评估 → ✅
-   b. tester 验证 → 检查点评估 → ✅
-8. 调度 reviewer 整体审查 → 检查点评估
+   a. Task(executor, "实现登录注册页面。Vue 3 + TypeScript...") → ✅
+   b. Task(tester, "验证前端认证流程。登录、注册、token 存储...") → ✅
+8. Task(reviewer, "审查用户认证系统完整实现。关注安全性...")
 9. 处理审查意见 → 更新蓝图 → 完成
 ```

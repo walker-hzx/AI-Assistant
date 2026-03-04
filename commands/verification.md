@@ -1,7 +1,6 @@
 ---
 name: verification
 description: "功能验证 - 在声称完成前验证代码是否正确实现需求"
-context: fork
 skill: coordinator
 ---
 

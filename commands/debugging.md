@@ -1,7 +1,6 @@
 ---
 name: debugging
 description: "调试 - 科学定位 bug，分析根因，给出修复方案"
-context: fork
 skill: coordinator
 ---
 

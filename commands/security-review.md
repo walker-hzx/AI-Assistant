@@ -1,7 +1,6 @@
 ---
 name: security-review
 description: "安全审查 - 识别 OWASP Top 10 漏洞，检查密钥泄露和注入风险"
-context: fork
 skill: coordinator
 ---
 

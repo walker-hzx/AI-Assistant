@@ -146,18 +146,21 @@ coordinator 接收后，提取关键信息传递给下一个角色。
 ## 调用方式
 
 ```
-Task(ai-assistant:<角色名>, "任务描述")
+Task(角色名, "任务描述")
 ```
+
+> 注意：Task() 调度 subagent 时直接使用 agent 的 `name` 字段值，无需 namespace 前缀。
+> `ai-assistant:` 前缀仅用于 skill 斜杠命令（如 `/ai-assistant:coordinator`），不用于 Task 调度。
 
 ### 角色名映射
 
-| 新角色 | Task 调用名 |
-|--------|------------|
-| analyst | `ai-assistant:analyst` |
-| executor | `ai-assistant:executor` |
-| tester | `ai-assistant:tester` |
-| reviewer | `ai-assistant:reviewer` |
-| researcher | `ai-assistant:researcher` |
-| debugger | `ai-assistant:debugger` |
-| skeptics | `ai-assistant:skeptics` |
-| ui-ux-reviewer | `ai-assistant:ui-ux-reviewer` |
+| 角色 | Task 调用 |
+|------|----------|
+| analyst | `Task(analyst, "...")` |
+| executor | `Task(executor, "...")` |
+| tester | `Task(tester, "...")` |
+| reviewer | `Task(reviewer, "...")` |
+| researcher | `Task(researcher, "...")` |
+| debugger | `Task(debugger, "...")` |
+| skeptics | `Task(skeptics, "...")` |
+| ui-ux-reviewer | `Task(ui-ux-reviewer, "...")` |

@@ -1,7 +1,6 @@
 ---
 name: docs-sync
 description: "文档同步 - 抓取框架官方文档，生成结构化使用指南"
-context: fork
 skill: coordinator
 ---
 

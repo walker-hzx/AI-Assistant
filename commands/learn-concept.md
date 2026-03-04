@@ -1,7 +1,6 @@
 ---
 name: learn-concept
 description: "学习概念 - 搜索并学习不确定的技术概念"
-context: fork
 skill: coordinator
 ---
 

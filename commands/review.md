@@ -1,7 +1,6 @@
 ---
 name: review
 description: "代码审查 - 审查代码质量、安全性，给出可操作改进建议"
-context: fork
 skill: coordinator
 ---
 
