@@ -10,6 +10,12 @@
             "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh",
             "async": false,
             "description": "Session start hook - initialize plugin context"
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/learning-init.sh",
+            "async": false,
+            "description": "Learning init - initialize user profile"
           }
         ]
       }
@@ -46,9 +52,15 @@
         "hooks": [
           {
             "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/learning-collect.sh",
+            "async": true,
+            "description": "Learning collect - save session data"
+          },
+          {
+            "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-end.sh",
             "async": true,
-            "description": "Session end hook - check task completion and suggest next steps"
+            "description": "Session end hook - check task completion"
           }
         ]
       }
