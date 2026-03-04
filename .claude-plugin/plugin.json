@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.51.1",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.51.1 优化：将前置思考框架提前到核心定位之后，更醒目",
+  "version": "2.51.2",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.51.2 优化：将调度指令明确为\"使用 Task 调用 Subagent\"，避免误解为 Skill",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
