@@ -12,31 +12,26 @@
 
 | Skill | 说明 |
 |-------|------|
-| assistant | 智能助手入口 - 一句话需求，智能调度 |
+| coordinator | 智能管家 - 自适应调度系统（核心） |
 | brainstorming | 需求分析 - 将想法转化为需求 |
 | requirement-understanding | 需求理解 - 澄清用户真正意图 |
 | requirement-analysis | 需求分析 - 多角度分析需求 |
 | requirement-validation | 需求验证 - 确认需求完整 |
 | writing-plans | 详细实施计划 - 创建分阶段实施计划 |
-| task-splitting | 任务拆分 - 拆分为小任务 |
-| dependency-analysis | 依赖分析 - 识别任务依赖 |
-| milestone-planning | 里程碑规划 - 划分执行阶段 |
 | executing-plans | 执行计划 - 按计划执行任务 |
 | code-implementation | 代码实现 - 按步骤编写代码 |
 | tdd | 测试驱动开发 - 先写测试再写实现 |
-| progress-tracking | 进度追踪 - 记录执行状态 |
 | verification | 功能验证 - 确认代码正确实现需求 |
-| security-verification | 安全验证 - 检查安全漏洞 |
 | code-review | 代码审查 - 确保代码质量 |
+| security-review | 安全审查 - 识别安全漏洞 |
 | debugging | 调试 - 系统化调试修复 bug |
 | code-analysis | 代码分析 - 系统分析代码问题 |
-| security-review | 安全审查 - 识别安全漏洞 |
 | test-planner | 测试设计 - 设计测试场景 |
-| thinking-coach | 思维教练 - 反思思维方式 |
-| strategist | 策略分析师 - 深度分析决策 |
+| thinking-coach | 思维知识库 - 分析思维方式 |
 | project-researcher | 项目调研 - 中途接手项目分析 |
 | web-researcher | 网页研究 - 爬取网页分析 |
-| e2e-testing | E2E 测试 - 执行端到端测试 |
+| e2e-tester | E2E 测试 - 执行端到端测试 |
+| browser-debugger | 浏览器调试 - 前端错误捕获 |
 | learn-concept | 学习概念 - 搜索学习不熟悉的技术 |
 | team-generator | 团队生成 - 动态生成 Agent Team |
 | docs-sync | 框架文档同步 - 爬取官方文档 |
