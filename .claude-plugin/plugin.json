@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "2.49.1",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.49.1 新增：skeptics质疑者agent（建设性质疑），6大质疑环节均由 skeptics 执行",
+  "version": "2.50.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents，基于你的工作流定制。2.50.0 新增：所有 Subagent 增加思考框架（分析→获取→思考→规划→执行），coordinator 增加前置思考框架避免需求/规划理解偏差",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
