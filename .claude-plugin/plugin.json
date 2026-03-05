@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
   "version": "3.0.3",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.1 小版本更新",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.3 重构：思考循环驱动架构（THINK→ACT→REFLECT）",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
