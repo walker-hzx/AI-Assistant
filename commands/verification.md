@@ -28,5 +28,5 @@ skill: coordinator
 
 此命令会调用 coordinator，coordinator 会：
 - 分析需求和实现
-- 决定是否需要 qa
+- 决定是否需要 tester
 - 调度合适的角色验证
