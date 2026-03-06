@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.5] - 2026-03-06
+
+### Enhanced
+
+#### MVT（最小可行性测试）调试策略
+
+**背景**：修复 bug 反复失败时，缺少系统性的降级排查机制，导致循环修复。
+
+**Coordinator 增强**（`skills/coordinator/SKILL.md`）：
+- 新增「修复循环检测与 MVT 降级策略」
+- 定义 4 个循环修复信号（同一问题修 2 次未解决、改 A 坏 B、A→B→A 循环、根因不明反复试）
+- 命中任一信号强制触发 MVT 降级，禁止继续盲改
+- 提供标准 Task 模板给 coordinator 调度 debugger 进入 MVT 模式
+
+**Debugger Agent 增强**（`agents/debugger.md`）：
+- 新增「最小可行性测试排查法（MVT 模式）」作为核心调试方法
+- 完整五步法：剥离→确认→逐步增加→修复→应用
+- 新增循环修复降级原则：同一问题修 2 次仍失败 → 立即切换 MVT
+
+**Debugging Skill 增强**（`skills/debugging/SKILL.md`）：
+- 新增完整 MVT 章节，含触发条件表、五步法详解（前后端代码示例）、探针测试写法、输出报告模板
+- 原"最小复现"技巧升级为 MVT 章节引用，避免重复
+
+**Executor Agent 增强**（`agents/executor.md`）：
+- 意外信号表新增：同一修复第 2 次仍失败 → 建议 coordinator 切换 MVT 排查
+
+**Coordinator ROLES 更新**（`skills/coordinator/ROLES.md`）：
+- debugger 调度表新增 MVT 模式场景
+
 ## [1.8.0] - 2026-02-26
 
 ### Added

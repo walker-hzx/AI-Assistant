@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.0.4",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.4 小版本更新",
+  "version": "3.0.5",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.5 MVT 调试策略增强",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
