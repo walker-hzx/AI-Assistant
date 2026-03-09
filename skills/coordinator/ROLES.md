@@ -150,21 +150,21 @@ coordinator 接收后进入 REFLECT 阶段，评估结果并决定下一步。
 ## 调用方式
 
 ```
-Task(角色名, "任务描述")
+Task(ai-assistant:角色名, "任务描述")
 ```
 
-> 注意：Task() 调度 subagent 时直接使用 agent 的 `name` 字段值，无需 namespace 前缀。
-> `ai-assistant:` 前缀仅用于 skill 斜杠命令（如 `/ai-assistant:coordinator`），不用于 Task 调度。
+> 注意：Task() 调度 subagent 时需要带 `ai-assistant:` 前缀。
+> 这是 Claude Code Task 工具的语法要求。
 
 ### 角色名映射
 
 | 角色 | Task 调用 |
 |------|----------|
-| analyst | `Task(analyst, "...")` |
-| executor | `Task(executor, "...")` |
-| tester | `Task(tester, "...")` |
-| reviewer | `Task(reviewer, "...")` |
-| researcher | `Task(researcher, "...")` |
-| debugger | `Task(debugger, "...")` |
-| skeptics | `Task(skeptics, "...")` |
-| ui-ux-reviewer | `Task(ui-ux-reviewer, "...")` |
+| analyst | `Task(ai-assistant:analyst, "...")` |
+| executor | `Task(ai-assistant:executor, "...")` |
+| tester | `Task(ai-assistant:tester, "...")` |
+| reviewer | `Task(ai-assistant:reviewer, "...")` |
+| researcher | `Task(ai-assistant:researcher, "...")` |
+| debugger | `Task(ai-assistant:debugger, "...")` |
+| skeptics | `Task(ai-assistant:skeptics, "...")` |
+| ui-ux-reviewer | `Task(ai-assistant:ui-ux-reviewer, "...")` |

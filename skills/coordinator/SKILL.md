@@ -187,14 +187,14 @@ REFLECT：
 ### 使用 Task 工具
 
 ```
-Task(角色名, "任务描述")
+Task(ai-assistant:角色名, "任务描述")
 ```
 
 调度时 **MUST** 包含：**目标**、**上下文**（已知信息/前一步产出）、**约束**、**验收标准**。
 
 **示例**：
 ```
-Task(researcher, "分析项目现有的用户模块代码结构。
+Task(ai-assistant:researcher, "分析项目现有的用户模块代码结构。
   目标：了解当前用户模型、API 端点、前端组件。
   上下文：项目是 Vue 3 + FastAPI + PostgreSQL。
   验收标准：输出代码清单、可复用模块、需要新建部分。")
@@ -299,7 +299,7 @@ Task(researcher, "分析项目现有的用户模块代码结构。
   ⚠️ 不要让 executor 再试一次相同的方向
 
 第二步：切换到最小可行性测试排查
-  Task(debugger, "对当前问题进行最小可行性测试排查（MVT 模式）。
+  Task(ai-assistant:debugger, "对当前问题进行最小可行性测试排查（MVT 模式）。
     问题描述：[具体问题]
     已尝试的修复和结果：[列出每次尝试和失败原因]
     要求：
@@ -464,7 +464,7 @@ THINK #1：
   → 先去了解
 
 ACT #1：
-  Task(researcher, "分析 src/pages/UserList.vue 代码结构。
+  Task(ai-assistant:researcher, "分析 src/pages/UserList.vue 代码结构。
     目标：了解组件结构、数据源、现有过滤逻辑。
     验收标准：代码结构说明、数据流分析、添加搜索的最佳位置。")
 
@@ -481,7 +481,7 @@ THINK #2：
   信息充足了，可以派 executor
 
 ACT #2：
-  Task(executor, "给用户列表加搜索功能。
+  Task(ai-assistant:executor, "给用户列表加搜索功能。
     目标：添加搜索框，按名称过滤用户。
     上下文：组件在 src/pages/UserList.vue，Composition API，
     数据来自 useUsers()，建议在 computed 中加 filter。
@@ -501,7 +501,7 @@ THINK #3：
   → 派 tester 验证
 
 ACT #3：
-  Task(tester, "验证用户列表搜索功能。
+  Task(ai-assistant:tester, "验证用户列表搜索功能。
     代码位置：src/pages/UserList.vue。
     验收标准：空输入显示全部，关键词过滤正确，特殊字符不崩溃。")
 
@@ -518,7 +518,7 @@ THINK #4：
   → 追加修复任务
 
 ACT #4：
-  Task(executor, "修复搜索空输入问题。
+  Task(ai-assistant:executor, "修复搜索空输入问题。
     问题：空字符串时列表消失，应显示全部用户。
     位置：src/pages/UserList.vue filterUsers 方法。")
 
@@ -544,11 +544,11 @@ THINK #1：
   → 先并行了解
 
 ACT #1（并行）：
-  Task(analyst, "分析用户认证系统需求。
+  Task(ai-assistant:analyst, "分析用户认证系统需求。
     目标：明确认证方式、权限模型、API 接口。
     上下文：Vue 3 + FastAPI + PostgreSQL。
     验收标准：认证方式选型、权限模型、接口列表。")
-  Task(researcher, "调研项目现有用户相关代码。
+  Task(ai-assistant:researcher, "调研项目现有用户相关代码。
     目标：了解用户模型、已有 API、前端路由。
     验收标准：现有代码清单、可复用模块。")
 
@@ -565,7 +565,7 @@ THINK #2：
   → 创建计划文档，从里程碑 1 开始
 
 ACT #2：创建 docs/plans/auth-plan.md，然后
-  Task(executor, "实现用户认证数据模型......")
+  Task(ai-assistant:executor, "实现用户认证数据模型......")
 
 REFLECT #2：
   executor 完成了数据模型，但密码字段用了明文
@@ -576,13 +576,13 @@ THINK #3：
   → 让 executor 修复，然后需要 tester 验证
 
 ACT #3：
-  Task(executor, "修复：密码字段使用 bcrypt 加密...")
+  Task(ai-assistant:executor, "修复：密码字段使用 bcrypt 加密...")
 
 REFLECT #3：
   修复完成 ✅ → 需要验证数据模型
 
 ACT #4：
-  Task(tester, "验证认证数据模型。密码哈希、字段验证...")
+  Task(ai-assistant:tester, "验证认证数据模型。密码哈希、字段验证...")
 
 REFLECT #4：
   测试通过 ✅ → 里程碑 1 完成，进入里程碑 2

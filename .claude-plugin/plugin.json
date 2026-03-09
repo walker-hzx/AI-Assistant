@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.0.6",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.6 增强：Bug 修复标准流程 + 检查清单 + 升级机制",
+  "version": "3.0.7",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.7 修复：Task 调度 agent 需要 ai-assistant: 前缀",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
