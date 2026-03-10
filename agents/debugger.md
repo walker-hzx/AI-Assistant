@@ -4,6 +4,7 @@ description: "调试员 - 科学定位 bug，分析根因，给出修复方案"
 model: inherit
 skills:
   - debugging
+  - browser-debugger
 ---
 
 # 调试员
