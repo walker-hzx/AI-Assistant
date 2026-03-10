@@ -39,10 +39,10 @@ user-invocable: true
 当任务涉及以下场景时，**必须**先去了解：
 | 场景 | 缺少的信息 | 行动 |
 |------|-----------|------|
-| 外部网站/资源 | 网站内容、结构、可用的数据 | 调用 web-researcher 获取 |
-| 第三方 API | 接口文档、参数格式、响应结构 | 调用 web-researcher 查文档 |
-| 新技术/框架 | 官方文档、最佳实践 | 调用 web-researcher 查文档 |
-| 项目现状 | 代码结构、现有实现 | 调用 researcher 调研 |
+| 外部网站/资源 | 网站内容、结构、可用的数据 | 调用 web-researcher skill 获取 |
+| 第三方 API | 接口文档、参数格式、响应结构 | 调用 web-researcher skill 查文档 |
+| 新技术/框架 | 官方文档、最佳实践 | 调用 web-researcher skill 查文档 |
+| 项目现状 | 代码结构、现有实现 | 调用 researcher agent 调研 |
 
 **⚠️ 档位 ≥ M 时，第一次 THINK 必须创建 TodoWrite 计划。**
 
@@ -137,7 +137,7 @@ THINK：
 
 ACT：
   - S 档 → 直接做
-  - 信息不足（涉及外部资源/网站） → 先派 web-researcher/researcher 获取信息
+  - 信息不足（涉及外部资源/网站） → 先用 Skill 获取信息
   - 信息充足 → 制定计划，派人执行
 ```
 
@@ -145,10 +145,10 @@ ACT：
 
 | 用户说... | 缺少的信息 | 应该先做 |
 |----------|-----------|---------|
-| "从某网站下载图标" | 网站结构、图标列表 | web-researcher 抓取网站 |
-| "调用某 API" | API 文档、接口格式 | web-researcher 查文档 |
-| "用某框架实现" | 框架用法、最佳实践 | web-researcher 查官方文档 |
-| "类似某产品功能" | 产品实现细节 | researcher 调研 |
+| "从某网站下载图标" | 网站结构、图标列表 | Skill(web-researcher, 抓取网站) |
+| "调用某 API" | API 文档、接口格式 | Skill(web-researcher, 查文档) |
+| "用某框架实现" | 框架用法、最佳实践 | Skill(web-researcher, 查官方文档) |
+| "类似某产品功能" | 产品实现细节 | Task(ai-assistant:researcher, 调研) |
 
 ### 运行中：每个 agent 返回后
 
@@ -219,6 +219,27 @@ Task(ai-assistant:researcher, "分析项目现有的用户模块代码结构。
   目标：了解当前用户模型、API 端点、前端组件。
   上下文：项目是 Vue 3 + FastAPI + PostgreSQL。
   验收标准：输出代码清单、可复用模块、需要新建部分。")
+```
+
+### 使用 Skill 工具
+
+```
+Skill(skill-name, "任务描述")
+```
+
+**何时用 Skill vs Task**：
+
+| 场景 | 工具 | 示例 |
+|------|------|------|
+| 需要外部网站/文档信息 | Skill | web-researcher, docs-sync |
+| 需要代码分析/调研 | Task | researcher, analyst |
+| 需要执行具体任务 | Task | executor, tester, debugger |
+
+**示例**：
+```
+Skill(web-researcher, "抓取 https://www.iconfont.cn/collections/detail?cid=22664
+  目标：获取该页面所有可用图标的名称和 SVG 下载链接
+  验收标准：输出图标名称列表和对应的下载 URL")
 ```
 
 ### 可用角色
