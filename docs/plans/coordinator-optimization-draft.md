@@ -41,7 +41,7 @@
 - 信息传递：通过文档约定
 
 ### 3. 调用方式
-- 当前：Task(executor, prompt="...")
+- 当前：Task(ai-assistant:executor, prompt="...")
 - 期望：使用 executor subagent（自然语言）
 
 ---
