@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.3.1",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.3.1 修复：debugger agent 添加 browser-debugger skill",
+  "version": "3.4.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.4.0 增强：设计类任务特殊处理，优先使用 ui-ux-reviewer",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
