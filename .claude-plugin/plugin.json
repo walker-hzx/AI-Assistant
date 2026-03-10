@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.0.8",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.8 增强：TodoWrite 动态更新机制",
+  "version": "3.0.9",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.0.9 增强：外部资源任务识别能力，主动获取网站信息",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
