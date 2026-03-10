@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.2.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.2.0 新增：scout agent（外部资源获取与分析专家）",
+  "version": "3.3.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.3.0 优化：质量 > 速度，强调深入思考和不确定确认",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
