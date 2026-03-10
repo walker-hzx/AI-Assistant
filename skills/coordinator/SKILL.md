@@ -39,9 +39,9 @@ user-invocable: true
 当任务涉及以下场景时，**必须**先去了解：
 | 场景 | 缺少的信息 | 行动 |
 |------|-----------|------|
-| 外部网站/资源 | 网站内容、结构、可用的数据 | 调用 web-researcher skill 获取 |
-| 第三方 API | 接口文档、参数格式、响应结构 | 调用 web-researcher skill 查文档 |
-| 新技术/框架 | 官方文档、最佳实践 | 调用 web-researcher skill 查文档 |
+| 外部网站/资源 | 网站内容、结构、可用的数据 | 调用 scout agent 获取 |
+| 第三方 API | 接口文档、参数格式、响应结构 | 调用 scout agent 调研 |
+| 新技术/框架 | 官方文档、最佳实践 | 调用 scout agent 查文档 |
 | 项目现状 | 代码结构、现有实现 | 调用 researcher agent 调研 |
 
 **⚠️ 档位 ≥ M 时，第一次 THINK 必须创建 TodoWrite 计划。**
@@ -49,7 +49,7 @@ user-invocable: true
 ### ACT — 行动
 
 根据思考结果，选择一个行动：
-- **了解**：派 researcher/analyst 去调研、读代码、分析
+- **了解**：派 scout/researcher/analyst 去调研、分析
 - **执行**：派 executor 去写代码、实现功能
 - **验证**：派 tester 去测试、reviewer 去审查
 - **调试**：派 debugger 去定位问题
@@ -137,7 +137,7 @@ THINK：
 
 ACT：
   - S 档 → 直接做
-  - 信息不足（涉及外部资源/网站） → 先用 Skill 获取信息
+  - 信息不足（涉及外部资源/网站） → 先派 scout agent 获取信息
   - 信息充足 → 制定计划，派人执行
 ```
 
@@ -145,9 +145,9 @@ ACT：
 
 | 用户说... | 缺少的信息 | 应该先做 |
 |----------|-----------|---------|
-| "从某网站下载图标" | 网站结构、图标列表 | Skill(web-researcher, 抓取网站) |
-| "调用某 API" | API 文档、接口格式 | Skill(web-researcher, 查文档) |
-| "用某框架实现" | 框架用法、最佳实践 | Skill(web-researcher, 查官方文档) |
+| "从某网站下载图标" | 网站结构、图标列表 | Task(ai-assistant:scout, 获取图标) |
+| "调用某 API" | API 文档、接口格式 | Task(ai-assistant:scout, 调研 API) |
+| "用某框架实现" | 框架用法、最佳实践 | Task(ai-assistant:scout, 查文档) |
 | "类似某产品功能" | 产品实现细节 | Task(ai-assistant:researcher, 调研) |
 
 ### 运行中：每个 agent 返回后
@@ -246,6 +246,7 @@ Skill(web-researcher, "抓取 https://www.iconfont.cn/collections/detail?cid=226
 
 | 角色 | 用途 |
 |------|------|
+| scout | 外部资源获取与分析（网站/API/设计资源） |
 | analyst | 需求分析、方案评估、多角度思考 |
 | executor | 写代码、实现功能、重构 |
 | tester | 设计测试、运行测试、验证功能 |

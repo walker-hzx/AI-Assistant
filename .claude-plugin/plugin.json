@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.1.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.1.0 修复：区分 Skill 和 Agent 调用方式",
+  "version": "3.2.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.2.0 新增：scout agent（外部资源获取与分析专家）",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
@@ -31,6 +31,7 @@
     "./agents/researcher.md",
     "./agents/debugger.md",
     "./agents/skeptics.md",
-    "./agents/ui-ux-reviewer.md"
+    "./agents/ui-ux-reviewer.md",
+    "./agents/scout.md"
   ]
 }
