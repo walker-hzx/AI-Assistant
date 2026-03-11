@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.4.2",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.4.2 修复：browser-debugger 使用插件安装路径而非项目路径",
+  "version": "3.5.0",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.5.0 优化：coordinator 派发浏览器错误任务给 debugger，由 debugger 调用 browser-debugger skill 获取错误",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"

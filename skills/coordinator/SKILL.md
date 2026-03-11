@@ -89,6 +89,7 @@ user-invocable: true
 | 第三方 API | 接口文档、参数格式、响应结构 | 调用 scout agent 调研 |
 | 新技术/框架 | 官方文档、最佳实践 | 调用 scout agent 查文档 |
 | 项目现状 | 代码结构、现有实现 | 调用 researcher agent 调研 |
+| 浏览器运行时错误 | 控制台错误、网络失败、页面异常 | 派 debugger agent 调用 browser-debugger skill 获取 |
 
 **⚠️ 档位 ≥ M 时，第一次 THINK 必须创建 TodoWrite 计划。**
 
@@ -212,6 +213,7 @@ ACT：
 | "调用某 API" | API 文档、接口格式 | Task(ai-assistant:scout, 调研 API) |
 | "用某框架实现" | 框架用法、最佳实践 | Task(ai-assistant:scout, 查文档) |
 | "类似某产品功能" | 产品实现细节 | Task(ai-assistant:researcher, 调研) |
+| "页面报错了" / "加载失败" / "控制台有错误" | 浏览器控制台错误、网络失败 | Task(ai-assistant:debugger, 派给 debugger agent 调用 browser-debugger skill 获取错误) |
 
 ### 运行中：每个 agent 返回后
 
