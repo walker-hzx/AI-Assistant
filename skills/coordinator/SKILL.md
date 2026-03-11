@@ -207,13 +207,13 @@ ACT：
 
 **常见"信息不足"场景**：
 
-| 用户说... | 缺少的信息 | 应该先做 |
-|----------|-----------|---------|
-| "从某网站下载图标" | 网站结构、图标列表 | Task(ai-assistant:scout, 获取图标) |
-| "调用某 API" | API 文档、接口格式 | Task(ai-assistant:scout, 调研 API) |
-| "用某框架实现" | 框架用法、最佳实践 | Task(ai-assistant:scout, 查文档) |
-| "类似某产品功能" | 产品实现细节 | Task(ai-assistant:researcher, 调研) |
-| "页面报错了" / "加载失败" / "控制台有错误" | 浏览器控制台错误、网络失败 | Task(ai-assistant:debugger, 派给 debugger agent 调用 browser-debugger skill 获取错误) |
+| 用户意图（场景） | 缺少的信息 | 应该派给 |
+|-----------------|-----------|---------|
+| 页面报错了、控制台有错误、加载失败 | 浏览器运行时错误 | debugger（调用 browser-debugger skill） |
+| 从某网站下载图标、爬取网页内容 | 外部网站资源 | scout（调用 web-researcher skill） |
+| 查第三方 API 文档、接口格式 | 外部 API 信息 | scout（调用 docs-sync skill） |
+| 分析现有项目代码结构 | 项目内部代码 | researcher（调用 code-analysis skill） |
+| 需求不清晰、需要方案选型 | 需求分析 | analyst |
 
 ### 运行中：每个 agent 返回后
 

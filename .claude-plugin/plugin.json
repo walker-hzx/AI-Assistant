@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.5.2",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.5.2 优化：使用能力边界检查通用原则替代硬编码场景列表",
+  "version": "3.5.3",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.5.3 优化：精准化 agent 描述和边界，researcher 专注项目内部，外部资源由 scout 处理",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
