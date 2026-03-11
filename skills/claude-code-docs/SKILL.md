@@ -18,7 +18,7 @@ user-invocable: true
 
 **运行爬取脚本：**
 ```bash
-python3 scripts/fetch-docs/fetch-claude-code-docs.py
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-claude-code-docs.py
 ```
 
 **爬取结果位置：** `docs/claude-code/`
@@ -53,13 +53,13 @@ python3 scripts/fetch-docs/fetch-claude-code-docs.py
 ### 脚本位置
 
 ```
-scripts/fetch-docs/fetch-claude-code-docs.py
+~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-claude-code-docs.py
 ```
 
 ### 运行方式
 
 ```bash
-python3 scripts/fetch-docs/fetch-claude-code-docs.py
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-claude-code-docs.py
 ```
 
 ### 脚本功能
@@ -152,7 +152,7 @@ docs/claude-code/
 ### 步骤 2：运行爬取脚本
 
 ```bash
-python3 scripts/fetch-docs/fetch-claude-code-docs.py
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-claude-code-docs.py
 ```
 
 ### 步骤 3：提取关键信息

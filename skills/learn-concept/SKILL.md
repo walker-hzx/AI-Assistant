@@ -24,7 +24,7 @@ user-invocable: true
 运行搜索脚本，会自动获取内容：
 
 ```bash
-python skills/learn-concept/scripts/search.py "概念名称"
+python3 ~/.claude/plugins/marketplaces/ai-assistant/skills/learn-concept/scripts/search.py "概念名称"
 ```
 
 ### 2. 优先搜索源

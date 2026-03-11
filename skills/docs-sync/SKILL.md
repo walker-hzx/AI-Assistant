@@ -49,7 +49,7 @@ AI: 请输入框架名称和官网地址（格式：名称, URL）
 **执行步骤：**
 1. **分析网站** - 访问官网，识别导航结构、组件列表页
 2. **确认范围** - 与用户确认要爬取的组件范围
-3. **生成脚本** - 创建针对性的爬虫脚本 `scripts/fetch-docs/fetch-{name}.py`
+3. **生成脚本** - 创建针对性的爬虫脚本 `~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-{name}.py`
 4. **执行爬取** - 运行脚本获取数据
 5. **生成文档** - 整理成标准格式，保存到 `docs/frameworks/{name}.md`
 6. **审查确认** - 展示生成的文档结构，用户确认或调整
@@ -161,7 +161,7 @@ AI：1. 读取 index.md 确认 Dialog 存在
 
 ### 步骤 3：生成爬虫脚本
 
-创建脚本文件：`scripts/fetch-docs/fetch-{framework}.py`
+创建脚本文件：`~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-{framework}.py`
 
 脚本模板：
 ```python
@@ -195,7 +195,7 @@ if __name__ == "__main__":
 
 运行生成的脚本：
 ```bash
-python3 scripts/fetch-docs/fetch-{framework}.py
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-{framework}.py
 ```
 
 实时监控进度：
@@ -210,12 +210,12 @@ python3 scripts/fetch-docs/fetch-{framework}.py
 
 **5.1 生成完整文档**
 ```bash
-python3 scripts/fetch-docs/fetch-{framework}.py
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-{framework}.py
 ```
 
 **5.2 拆分为结构化目录**
 ```bash
-python3 scripts/fetch-docs/split-{framework}.py
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/split-{framework}.py
 ```
 
 **5.3 展示结果**
@@ -270,9 +270,9 @@ docs/frameworks/{framework}/
 ## 输出要求
 
 **文件位置：**
-- 爬虫脚本：`scripts/fetch-docs/fetch-{name}.py`
-- 分析脚本：`scripts/fetch-docs/analyze-{name}.py`
-- 拆分脚本：`scripts/fetch-docs/split-{name}.py`
+- 爬虫脚本：`~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/fetch-{name}.py`
+- 分析脚本：`~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/analyze-{name}.py`
+- 拆分脚本：`~/.claude/plugins/marketplaces/ai-assistant/scripts/fetch-docs/split-{name}.py`
 - 生成文档：`docs/frameworks/{name}/`
   - `index.md` - 总览
   - `components/*.md` - 详细组件文档

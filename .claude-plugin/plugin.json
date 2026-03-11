@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.5.4",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.5.4 修复：web-researcher skill 脚本路径改为插件安装路径",
+  "version": "3.5.5",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.5.5 修复：docs-sync、learn-concept、claude-code-docs skill 脚本路径改为插件安装路径",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
