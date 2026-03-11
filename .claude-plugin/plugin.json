@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.4.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.4.0 增强：设计类任务特殊处理，优先使用 ui-ux-reviewer",
+  "version": "3.4.1",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.4.1 修复：browser-capture 脚本路径改为绝对路径",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"

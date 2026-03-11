@@ -24,14 +24,14 @@ user-invocable: true
 ### 1. 命令行使用
 
 ```bash
-# 捕获单个页面的错误
-python3 scripts/web/browser-capture.py https://example.com
+# 捕获单个页面的错误（注意：脚本位于 AI-Assistant 项目中）
+python3 ~/Desktop/Code/AI/AI-Assistant/scripts/web/browser-capture.py https://example.com
 
 # 捕获并导出 HAR
-python3 scripts/web/browser-capture.py https://example.com --har output.har
+python3 ~/Desktop/Code/AI/AI-Assistant/scripts/web/browser-capture.py https://example.com --har output.har
 
 # 截图保存
-python3 scripts/web/browser-capture.py https://example.com --screenshot error.png
+python3 ~/Desktop/Code/AI/AI-Assistant/scripts/web/browser-capture.py https://example.com --screenshot error.png
 ```
 
 ### 2. Skill 调用
@@ -93,7 +93,7 @@ python3 scripts/web/browser-capture.py https://example.com --screenshot error.pn
 用户：登录接口报错了，帮我看看
 
 执行：
-python3 scripts/web/browser-debugger.py http://localhost:3000/api/login
+python3 ~/Desktop/Code/AI/AI-Assistant/scripts/web/browser-debugger.py http://localhost:3000/api/login
 
 产出：
 [ERROR] GET /api/login - 401 Unauthorized
@@ -106,7 +106,7 @@ python3 scripts/web/browser-debugger.py http://localhost:3000/api/login
 用户：首页加载不出来
 
 执行：
-python3 scripts/web/browser-debugger.py http://localhost:3000 --screenshot error.png
+python3 ~/Desktop/Code/AI/AI-Assistant/scripts/web/browser-debugger.py http://localhost:3000 --screenshot error.png
 
 产出：
 [PAGE-ERROR] Failed to load script bundle.js
@@ -119,7 +119,7 @@ python3 scripts/web/browser-debugger.py http://localhost:3000 --screenshot error
 用户：提交表单后有错误
 
 执行：
-python3 scripts/web/browser-debugger.py http://localhost:3000/form --har form-debug.har
+python3 ~/Desktop/Code/AI/AI-Assistant/scripts/web/browser-debugger.py http://localhost:3000/form --har form-debug.har
 
 产出：
 [NETWORK] POST /api/submit - 422 Validation Error
