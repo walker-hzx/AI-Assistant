@@ -484,25 +484,39 @@ Skill(web-researcher, "抓取 https://www.iconfont.cn/collections/detail?cid=226
 - 技术调研 → researcher
 - 浏览器错误获取 → debugger（调用 browser-debugger skill）
 
-**⚠️ 浏览器错误场景的强制调度规则**：
+**⚠️ 能力边界检查原则（通用规则）**：
 
-当用户说以下内容时，**必须**立即派 Task(ai-assistant:debugger, ...)：
-- "网页有报错"
-- "页面报错了"
-- "获取一下报错"
-- "控制台有错误"
-- "加载失败"
-- "页面空白"
+在 THINK 阶段，**必须先问自己**：
+```
+这个任务需要什么能力？
+  ↓
+我自己有这个能力吗？（检查自己有哪些 skill）
+  ↓
+  → 有 → 可以自己处理或派其他 agent
+  → 没有 → 必须派给有该 skill 的 agent
+```
 
-**绝对不能**：
-- ❌ 自己直接去读取代码分析
-- ❌ 自己尝试运行命令获取错误
-- ❌ 假设错误原因直接给修复方案
+** coordinator 已知能力**：
+- ✅ 直接能力：读文件、搜索代码、读写配置、回答问题
+- ❌ 缺少能力：browser-debugger、web-researcher、docs-sync 等（需要派给对应 agent）
 
-**正确做法**：
-- ✅ 派 Task(ai-assistant:debugger, "用户报告 http://localhost:5180/mcp-services 页面有报错，请先用 browser-debugger skill 捕获错误信息，然后分析原因并修复")
+**需要派发的典型场景识别**：
+| 用户意图 | 需要的能力 | 应该派给 |
+|---------|-----------|---------|
+| 获取网页报错/控制台错误 | browser-debugger | debugger |
+| 获取外部网站内容/爬取 | web-researcher | scout |
+| 获取第三方 API 信息 | 文档调研 | scout |
+| 读代码分析问题 | 代码分析 | researcher |
+| 写代码实现功能 | 编码 | executor |
 
-**原因**：coordinator 没有 browser-debugger skill，只有 debugger agent 有。必须派给有对应 skill 的 agent。
+**通用判断模式**：
+- 用户说"获取 X" → 需要对应的获取能力 → 检查自己有没有 → 没有就派发
+- 用户说"页面报错了" → 意图是获取浏览器错误 → 需要 browser-debugger → coordinator 没有 → 派给 debugger
+
+**⚠️ 关键纪律**：
+- 识别**意图**而非**具体话术**
+- 派发的**理由**是"我没有这个能力"而非"用户提到了某个关键词"
+- 这个原则适用于所有需要外部能力的场景
 
 **⚠️ 档位 ≥ M 时，MUST 调度 subagent。直接自己写代码 = 违反调度协议。**
 
