@@ -27,13 +27,13 @@ user-invocable: true
 
 ```bash
 # 基本用法
-python3 scripts/web/fetch-url.py https://example.com
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://example.com
 
 # 指定输出文件
-python3 scripts/web/fetch-url.py https://example.com -o output.md
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://example.com -o output.md
 
 # 等待动态内容加载
-python3 scripts/web/fetch-url.py https://example.com --wait 10
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://example.com --wait 10
 ```
 
 ### 2. 整站爬取
@@ -42,16 +42,16 @@ python3 scripts/web/fetch-url.py https://example.com --wait 10
 
 ```bash
 # 站点爬取（默认深度 2，最大 50 页）
-python3 scripts/web/fetch-url.py https://docs.example.com --crawl
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com --crawl
 
 # 控制爬取深度
-python3 scripts/web/fetch-url.py https://docs.example.com --crawl -d 3
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com --crawl -d 3
 
 # 最大页面数
-python3 scripts/web/fetch-url.py https://docs.example.com --crawl -m 100
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com --crawl -m 100
 
 # 指定输出
-python3 scripts/web/fetch-url.py https://docs.example.com --crawl -o docs-result.md
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com --crawl -o docs-result.md
 ```
 
 **输出文件**：
@@ -64,7 +64,7 @@ python3 scripts/web/fetch-url.py https://docs.example.com --crawl -o docs-result
 
 ```bash
 # 爬取指定模块（通过 URL 路径）
-python3 scripts/web/fetch-url.py https://docs.example.com/components --crawl -d 2
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com/components --crawl -d 2
 ```
 
 ### 4. 批量爬取
@@ -73,7 +73,7 @@ python3 scripts/web/fetch-url.py https://docs.example.com/components --crawl -d 
 
 ```bash
 # 从文件读取 URL 列表
-python3 scripts/web/fetch-url.py --list urls.txt -o results/
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py --list urls.txt -o results/
 ```
 
 ## 脚本功能
@@ -117,7 +117,7 @@ python3 scripts/web/fetch-url.py --list urls.txt -o results/
 我需要了解安装方式
 
 执行：
-python3 scripts/web/fetch-url.py https://docs.example.com/getting-started -o guide.md
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com/getting-started -o guide.md
 
 产出：
 ## 安装方式
@@ -132,7 +132,7 @@ python3 scripts/web/fetch-url.py https://docs.example.com/getting-started -o gui
 https://docs.example.com
 
 执行：
-python3 scripts/web/fetch-url.py https://docs.example.com --crawl -d 3 -m 100 -o docs/
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com --crawl -d 3 -m 100 -o docs/
 
 产出：
 docs/
@@ -147,7 +147,7 @@ docs/
 https://docs.example.com/components
 
 执行：
-python3 scripts/web/fetch-url.py https://docs.example.com/components --crawl -d 2 -o components/
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com/components --crawl -d 2 -o components/
 
 产出：
 components/
@@ -168,7 +168,7 @@ components/
 执行：
 # 创建 urls.txt
 echo -e "https://docs.example.com/api/auth\nhttps://docs.example.com/api/users\nhttps://docs.example.com/api/permissions" > urls.txt
-python3 scripts/web/fetch-url.py --list urls.txt -o api-docs/
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py --list urls.txt -o api-docs/
 
 产出：
 api-docs/
@@ -183,13 +183,13 @@ api-docs/
 
 ```
 # 先爬取一些页面获取 URL
-python3 scripts/web/fetch-url.py https://docs.example.com --crawl -d 1 -m 20
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/fetch-url.py https://docs.example.com --crawl -d 1 -m 20
 
 # 分析 URL 模式
-python3 scripts/web/url-pattern-analyzer.py -f sitemap.json -o analysis.md
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/url-pattern-analyzer.py -f sitemap.json -o analysis.md
 
 # 或 JSON 格式
-python3 scripts/web/url-pattern-analyzer.py -f sitemap.json -j -o analysis.json
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/url-pattern-analyzer.py -f sitemap.json -j -o analysis.json
 ```
 
 ### 场景 6：批量爬取 + 报告生成
@@ -202,10 +202,10 @@ echo "https://docs.example.com/intro" > urls.txt
 echo "https://docs.example.com/install" >> urls.txt
 
 # 2. 批量爬取
-python3 scripts/web/batch-crawler.py -f urls.txt -o results/
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/batch-crawler.py -f urls.txt -o results/
 
 # 3. 生成报告
-python3 scripts/web/report-generator.py results/crawl-success.json -o report.md
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/report-generator.py results/crawl-success.json -o report.md
 ```
 
 ### 场景 7：结构化提取
@@ -214,10 +214,10 @@ python3 scripts/web/report-generator.py results/crawl-success.json -o report.md
 
 ```
 # 提取结构化数据
-python3 scripts/web/structured-extractor.py content.md -o structured.json -j
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/structured-extractor.py content.md -o structured.json -j
 
 # 或生成 Markdown 报告
-python3 scripts/web/structured-extractor.py content.md -o structured-report.md
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/structured-extractor.py content.md -o structured-report.md
 ```
 
 ## 参数说明
@@ -238,7 +238,7 @@ python3 scripts/web/structured-extractor.py content.md -o structured-report.md
 #### url-pattern-analyzer.py
 
 ```bash
-python3 scripts/web/url-pattern-analyzer.py <urls> [-f file] [-o output] [-j]
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/url-pattern-analyzer.py <urls> [-f file] [-o output] [-j]
 ```
 
 | 参数 | 说明 |
@@ -251,7 +251,7 @@ python3 scripts/web/url-pattern-analyzer.py <urls> [-f file] [-o output] [-j]
 #### batch-crawler.py
 
 ```bash
-python3 scripts/web/batch-crawler.py [-f file] [-u url] [-o output] [-c concurrency]
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/batch-crawler.py [-f file] [-u url] [-o output] [-c concurrency]
 ```
 
 | 参数 | 说明 | 默认值 |
@@ -264,7 +264,7 @@ python3 scripts/web/batch-crawler.py [-f file] [-u url] [-o output] [-c concurre
 #### structured-extractor.py
 
 ```bash
-python3 scripts/web/structured-extractor.py <file> [-o output] [-j]
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/structured-extractor.py <file> [-o output] [-j]
 ```
 
 | 参数 | 说明 |
@@ -276,7 +276,7 @@ python3 scripts/web/structured-extractor.py <file> [-o output] [-j]
 #### report-generator.py
 
 ```bash
-python3 scripts/web/report-generator.py <results> [-o output]
+python3 ~/.claude/plugins/marketplaces/ai-assistant/scripts/web/report-generator.py <results> [-o output]
 ```
 
 | 参数 | 说明 |
