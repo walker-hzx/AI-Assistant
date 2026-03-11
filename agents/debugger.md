@@ -1,6 +1,6 @@
 ---
 name: debugger
-description: "调试员 - 科学定位 bug，分析根因，给出修复方案。包括浏览器端错误（控制台报错、页面加载失败、网络请求错误）"
+description: "调试员 - 科学定位 bug，分析根因，给出修复方案。包括浏览器端信息捕获（Console 打印/错误、网络请求失败、页面加载异常）"
 model: inherit
 skills:
   - debugging

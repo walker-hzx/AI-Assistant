@@ -209,7 +209,7 @@ ACT：
 
 | 用户意图（场景） | 缺少的信息 | 应该派给 |
 |-----------------|-----------|---------|
-| 页面报错了、控制台有错误、加载失败 | 浏览器运行时错误 | debugger（调用 browser-debugger skill） |
+| 页面报错、控制台打印/错误、加载失败、网络请求失败 | 浏览器端信息（Console 输出、网络请求、JS 异常） | debugger（调用 browser-debugger skill） |
 | 从某网站下载图标、爬取网页内容 | 外部网站资源 | scout（调用 web-researcher skill） |
 | 查第三方 API 文档、接口格式 | 外部 API 信息 | scout（调用 docs-sync skill） |
 | 分析现有项目代码结构 | 项目内部代码 | researcher（调用 code-analysis skill） |
