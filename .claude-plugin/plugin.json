@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "3.5.0",
-  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.5.0 优化：coordinator 派发浏览器错误任务给 debugger，由 debugger 调用 browser-debugger skill 获取错误",
+  "version": "3.5.1",
+  "description": "个人开发助手 - 包含 skills, commands, teams, hooks, rules 和 agents。3.5.1 优化：强化浏览器错误场景必须派发给 debugger agent 的规则",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"

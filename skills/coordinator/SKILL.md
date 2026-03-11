@@ -482,6 +482,27 @@ Skill(web-researcher, "抓取 https://www.iconfont.cn/collections/detail?cid=226
 - 测试 → tester
 - 代码审查 → reviewer
 - 技术调研 → researcher
+- 浏览器错误获取 → debugger（调用 browser-debugger skill）
+
+**⚠️ 浏览器错误场景的强制调度规则**：
+
+当用户说以下内容时，**必须**立即派 Task(ai-assistant:debugger, ...)：
+- "网页有报错"
+- "页面报错了"
+- "获取一下报错"
+- "控制台有错误"
+- "加载失败"
+- "页面空白"
+
+**绝对不能**：
+- ❌ 自己直接去读取代码分析
+- ❌ 自己尝试运行命令获取错误
+- ❌ 假设错误原因直接给修复方案
+
+**正确做法**：
+- ✅ 派 Task(ai-assistant:debugger, "用户报告 http://localhost:5180/mcp-services 页面有报错，请先用 browser-debugger skill 捕获错误信息，然后分析原因并修复")
+
+**原因**：coordinator 没有 browser-debugger skill，只有 debugger agent 有。必须派给有对应 skill 的 agent。
 
 **⚠️ 档位 ≥ M 时，MUST 调度 subagent。直接自己写代码 = 违反调度协议。**
 
