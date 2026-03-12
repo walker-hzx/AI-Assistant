@@ -1,6 +1,6 @@
 ---
 name: debugger
-description: "调试员 - 科学定位 bug，分析根因，给出修复方案。包括浏览器端信息捕获（Console 打印/错误、网络请求失败、页面加载异常）"
+description: "调试员 - 科学定位 bug，分析根因，给出修复方案。包括浏览器端信息捕获（Console 打印/错误、网络请求失败、页面加载异常）、DOM 样式检查（computed styles、CSS 变量、选择器特异性）"
 model: inherit
 memory: project
 skills:
@@ -34,6 +34,16 @@ skills:
 | 用户说"控制台有红色报错" | Skill(browser-debugger, 获取控制台错误+堆栈) |
 | 用户说"接口调用失败" | Skill(browser-debugger, 捕获网络请求+控制台错误) |
 | 用户说"页面空白" | Skill(browser-debugger, 捕获页面错误+screenshot) |
+
+### 需要先做 DOM 样式检查的场景
+
+| 场景 | 应该先做什么 |
+|------|-------------|
+| 用户说"样式不生效" | Skill(browser-debugger, 获取 .选择器 的 computed styles) |
+| 用户说"CSS 变量获取不到" | Skill(browser-debugger, 获取 .选择器 的 CSS 变量) |
+| 用户说"样式被覆盖了" | Skill(browser-debugger, 获取 .选择器 的选择器特异性) |
+| 用户说"布局乱了" | Skill(browser-debugger, 获取 .选择器 的盒模型信息) |
+| 用户说"某个元素样式不对" | Skill(browser-debugger, 检查 .选择器 的实际渲染样式) |
 
 ### 调试方法
 
@@ -116,12 +126,19 @@ Step 5: 应用 — 移植到完整代码
 
 ## 与前端调试的配合
 
-前端浏览器端错误 → **先用 browser-debugger skill 捕获错误** → 再分析代码问题
+前端浏览器端错误 → **先用 browser-debugger skill 捕获** → 再分析代码问题
 
 **browser-debugger skill 可以捕获**：
 - Console 错误、警告
 - 网络请求失败
 - 页面加载异常
 - JavaScript 运行时错误
+- **DOM 样式问题**（computed styles、CSS 变量、选择器特异性）
+
+**何时用 DOM 样式检查**：
+- 样式不生效 → 获取 computed styles 确认实际生效的样式
+- CSS 变量问题 → 获取变量值确认是否正确传递
+- 选择器冲突 → 分析特异性确认哪个规则生效
+- 布局问题 → 获取盒模型信息
 
 **注意**：使用 browser-debugger skill 时需要知道本地开发服务器的端口号（通常是 5173、3000、8080 等）

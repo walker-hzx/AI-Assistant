@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "5.1.0",
-  "description": "5.1.0: Agent 强化版。新增 /implement, /refactor, /analyze, /docs 命令，补齐 executor 和 researcher 能力短板，集成重构与文档编写技能。",
+  "version": "5.2.0",
+  "description": "5.2.0: 增强浏览器调试能力。新增 DOM 样式检查（computed styles、CSS 变量、选择器特异性分析），用于排查前端样式问题",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
