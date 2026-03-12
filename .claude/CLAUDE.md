@@ -85,12 +85,13 @@
 
 | 角色 | 职责 |
 |------|------|
-| analyst | 需求理解、问题分析、策略制定 |
-| executor | 代码实现、功能开发 |
+| analyst | 需求理解、问题分析、策略制定、头脑风暴 |
+| executor | 代码实现、功能开发、代码重构 |
 | tester | 测试设计、执行、功能验证 |
 | reviewer | 代码审查、安全审查、质量评估 |
-| researcher | 代码分析、项目调研、文档查阅 |
+| researcher | 代码分析、技术调研、文档编写 |
 | debugger | Bug 定位和修复 |
+| scout | 外部资源获取（可选） |
 | skeptics | 建设性质疑（可选） |
 | ui-ux-reviewer | UI/UX 审查（可选） |
 

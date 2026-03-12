@@ -1,6 +1,6 @@
 ---
 name: analyst
-description: "分析师 - 需求理解、问题分析、策略制定、多角度思考"
+description: "分析师 - 需求理解、问题分析、策略制定、多角度思考、头脑风暴"
 model: opus
 memory: project
 allowed-tools:

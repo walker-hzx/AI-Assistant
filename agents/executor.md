@@ -1,6 +1,6 @@
 ---
 name: executor
-description: "执行者 - 代码实现、功能开发，接收目标自主完成"
+description: "执行者 - 代码实现、功能开发、代码重构，接收目标自主完成"
 model: inherit
 memory: project
 skills:

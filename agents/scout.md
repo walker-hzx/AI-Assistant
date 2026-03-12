@@ -12,6 +12,7 @@ allowed-tools:
 skills:
   - web-researcher
   - docs-sync
+  - claude-code-docs
 ---
 
 # 侦察员（Scout）

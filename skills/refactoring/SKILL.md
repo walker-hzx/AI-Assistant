@@ -1,6 +1,8 @@
 ---
 name: refactoring
 description: "重构 - 安全、渐进地改善代码结构，不改变外部行为"
+model: sonnet
+user-invocable: false
 ---
 
 # 重构

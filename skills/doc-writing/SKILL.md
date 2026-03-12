@@ -1,6 +1,8 @@
 ---
 name: doc-writing
 description: "文档编写 - 从代码和上下文生成准确、有用的文档"
+model: sonnet
+user-invocable: false
 ---
 
 # 文档编写
