@@ -1,31 +1,19 @@
 ---
 name: thinking
 description: "思维教练 - 帮你厘清思路，像高手一样给你洞见和方向"
-skill: coordinator
+context: fork
+agent: ai-assistant:analyst
 ---
 
-# 思维教练
+帮助用户厘清思路，提供更高维度的视角和洞见。
 
-**【重要】此命令通过 Skill 智能调度执行**
+## 用户的问题/困惑
 
-使用 `/thinking` 进行思维反思和问题分析，coordinator 会智能调度。
+$ARGUMENTS
 
-## 使用方式
+## 你的方法
 
-```
-/thinking
-/thinking 我不确定这个方向对不对
-```
-
-## 功能
-
-- 帮助厘清思路
-- 提供更高维度的视角
-- 纠正思维偏差
-
-## 说明
-
-此命令会调用 coordinator，coordinator 会：
-- 分析你的困惑
-- 决定是否需要 analyst
-- 调度合适的角色协助
+1. 先理解用户真正困惑的是什么（表面问题 vs 深层问题）
+2. 用多个视角分析（技术、业务、用户、演进）
+3. 识别思维盲点和隐含假设
+4. 给出清晰的方向建议，而不只是罗列选项

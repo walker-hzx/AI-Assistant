@@ -10,23 +10,29 @@
 
 ## 架构说明
 
-### Coordinator + Subagent 自适应模式
+### 混合调度模式（精简分层版 v4.0）
 
-- **Coordinator（管家/星星）**：自适应调度中心，简单任务直接做，复杂任务调度角色
-- **6 个核心角色**：analyst, executor, tester, reviewer, researcher, debugger
-- **2 个可选角色**：skeptics, ui-ux-reviewer
+**直达命令**（绕过 coordinator，直接 fork 到对应 Agent）：
+- `/review` → reviewer（代码审查）
+- `/debugging` → debugger（Bug 定位修复）
+- `/security-review` → reviewer（安全审查）
+- `/thinking` → analyst（思维教练）
 
-### 三档自适应流程
+**协调命令**（通过 coordinator 智能调度）：
+- `/discuss`, `/plan`, `/executing-plans`, `/verification`
+- `/docs-sync`, `/learn-concept`, `/team-generator`, `/test-planner`
 
-```
-S 档（简单）: 理解 → 直接执行 → 完成
-M 档（中等）: 理解 → 计划(TodoWrite) → executor → 验证 → 完成
-L 档（复杂）: 理解 → analyst → 计划 → executor → tester → reviewer → 完成
-```
+### Coordinator（管家/星星）
+- 轻量调度中心（~240 行），负责多角色编排和复杂任务路由
+- S 档直接做，M/L 档走 THINK→ACT→REFLECT 循环
+
+### 9 个角色（6 核心 + 3 可选）
+- **核心**：analyst, executor, tester, reviewer, researcher, debugger
+- **可选**：skeptics, ui-ux-reviewer, scout
+- 所有核心角色启用 `memory: project` 跨会话学习
 
 ### ROLES.md
-
-`skills/coordinator/ROLES.md` 定义了 Coordinator 可调度的 8 个角色。
+`skills/coordinator/ROLES.md` 定义了完整角色能力和调度规则。
 
 ---
 

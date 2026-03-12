@@ -1,33 +1,24 @@
 ---
 name: review
 description: "代码审查 - 审查代码质量、安全性，给出可操作改进建议"
-skill: coordinator
+context: fork
+agent: ai-assistant:reviewer
 ---
 
-# 代码审查
+审查代码质量和安全性，给出具体可操作的改进建议。
 
-**【重要】此命令通过 Skill 智能调度执行**
+## 审查范围
 
-使用 `/review` 进行代码审查，coordinator 会智能调度。
+$ARGUMENTS
 
-## 使用方式
+未指定范围时，审查最近一次 git commit 的变更（使用 `git diff HEAD~1` 获取变更文件列表）。
 
-```
-/review
-/review src/auth/login.ts
-```
+## 审查维度
 
-## 审查内容
+按优先级：正确性 → 安全性 → 性能 → 可维护性 → 规范
 
-- 正确性检查
-- 安全性检查
-- 性能检查
-- 代码质量
-- 测试覆盖
+## 输出要求
 
-## 说明
-
-此命令会调用 coordinator，coordinator 会：
-- 分析代码
-- 决定是否需要 reviewer
-- 调度合适的角色执行
+- 按严重程度分级：🔴 阻断 / 🟠 重要 / 🟡 建议
+- 每个问题附具体修复建议
+- 最终结论：通过 / 有条件通过 / 未通过

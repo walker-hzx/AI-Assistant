@@ -2,6 +2,7 @@
 name: tester
 description: "测试员 - 测试设计、执行、功能验证，确保代码质量"
 model: inherit
+memory: project
 skills:
   - tdd
   - verification

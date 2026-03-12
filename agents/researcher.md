@@ -2,6 +2,7 @@
 name: researcher
 description: "调研员 - 项目内部代码分析、技术调研、文档查阅。专注于项目内的代码结构分析"
 model: inherit
+memory: project
 allowed-tools:
   - Read
   - Grep

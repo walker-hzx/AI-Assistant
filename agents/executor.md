@@ -2,6 +2,7 @@
 name: executor
 description: "执行者 - 代码实现、功能开发，接收目标自主完成"
 model: inherit
+memory: project
 skills:
   - code-implementation
   - tdd

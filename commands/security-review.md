@@ -1,32 +1,22 @@
 ---
 name: security-review
 description: "安全审查 - 识别 OWASP Top 10 漏洞，检查密钥泄露和注入风险"
-skill: coordinator
+context: fork
+agent: ai-assistant:reviewer
 ---
 
-# 安全审查
+**专注安全维度**审查以下代码。
 
-**【重要】此命令通过 Skill 智能调度执行**
+## 审查范围
 
-使用 `/security-review` 进行代码安全审查，coordinator 会智能调度。
+$ARGUMENTS
 
-## 使用方式
+未指定范围时，扫描项目中的安全敏感代码（认证、授权、数据处理、API 接口）。
 
-```
-/security-review
-/security-review src/api/auth
-```
+## 重点检查
 
-## 功能
-
-1. **漏洞检测** - 识别 OWASP Top 10 问题
-2. **密钥检测** - 查找硬编码的 API 密钥
-3. **输入验证** - 检查用户输入是否经过适当清理
-4. **依赖安全** - 检查有漏洞的依赖包
-
-## 说明
-
-此命令会调用 coordinator，coordinator 会：
-- 分析代码
-- 决定是否需要 reviewer
-- 调度合适的角色执行
+- OWASP Top 10 漏洞
+- 硬编码的 API 密钥和凭据
+- 用户输入验证和清理
+- SQL/XSS/命令注入风险
+- 依赖包已知漏洞
