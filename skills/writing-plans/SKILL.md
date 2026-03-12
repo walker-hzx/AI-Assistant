@@ -96,7 +96,7 @@ user-invocable: false
 
 - **读取**：先读取 `docs/requirements/` 下的需求文档
 - **产出**：计划文档保存到 `docs/plans/`
-- **下一步**：等待 coordinator 调度下一步
+- **下一步**：计划制定完成，可进入执行阶段
 
 ---
 
@@ -370,10 +370,10 @@ git commit -m "feat: add specific feature"
 1. 计划理解是否正确？
 2. 任务拆分是否合理？
 
-✅ 计划制定完成，等待 coordinator 调度下一步
+✅ 计划制定完成，可进入执行阶段
 
-> **注意**：请等待 coordinator 调度，不要直接进入执行阶段
-> coordinator 会根据方案决定何时开始执行
+> **注意**：计划完成后向用户确认，不要直接进入执行阶段
+> 由用户决定何时开始执行
 
 ---
 

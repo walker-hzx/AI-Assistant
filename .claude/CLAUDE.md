@@ -10,29 +10,42 @@
 
 ## 架构说明
 
-### 混合调度模式（精简分层版 v4.0）
+### 直达自治模式（v5.0 — 无 Coordinator）
 
-**直达命令**（绕过 coordinator，直接 fork 到对应 Agent）：
+**核心理念**：去掉中间调度层，每个命令直达对应 Agent 或加载对应 Skill。
+
+#### 命令路由
+
+**Fork 到 Agent**（独立子会话，适合明确的单一任务）：
 - `/review` → reviewer（代码审查）
 - `/debugging` → debugger（Bug 定位修复）
 - `/security-review` → reviewer（安全审查）
 - `/thinking` → analyst（思维教练）
+- `/verification` → tester（功能验证）
+- `/test-planner` → tester（测试设计）
+- `/docs-sync` → scout（文档同步）
+- `/learn-concept` → researcher（学习概念）
 
-**协调命令**（通过 coordinator 智能调度）：
-- `/discuss`, `/plan`, `/executing-plans`, `/verification`
-- `/docs-sync`, `/learn-concept`, `/team-generator`, `/test-planner`
+**加载 Skill 到主线程**（需要多角色编排，主线程可用 Task() 调度）：
+- `/plan` → writing-plans skill
+- `/executing-plans` → executing-plans skill
+- `/team-generator` → team-generator skill
 
-### Coordinator（管家/星星）
-- 轻量调度中心（~240 行），负责多角色编排和复杂任务路由
-- S 档直接做，M/L 档走 THINK→ACT→REFLECT 循环
+**主线程内联**（轻量交互，直接对话）：
+- `/discuss` → 需求讨论指引
 
-### 9 个角色（6 核心 + 3 可选）
-- **核心**：analyst, executor, tester, reviewer, researcher, debugger
-- **可选**：skeptics, ui-ux-reviewer, scout
-- 所有核心角色启用 `memory: project` 跨会话学习
-
-### ROLES.md
-`skills/coordinator/ROLES.md` 定义了完整角色能力和调度规则。
+#### 9 个角色
+| 角色 | 模型 | 记忆 | 职责 |
+|------|------|------|------|
+| analyst | opus | project | 需求分析、策略制定 |
+| executor | inherit | project | 代码实现、功能开发 |
+| tester | inherit | project | 测试设计与执行 |
+| reviewer | inherit | project | 代码审查、安全审查 |
+| researcher | inherit | project | 代码分析、技术调研 |
+| debugger | inherit | project | Bug 定位和修复 |
+| scout | haiku | — | 外部资源获取 |
+| skeptics | inherit | — | 建设性质疑（可选） |
+| ui-ux-reviewer | inherit | — | UI/UX 审查（可选） |
 
 ---
 
@@ -49,12 +62,12 @@
 
 ## 开发规范
 
-### 管家原则
+### 工作原则
 
-1. **自适应** - 根据任务复杂度选择 S/M/L 档流程
-2. **上下文驱动** - 信息在会话中流转，只在 L 档任务创建文档
+1. **命令直达** - 每个命令有明确对应的 Agent 或 Skill，无需中间调度
+2. **上下文驱动** - 信息在会话中流转，只在复杂任务创建文档
 3. **闭环执行** - 每轮执行后检查结果，迭代调整
-4. **简单任务直接做** - S 档不走流程，不调 subagent
+4. **主线程编排** - 需要多角色协作时，主线程用 Task() 直接调度各 Agent
 
 ### 文档产出
 

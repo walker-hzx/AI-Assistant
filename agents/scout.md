@@ -1,7 +1,7 @@
 ---
 name: scout
 description: "侦察员 - 外部资源获取与分析专家，分析网站、API、设计资源等外部资源"
-model: inherit
+model: haiku
 allowed-tools:
   - Read
   - Grep

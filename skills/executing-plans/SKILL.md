@@ -56,7 +56,7 @@ user-invocable: false
 
 - **读取**：先读取 `docs/plans/` 下的计划文档
 - **产出**：执行日志保存到 `docs/execution/`
-- **下一步**：等待 coordinator 调度验证
+- **下一步**：执行完成，进入验证阶段
 
 ---
 
@@ -76,7 +76,7 @@ user-invocable: false
 ⚠️ 需要您确认：
 1. 代码是否符合预期？
 
-✅ 执行完成，等待 coordinator 调度验证
+✅ 执行完成，进入验证阶段
 ```
 
 ---
