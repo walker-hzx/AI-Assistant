@@ -29,12 +29,14 @@
 - `/refactor` → executor（重构代码）
 - `/analyze` → researcher（代码/方案分析）
 - `/docs` → researcher（编写文档）
+- `/init` → researcher（项目初始化）
 
 **加载 Skill 到主线程**（需要多角色编排，主线程可用 Task() 调度）：
 - `/plan` → writing-plans skill
 - `/executing-plans` → executing-plans skill
 - `/team-generator` → team-generator skill
 - `/discuss` → brainstorming skill
+- `/sync-progress` → sync-progress skill
 
 #### 9 个角色
 | 角色 | 模型 | 记忆 | 职责 |

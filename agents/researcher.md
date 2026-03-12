@@ -13,6 +13,7 @@ skills:
   - project-researcher
   - web-researcher
   - doc-writing
+  - project-init
 ---
 
 # 调研员

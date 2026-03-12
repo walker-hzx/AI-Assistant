@@ -134,6 +134,7 @@ src/
 - `/discuss` - 需求讨论 (brainstorming)
 - `/plan` - 制定实施计划 (writing-plans)
 - `/executing-plans` - 执行计划
+- `/sync-progress` - 同步蓝图和需求状态
 - `/implement` - 实现功能 → executor
 - `/refactor` - 重构代码 → executor
 - `/review` - 代码审查 → reviewer
@@ -146,6 +147,7 @@ src/
 - `/learn-concept` - 学习概念 → researcher
 - `/docs` - 编写文档 → researcher
 - `/docs-sync` - 文档同步 → scout
+- `/init` - 项目初始化 → researcher
 - `/team-generator` - 生成协作团队
 
 ## 质量标准
