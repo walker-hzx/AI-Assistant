@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.2.0] - 2026-03-12
+
+### Added
+
+#### 项目生命周期管理与文档自动同步 (v5.2)
+
+**主要变更**：
+- **新增项目初始化命令**：
+  - `/init`：调用 `researcher` 代理。自动扫描项目文件，一键生成 `CLAUDE.md`, `docs/蓝图.md` 和 `docs/requirements/README.md`。
+  - **核心技能**：`project-init` 技能实现技术栈自动识别与脚手架搭建。
+- **新增进度同步命令**：
+  - `/sync-progress`：主线程交互式命令。将当前任务的执行结果、关键决策和代码位置增量同步到 `docs/蓝图.md`。
+  - **核心技能**：`sync-progress` 技能，支持增量更新，避免文档陈旧。
+- **流程集成优化**：
+  - 在 `/executing-plans` (计划执行) 的最后一步自动提醒用户运行 `/sync-progress`，确保「执行即同步」。
+  - 优化 `docs/蓝图.md` 模板，新增 `Key Decision Records` (决策记录) 和 `Project Conventions` (项目约定) 区域。
+- **Agent 配置更新**：
+  - `researcher` 代理现已集成 `project-init` 技能，成为「项目架构研究员」。
+
 ## [5.1.0] - 2026-03-12
 
 ### Added

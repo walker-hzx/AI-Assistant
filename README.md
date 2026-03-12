@@ -36,6 +36,8 @@
 | team-generator | 团队生成 - 动态生成 Agent Team |
 | docs-sync | 框架文档同步 - 爬取官方文档 |
 | claude-code-docs | Claude Code 文档 - 爬取官方文档 |
+| project-init | 项目初始化 - 扫描项目一键配置（新） |
+| sync-progress | 进度同步 - 将执行结果同步到蓝图（新） |
 | update-blueprint | 更新蓝图 - 记录项目状态 |
 | python-fastapi-guide | Python FastAPI 开发指南 |
 | vue3-vite-guide | Vue3 Vite 开发指南 |
@@ -47,22 +49,26 @@
 | analyst | 需求理解、问题分析、策略制定 |
 | executor | 代码实现、功能开发 |
 | tester | 测试设计、执行、功能验证 |
-| reviewer | 代码审查、安全审查、质量评估 |
-| researcher | 代码分析、项目调研、文档查阅 |
+| reviewer | 代码审查、安全审查 |
+| researcher | 项目扫描初始化、代码分析、调研 |
 | debugger | Bug 定位和修复 |
-| skeptics | 建设性质疑（可选） |
-| ui-ux-reviewer | UI/UX 审查（可选） |
 
 ### Commands
 
 | Command | 说明 |
 |---------|------|
+| /init | 项目初始化 - 扫描生成配置与蓝图（新） |
+| /sync-progress | 进度同步 - 将任务执行结果记入蓝图（新） |
 | /brainstorming | 需求分析 - 将想法转化为需求 |
 | /writing-plans | 制定实施计划 |
 | /verification | 验证 - 确认代码正确实现需求 |
 | /code-review | 代码审查 |
 | /team-generator | 团队生成 - 创建多角色协作团队 |
 | /thinking | 思维反思 - 使用 analyst 角色 |
+| /implement | 快速实现 - 使用 executor 角色 |
+| /refactor | 安全重构 - 使用 executor 角色 |
+| /analyze | 方案分析 - 使用 researcher 角色 |
+| /docs | 自动写档 - 使用 researcher 角色 |
 
 ## 安装
 
