@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.1.0] - 2026-03-12
+
+### Added
+
+#### Agent 强化与能力补全 (v5.1)
+
+**主要变更**：
+- **新增直达命令**：
+  - `/implement`：executor 专属实现入口，支持不经计划直接写代码。
+  - `/refactor`：executor 专属重构入口，集成安全重构技能。
+  - `/analyze`：researcher 专属分析入口，深入调研代码和方案。
+  - `/docs`：researcher 专属文档编写入口，从代码生成 README/API 文档。
+- **技能武器库升级**：
+  - `executor`：新增 `refactoring` (重构), `vue3-vite-guide`, `python-fastapi-guide` (技术栈规范) 技能。
+  - `researcher`：新增 `doc-writing` (文档编写), `web-researcher` (外部搜索) 技能。
+  - `analyst`：新增 `brainstorming` (头脑风暴) 技能支撑需求分析。
+- **命令链路优化**：`/discuss` 指令不再仅是空谈，现在深度加载 `brainstorming` 技能。
+
 ## [5.0.0] - 2026-03-12
 
 ### Changed

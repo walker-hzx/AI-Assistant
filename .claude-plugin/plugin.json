@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "5.0.0",
-  "description": "5.0.0: 直达自治架构。彻底移除 coordinator，实现命令直接路由至 Agent/Skill，优化模型分配与跨会话记忆。",
+  "version": "5.1.0",
+  "description": "5.1.0: Agent 强化版。新增 /implement, /refactor, /analyze, /docs 命令，补齐 executor 和 researcher 能力短板，集成重构与文档编写技能。",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"
