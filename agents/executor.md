@@ -6,6 +6,9 @@ memory: project
 skills:
   - code-implementation
   - tdd
+  - vue3-vite-guide
+  - python-fastapi-guide
+  - refactoring
 ---
 
 # 执行者

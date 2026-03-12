@@ -13,6 +13,7 @@ skills:
   - requirement-understanding
   - requirement-validation
   - thinking-coach
+  - brainstorming
 ---
 
 # 分析师

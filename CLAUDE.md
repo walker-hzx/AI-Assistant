@@ -14,10 +14,14 @@ AI-Assistant 是一个 Claude Code 插件项目，用于辅助全栈开发。
 ## 开发流程
 
 ```
-S 档: 用户 → coordinator 直接执行 → 完成
-M 档: 用户 → coordinator → executor → 验证 → 完成
-L 档: 用户 → coordinator → analyst → executor → tester → reviewer → 完成
+直达模式: 用户 → /命令 → 对应 Agent 或 Skill → 完成
 ```
+
+| 任务档位 | 使用方式 |
+|----------|----------|
+| S 档 | 直接对话或单个命令 |
+| M 档 | 命令 + TodoWrite 跟踪 |
+| L 档 | /plan 制定计划 → /executing-plans 分步执行 |
 
 ## 核心规范
 
@@ -127,10 +131,22 @@ src/
 
 ## 可用命令
 
-- `/discuss` - 开始需求讨论 (brainstorming)
+- `/discuss` - 需求讨论 (brainstorming)
 - `/plan` - 制定实施计划 (writing-plans)
-- `/review` - 代码审查 (code-review)
-- `/thinking` - 思维反思 (thinking-coach)
+- `/executing-plans` - 执行计划
+- `/implement` - 实现功能 → executor
+- `/refactor` - 重构代码 → executor
+- `/review` - 代码审查 → reviewer
+- `/security-review` - 安全审查 → reviewer
+- `/debugging` - 调试定位 → debugger
+- `/verification` - 功能验证 → tester
+- `/test-planner` - 测试设计 → tester
+- `/thinking` - 思维教练 → analyst
+- `/analyze` - 代码/方案分析 → researcher
+- `/learn-concept` - 学习概念 → researcher
+- `/docs` - 编写文档 → researcher
+- `/docs-sync` - 文档同步 → scout
+- `/team-generator` - 生成协作团队
 
 ## 质量标准
 

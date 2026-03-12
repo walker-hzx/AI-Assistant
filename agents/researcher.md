@@ -11,6 +11,8 @@ allowed-tools:
 skills:
   - code-analysis
   - project-researcher
+  - web-researcher
+  - doc-writing
 ---
 
 # 调研员

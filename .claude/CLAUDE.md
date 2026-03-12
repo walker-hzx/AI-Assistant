@@ -25,23 +25,25 @@
 - `/test-planner` → tester（测试设计）
 - `/docs-sync` → scout（文档同步）
 - `/learn-concept` → researcher（学习概念）
+- `/implement` → executor（实现功能）
+- `/refactor` → executor（重构代码）
+- `/analyze` → researcher（代码/方案分析）
+- `/docs` → researcher（编写文档）
 
 **加载 Skill 到主线程**（需要多角色编排，主线程可用 Task() 调度）：
 - `/plan` → writing-plans skill
 - `/executing-plans` → executing-plans skill
 - `/team-generator` → team-generator skill
-
-**主线程内联**（轻量交互，直接对话）：
-- `/discuss` → 需求讨论指引
+- `/discuss` → brainstorming skill
 
 #### 9 个角色
 | 角色 | 模型 | 记忆 | 职责 |
 |------|------|------|------|
-| analyst | opus | project | 需求分析、策略制定 |
-| executor | inherit | project | 代码实现、功能开发 |
+| analyst | opus | project | 需求分析、策略制定、思维引导 |
+| executor | inherit | project | 代码实现、功能开发、代码重构 |
 | tester | inherit | project | 测试设计与执行 |
 | reviewer | inherit | project | 代码审查、安全审查 |
-| researcher | inherit | project | 代码分析、技术调研 |
+| researcher | inherit | project | 代码分析、技术调研、文档编写 |
 | debugger | inherit | project | Bug 定位和修复 |
 | scout | haiku | — | 外部资源获取 |
 | skeptics | inherit | — | 建设性质疑（可选） |
