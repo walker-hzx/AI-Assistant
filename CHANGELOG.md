@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0] - 2026-03-12
+
+### Changed
+
+#### 架构大改造 — 直达自治模式 (v5.0 — 无 Coordinator)
+
+**核心理念**：彻底移除中间调度层，通过命令直接触发目标 Agent 或 Skill，消除指令损耗和调度瓶颈。
+
+**主要变更**：
+- **移除 Coordinator**：`skills/coordinator/` 已归档，不再由中心调度，改为「分布自治」模式。
+- **命令专场化**：
+  - `/review` & `/security-review` 直达 `reviewer` Agent。
+  - `/debugging` 直达 `debugger` Agent。
+  - `/thinking` 直达 `analyst` Agent (Opus 驱动)。
+  - `/verification` 直达 `tester` Agent。
+  - `/docs-sync` 直达 `scout` Agent (Haiku 驱动)。
+- **Agent 强化**：
+  - 核心 Agent (analyst, executor, debugger, reviewer, researcher, tester) 开启 `memory: project`，具备跨会话记忆。
+  - `analyst` 分配最高权限模型 `opus` 用于深度推理；`scout` 分配 `haiku` 用于快速外部资源采集。
+- **主线程编排**：涉及多阶段协作的任务（如 `/plan`, `/executing-plans`）直接加载 Skill 到主线程，利用 `Task()` 进行细粒度编排。
+
+## [4.0.0] - 2026-03-12
+
+### Changed
+
+#### 架构精简分层版 (v4.0)
+
+**主要变更**：
+- **Coordinator 瘦身**：SKILL.md 从 973 行精简至 239 行，移除冗余示例，压缩指令。
+- **混合路由**：初步引入 `context: fork` 机制，部分核心命令（review, debugging）开始尝试直达 Agent。
+- **跨会话记忆**：为 6 个核心 Agent 启用项目级持久化记忆。
+
 ## [3.0.5] - 2026-03-06
 
 ### Enhanced
