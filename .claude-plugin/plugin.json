@@ -1,7 +1,7 @@
 {
   "name": "ai-assistant",
-  "version": "5.2.0",
-  "description": "5.2.0: 增强浏览器调试能力。新增 DOM 样式检查（computed styles、CSS 变量、选择器特异性分析），用于排查前端样式问题",
+  "version": "5.3.0",
+  "description": "5.3.0: 新增 /map-frontend 前端项目映射命令，生成技术栈、API、组件库、样式规范文档，解决 AI 生成代码样式不匹配、组件未复用等问题",
   "author": {
     "name": "walker",
     "url": "https://github.com/walker-hzx"

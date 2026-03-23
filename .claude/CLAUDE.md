@@ -30,6 +30,7 @@
 - `/analyze` → researcher（代码/方案分析）
 - `/docs` → researcher（编写文档）
 - `/init` → researcher（项目初始化）
+- `/map-frontend` → researcher（前端项目映射）
 
 **加载 Skill 到主线程**（需要多角色编排，主线程可用 Task() 调度）：
 - `/plan` → writing-plans skill

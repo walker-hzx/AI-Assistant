@@ -177,3 +177,22 @@ Task: reviewer
 - 遇到困难时（获得新视角）
 - 重构前（基线检查）
 - 修复复杂 bug 后
+
+---
+
+## 前端项目审查补充
+
+**如果是前端项目，额外检查：**
+
+| 检查项 | 参考文档 | 说明 |
+|--------|----------|------|
+| 组件复用 | `docs/frontend/COMPONENTS.md` | 是否使用了项目中已有的组件 |
+| 样式规范 | `docs/frontend/STYLING.md` | 类名、Tailwind 用法是否符合规范 |
+| 组件拆分 | `docs/frontend/UI-PATTERNS.md` | 是否遵循组件拆分原则 |
+| API 调用 | `docs/frontend/API.md` | 请求方式是否与项目一致 |
+
+**常见前端审查问题：**
+- 用原生 HTML 标签而非现有组件（如 `<button>` 而非 `<Button>`）
+- 内联样式而非 Tailwind 类名
+- 重复实现已有组件
+- 单文件超过 300 行未拆分

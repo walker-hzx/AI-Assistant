@@ -80,3 +80,23 @@ user-invocable: true
 - 不要过度设计
 - 最小修改原则
 - 完成后必须验证
+
+---
+
+## 前端开发补充
+
+**如果是前端项目，实现前先读取相关文档：**
+
+| 任务类型 | 必读文档 |
+|----------|----------|
+| UI 页面/组件开发 | `docs/frontend/COMPONENTS.md` + `docs/frontend/STYLING.md` |
+| 样式调整 | `docs/frontend/STYLING.md` |
+| 使用现有组件 | `docs/frontend/COMPONENTS.md` |
+| API 调用 | `docs/frontend/API.md` |
+| 整体了解 | `docs/frontend/` 下全部文档 |
+
+**原则：**
+- 优先使用 `docs/frontend/COMPONENTS.md` 中已有的组件
+- 样式类名遵循 `docs/frontend/STYLING.md` 中的规范
+- UI 模式参考 `docs/frontend/UI-PATTERNS.md`
+- API 调用方式参照 `docs/frontend/API.md`

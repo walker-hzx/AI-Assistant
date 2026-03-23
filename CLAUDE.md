@@ -148,6 +148,7 @@ src/
 - `/docs` - 编写文档 → researcher
 - `/docs-sync` - 文档同步 → scout
 - `/init` - 项目初始化 → researcher
+- `/map-frontend` - 前端项目映射 → researcher
 - `/team-generator` - 生成协作团队
 
 ## 质量标准
